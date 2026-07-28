@@ -1,0 +1,9 @@
+@use "../utilities/main" as ut;
+
+.title{
+  @include ut.title( ut.px-to-rem(140), 700) //2 wert ist die font-weight
+}
+
+.subtitle{
+    @include ut.subtitle(ut.px-to-rem(48))
+}

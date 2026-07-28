@@ -1,11 +1,12 @@
 @mixin title($size, $weight: 400) {
   font-family: "Red-Rose", sans-serif;
-  font-size: $size;
+  //font-size: $size;
+  font-size: clamp(7rem, calc(2.69rem + 6.73vw), $size); //8.75rem
   font-weight: $weight;
 }
 
 @mixin subtitle($size, $weight: 400) {
   font-family: "Almarai", serif;
-  font-size: $size;
+  font-size: clamp(2rem, calc(-0.46rem + 3.85vw), $size);
   font-weight: $weight;
 }

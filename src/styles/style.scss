@@ -1,6 +1,7 @@
-@use "base/fonts" ;
-@use "./components/main" as comp;
-
-.title{
-  @include comp.title( comp.px-to-rem(140), 700) //2 wert ist die font-weight
-}
+@use "utilities";
+@use "base";
+@use "vendor";
+@use "layout";
+@use "components";
+@use "pages";
+@use "themes";
