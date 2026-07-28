@@ -1,10 +1,45 @@
-@use "../utilities";
-@use "../base";
+@use "../utilities" as u;
+@use "../base" as base;
 
 .btn {
-    
-  &--start {
-    @include utilities.button(utilities.px-to-rem(250), utilities.px-to-rem(98));
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &--play {
+    width: u.px-rem(250);
+    height: u.px-rem(98);
+    @include u.f-almarai(u.px-rem(40), 700);
+
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    align-items: center;
+    justify-content: space-around;
+
     background-color: base.$primary-yellow;
+    color: base.$primary-dark;
+
+    @include u.transition();
+    .controller, .btn__svg{
+      @include u.transition();
+    }
+    &:hover {
+      width: u.px-rem(270);
+      height: u.px-rem(101);
+      .btn__svg {
+        width: u.px-rem(36);
+        stroke: u.px-rem(4);
+      }
+      .controller{
+        transform: rotate(-25deg);
+      }
+    }
+  }
+
+  &__svg {
+    width: u.px-rem(35);
+    height: u.px-rem(15);
+    stroke: u.px-rem(2);
+    fill: base.$primary-dark;
   }
 }

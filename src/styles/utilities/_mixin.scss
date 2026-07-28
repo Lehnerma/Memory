@@ -1,0 +1,28 @@
+@use "../base";
+
+@mixin flex($direction: column, $justify: center, $align: center, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin transition($target: all, $time: base.$transition-time, $easing: base.$animation-easing) {
+  transition: $target $time $easing;
+}
+
+//#############
+// Typographie
+//#############
+@mixin f-rose($size, $weight: 400) {
+  font-family: "Red-Rose", sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin f-almarai($size, $weight: 400) {
+  font-family: "Almarai", serif;
+  font-size: $size;
+  font-weight: $weight;
+}
