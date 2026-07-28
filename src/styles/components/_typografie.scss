@@ -1,0 +1,11 @@
+@mixin title($size, $weight: 400) {
+  font-family: "Red-Rose", sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin subtitle($size, $weight: 400) {
+  font-family: "Almarai", serif;
+  font-size: $size;
+  font-weight: $weight;
+}

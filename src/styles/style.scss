@@ -1,31 +1,6 @@
-body {
-  height: 100vh;
-}
+@use "base/fonts" ;
+@use "./components/main" as comp;
 
-.card {
-  width: 100px;
-  aspect-ratio: 1/1;
-
-  border: none;
-
-  &__inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: all 300ms ease-in-out;
-  }
-
-  &__face {
-    position: absolute;
-    inset: 0; // mit der einstellung liegen die cards direkt übereinander
-    background-color: goldenrod;
-
-    &--back {
-      transform: rotateY(180);
-    }
-  }
-}
-.flipped {
-  background-color: silver;
+.title{
+  @include comp.title( comp.px-to-rem(140), 700) //2 wert ist die font-weight
 }
