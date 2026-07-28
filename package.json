@@ -1,0 +1,29 @@
+{
+  "name": "memory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "tsc -noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lehnerma/Memory.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Lehnerma/Memory/issues"
+  },
+  "homepage": "https://github.com/Lehnerma/Memory#readme",
+  "devDependencies": {
+    "sass": "^1.102.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.5"
+  }
+}
