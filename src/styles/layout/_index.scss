@@ -1,1 +1,9 @@
 @forward "./body";
+
+
+@mixin flex-center($dir: column) { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $dir;
+}

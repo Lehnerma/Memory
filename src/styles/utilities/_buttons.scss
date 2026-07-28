@@ -1,0 +1,5 @@
+@mixin button($width: 40, $height:20) {
+  width: $width;
+  height: $height;
+  cursor: pointer;
+}
