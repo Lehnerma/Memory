@@ -1,0 +1,24 @@
+@use "../base" as base;
+@use "../utilities" as u;
+
+.svg {
+  &__arrow {
+    width: u.px-rem(35);
+    height: u.px-rem(15);
+    stroke: u.px-rem(2);
+    fill: base.$primary-dark;
+  }
+
+  &__controller {
+    width: u.px-rem(44);
+    height: u.px-rem(32);
+    stroke: u.px-rem(2);
+    fill: base.$primary-dark;
+
+    &--background {
+      width: u.px-rem(416);
+      height: u.px-rem(302);
+      fill: base.$controller-light-yellow;
+    }
+  }
+}

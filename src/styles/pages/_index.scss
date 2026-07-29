@@ -1,9 +1,2 @@
-@use "../utilities/index" as u;
+@forward 'landing';
 
-.title {
-  @include u.f-rose(u.px-rem(140), 700); //2 wert ist die font-weight
-}
-
-.subtitle {
-  @include u.f-almarai(u.px-rem(48));
-}

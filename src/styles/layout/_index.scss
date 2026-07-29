@@ -1,5 +1,7 @@
 @forward "./body";
 
+@use "../base" as base;
+
 
 @mixin flex-center($dir: column) { 
   display: flex;
