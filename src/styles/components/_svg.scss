@@ -22,3 +22,9 @@
     }
   }
 }
+
+.summary--divider{
+  @include u.wid-heig(8,56);
+  background-color: base.$primary-yellow;
+  transform: rotate(20deg);
+}

@@ -3,12 +3,27 @@
 
 .settings {
   .title {
-    @include u.f-rose(u.px-rem(54), 700); //2 wert ist die font-weight
-    color: base.$primary-dark;
+    @include u.f-rose(u.px-rem(54), 700);
   }
 
   .main {
-    width: 100vw;
     @include u.grid-col($columns: 50% 50%);
+    width: 100vw;
+  }
+
+  .summary {
+    display: flex;
+    @include u.colors($bg: base.$gey-bg);
+    padding: u.px-rem(12);
+    @include u.flex(row, space-around);
+
+    &--text {
+      @include u.f-almarai(20);
+    }
+  }
+
+  &__preview {
+    @include u.grid-col(1fr);
+    gap: 45px;
   }
 }

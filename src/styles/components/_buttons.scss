@@ -7,15 +7,10 @@
   cursor: pointer;
 
   &--play {
-    width: u.px-rem(250);
-    height: u.px-rem(98);
+    @include u.wid-heig(250, 98);
     @include u.f-almarai(u.px-rem(40), 700);
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    align-items: center;
-    justify-content: space-around;
-    background-color: base.$primary-yellow;
-    color: base.$primary-dark;
+    @include u.grid-col(repeat(3, auto), center, space-around);
+    @include u.colors(base.$primary-dark, base.$primary-yellow);
     @include u.transition();
     transform-origin: center;
 
@@ -34,6 +29,30 @@
       .btn__svg--controller {
         transform: rotate(-25deg);
       }
+    }
+  }
+
+  &__start {
+    @include u.wid-heig(126, 53);
+    @include u.colors($bg: base.$primary-yellow);
+    @include u.f-rose(u.px-rem(20), 700);
+    @include u.flex($direction: row, $gap: u.px-rem(8));
+    @include u.transition();
+
+    &:hover:not(:disabled) {
+      transform: scale(1.08);
+    }
+
+    &:disabled {
+      @include u.colors(base.$txt-disable, base.$disable-grey);
+      cursor: not-allowed;
+      .btn__start--icon {
+        filter: brightness(0) saturate(100%) invert(66%) sepia(2%) saturate(0%) hue-rotate(180deg) brightness(103%);
+      }
+    }
+
+    &--icon {
+      @include u.wid-heig(24, 24);
     }
   }
 }
