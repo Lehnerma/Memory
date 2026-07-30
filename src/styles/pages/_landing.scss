@@ -1,5 +1,6 @@
 @use "../utilities" as u;
 @use "../base" as base;
+
 .landing {
   .title {
     @include u.f-rose(u.px-rem(140), 700); //2 wert ist die font-weight
@@ -17,5 +18,6 @@
 
     transform: rotate(37deg);
   }
+
 
 }

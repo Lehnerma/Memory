@@ -1,5 +1,8 @@
 @use "../base";
 
+//#############
+// Display Properties
+//#############
 @mixin flex($direction: column, $justify: center, $align: center, $gap: 0) {
   display: flex;
   flex-direction: $direction;
@@ -8,6 +11,16 @@
   gap: $gap;
 }
 
+@mixin grid-col($columns: repeat(auto-fit, minmax(200px, 1fr)), $justify: center, $align: center){
+  display: grid;
+  grid-template-columns: $columns;
+  justify-items: $justify;
+  align-items: $align;
+}
+
+//#############
+// Animation
+//#############
 @mixin transition($target: all, $time: base.$transition-time, $easing: base.$animation-easing) {
   transition: $target $time $easing;
 }

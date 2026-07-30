@@ -10,3 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Verhalten
 - ich möchte das du direkte Antworten gibst und dich klar ausdrückt. 
 - einfache fragen sollst du auch einfach beantworten 
+
+## Barrierefreiheit & Semantik
+- Es handelt sich um ein privates Memory-Spiel-Projekt, kein Projekt mit hohen a11y-Anforderungen. Barrierefreiheit (ARIA, aria-live etc.) muss daher nicht aktiv vorangetrieben werden.
+- Semantisches HTML bleibt trotzdem wichtig (richtige Elemente wie section/fieldset/figure statt div-Suppe) — darauf weiterhin hinweisen.
