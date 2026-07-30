@@ -7,52 +7,46 @@
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <title>Settings</title>
   </head>
-  <body class="settings grid ">
+  <body class="settings grid">
     <header>
-        <h1 class="title">Settings</h1>
+      <h1 class="title">Settings</h1>
     </header>
     <main class="main">
-        <article>
-            <h2>Game Themes</h2>
-            <div class="">
-                <label>
-                    <input type="radio" id="" name="theme" class="" /> Code Vibes Theme
-                </label>
-                <label>
-                    <input type="radio" id="" name="theme" class="" /> Gaming Theme
-                </label>
-                <label>
-                    <input type="radio" id="" name="theme" class="" /> DA Projects Theme
-                </label>
-                <label>
-                    <input type="radio" id="" name="theme" class="" /> Foods Theme
-                </label>
-            </div>
-                        <h2>Choose Player</h2>
-            <div class="">
-                <label>
-                    <input type="checkbox" id="" class="" /> Blue
-                </label>
-                <label>
-                    <input type="checkbox" id="" class="" /> Orange
-                </label>
-            </div>
-                        <h2>Board Size</h2>
-            <div class="">
-                <label>
-                    <input type="radio" id="" name="boardsize" class="" /> 16 Cards
-                </label>
-                <label>
-                    <input type="radio" id="" name="boardsize" class="" /> 24 Cards
-                </label>
-                <label>
-                    <input type="radio" id="" name="boardsize" class="" /> 36 Cards
-                </label>
-            </div>
-        </article>
-        <article>
-            <img src="../assets/img/themes/code-vibes/default.png" />
-        </article>
+      <section class="settings__options">
+        <fieldset>
+          <legend>
+            <img src="../public/assets/icons/palette.svg" alt="palette" />
+            Game Themes
+          </legend>
+          <label> <input type="radio" id="theme_code" name="theme" class="" /> Code Vibes Theme </label>
+          <label> <input type="radio" id="theme_gaming" name="theme" class="" /> Gaming Theme </label>
+          <label> <input type="radio" id="theme_projects" name="theme" class="" /> DA Projects Theme </label>
+          <label> <input type="radio" id="theme_food" name="theme" class="" /> Foods Theme </label>
+        </fieldset>
+        <fieldset>
+          <legend>
+            <img src="../public/assets/icons/chess_pawn.svg" alt="chess pawn" />
+            Choose Player
+          </legend>
+          <label> <input type="radio" id="" class="" name="player" /> Blue </label>
+          <label> <input type="radio" id="" class="" name="player" /> Orange </label>
+        </fieldset>
+        <fieldset>
+          <legend>
+            <img src="../public/assets/icons/card.svg" alt="card" />
+            Board Size
+          </legend>
+          <label> <input type="radio" id="" name="boardsize" class="" /> 16 Cards </label>
+          <label> <input type="radio" id="" name="boardsize" class="" /> 24 Cards </label>
+          <label> <input type="radio" id="" name="boardsize" class="" /> 36 Cards </label>
+        </fieldset>
+      </section>
+      <section class="settings__preview">
+        <figure>
+          <img id="theme_preview" src="../assets/img/themes/code-vibes/default.png" alt="Coding Theme" />
+          <figcaption><!-- Zusammenfassung, wird noch gecodet --></figcaption>
+        </figure>
+      </section>
     </main>
     <footer></footer>
     <script type="module" src="../src/main.ts"></script>
