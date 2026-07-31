@@ -34,18 +34,18 @@
 //#############
 // Typographie
 //#############
-@mixin f-rose($size, $weight: 400) {
+@mixin f-rose($size, $weight: 400, $color: base.$primary-dark) {
   font-family: "Rose", sans-serif;
   font-size: u.px-rem($size);
   font-weight: $weight;
-  color: base.$primary-dark;
+  color: $color;
 }
 
-@mixin f-almarai($size, $weight: 400) {
+@mixin f-almarai($size, $weight: 400, $color: base.$primary-dark) {
   font-family: "Almarai", serif;
   font-size: u.px-rem($size);
   font-weight: $weight;
-  color: base.$primary-dark;
+  color: $color;
 }
 
 @mixin colors($color: base.$primary-dark, $bg: white) {

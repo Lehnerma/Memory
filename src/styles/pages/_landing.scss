@@ -3,12 +3,12 @@
 
 .landing {
   .title {
-    @include u.f-rose(140, 700); //2 wert ist die font-weight
+    @include u.f-rose(140, 700, base.$txt-white);
     @include u.flex($direction: column-reverse);
   }
 
   .subtitle {
-    @include u.f-almarai(48);
+    @include u.f-almarai(48, 400, base.$txt-white);
   }
 
   .svg__controller--background {
