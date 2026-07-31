@@ -12,3 +12,7 @@
     @include u.grid-col($columns: 50% 50%);
   }
 }
+
+.settings__options{
+  justify-self: start;
+}
