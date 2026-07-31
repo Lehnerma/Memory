@@ -16,6 +16,9 @@
     @include u.colors($bg: base.$gey-bg);
     padding: u.px-rem(12);
     @include u.flex(row, space-around);
+    max-width: 550px;
+    width: 100%;
+    justify-self: end;
 
     &--text {
       @include u.f-almarai(20);
