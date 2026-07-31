@@ -32,7 +32,7 @@ header, main, footer {
   }
 
   &--landing{
-    @include u.flex($gap: u.px-rem(80));
+    @include u.flex($gap: 80);
   }
 }
 
