@@ -8,7 +8,7 @@
 
   &--play {
     @include u.wid-heig(250, 98);
-    @include u.f-almarai(u.px-rem(40), 700);
+    @include u.f-almarai(40, 700);
     @include u.grid-col(repeat(3, auto), center, space-around);
     @include u.colors(base.$primary-dark, base.$primary-yellow);
     @include u.transition();
@@ -35,8 +35,8 @@
   &__start {
     @include u.wid-heig(126, 53);
     @include u.colors($bg: base.$primary-yellow);
-    @include u.f-rose(u.px-rem(20), 700);
-    @include u.flex($direction: row, $gap: u.px-rem(8));
+    @include u.f-rose(20, 700);
+    @include u.flex($direction: row, $gap: 8);
     @include u.transition();
 
     &:hover:not(:disabled) {

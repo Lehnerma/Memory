@@ -5,6 +5,7 @@
     justify-self: flex-end;
   }
   &__preview{
-    @include u.wid-heig(460, 412);
+    width: u.px-rem(460);
+    aspect-ratio: 1/1;
   }
 }

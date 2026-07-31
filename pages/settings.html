@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- !import an favicon -->
-    <link rel="shortcut icon" href="" type="image/x-icon" />
+
+    <link rel="shortcut icon" href="public/assets/icons/memory.svg" type="image/x-icon" />
+
     <title>Settings</title>
   </head>
   <body class="settings grid">
@@ -18,10 +19,12 @@
             <img class="settings__field--icon" src="../public/assets/icons/palette.svg" alt="palette" />
             Game Themes
           </legend>
-          <label class="settings__field--text"> <input type="radio" id="theme_code" name="theme" class="settings__field--radio-btn" value="coding"/> Code Vibes Theme </label>
-          <label class="settings__field--text"> <input type="radio" id="theme_gaming" class="settings__field--radio-btn" name="theme" value="gaming"/> Gaming Theme </label>
-          <label class="settings__field--text"> <input type="radio" id="theme_projects" class="settings__field--radio-btn" name="theme" value="projects"/> DA Projects Theme </label>
-          <label class="settings__field--text"> <input type="radio" id="theme_food" class="settings__field--radio-btn" name="theme" value="food" /> Foods Theme </label>
+          <div class="settings__field--options">
+            <label class="settings__field--text"> <input type="radio" id="theme_code" name="theme" class="settings__field--radio-btn" value="coding" /> Code Vibes Theme </label>
+            <label class="settings__field--text"> <input type="radio" id="theme_gaming" class="settings__field--radio-btn" name="theme" value="gaming" /> Gaming Theme </label>
+            <label class="settings__field--text"> <input type="radio" id="theme_projects" class="settings__field--radio-btn" name="theme" value="projects" /> DA Projects Theme </label>
+            <label class="settings__field--text"> <input type="radio" id="theme_food" class="settings__field--radio-btn" name="theme" value="food" /> Foods Theme </label>
+          </div>
         </fieldset>
 
         <fieldset class="settings__field">
@@ -29,8 +32,10 @@
             <img class="settings__field--icon" src="../public/assets/icons/chess_pawn.svg" alt="chess pawn" />
             Choose Player
           </legend>
-          <label class="settings__field--text"> <input type="radio" id="" class="settings__field--radio-btn" name="player" /> Blue </label>
-          <label class="settings__field--text"> <input type="radio" id="" class="settings__field--radio-btn" name="player" /> Orange </label>
+          <div class="settings__field--options">
+            <label class="settings__field--text"> <input type="radio" id="" class="settings__field--radio-btn" name="player" /> Blue </label>
+            <label class="settings__field--text"> <input type="radio" id="" class="settings__field--radio-btn" name="player" /> Orange </label>
+          </div>
         </fieldset>
 
         <fieldset class="settings__field">
@@ -38,15 +43,17 @@
             <img class="settings__field--icon" src="../public/assets/icons/card.svg" alt="card" />
             Board Size
           </legend>
-          <label class="settings__field--text"> <input type="radio" id="" name="boardsize" class="settings__field--radio-btn" /> 16 Cards </label>
-          <label class="settings__field--text"> <input type="radio" id="" name="boardsize" class="settings__field--radio-btn" /> 24 Cards </label>
-          <label class="settings__field--text"> <input type="radio" id="" name="boardsize" class="settings__field--radio-btn" /> 36 Cards </label>
+          <div class="settings__field--options">
+            <label class="settings__field--text"> <input type="radio" id="" name="boardsize" class="settings__field--radio-btn" /> 16 Cards </label>
+            <label class="settings__field--text"> <input type="radio" id="" name="boardsize" class="settings__field--radio-btn" /> 24 Cards </label>
+            <label class="settings__field--text"> <input type="radio" id="" name="boardsize" class="settings__field--radio-btn" /> 36 Cards </label>
+          </div>
         </fieldset>
       </section>
 
       <section class="settings__preview">
         <figure class="img__figure">
-          <img id="theme_preview" class="img__preview" src="../assets/img/themes/code-vibes/default.png" alt="Coding Theme" />
+          <img id="theme_preview" class="img__preview" src="../assets/img/themes/coding/default.png" alt="Coding Theme" />
           <figcaption></figcaption>
         </figure>
         <aside class="summary">
@@ -62,9 +69,7 @@
         </aside>
       </section>
     </main>
-    <footer>
-      <button id="test" style="height: 100px; width: 100px; margin-bottom: 200px;">Test</button>
-    </footer>
+    <footer></footer>
     <script type="module" src="../src/main.ts"></script>
   </body>
 </html>

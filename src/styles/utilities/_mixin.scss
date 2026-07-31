@@ -36,14 +36,14 @@
 //#############
 @mixin f-rose($size, $weight: 400) {
   font-family: "Rose", sans-serif;
-  font-size: $size;
+  font-size: u.px-rem($size);
   font-weight: $weight;
   color: base.$primary-dark;
 }
 
 @mixin f-almarai($size, $weight: 400) {
   font-family: "Almarai", serif;
-  font-size: $size;
+  font-size: u.px-rem($size);
   font-weight: $weight;
   color: base.$primary-dark;
 }

@@ -3,12 +3,13 @@
 
 .settings {
   .title {
-    @include u.f-rose(u.px-rem(54), 700);
+    @include u.f-rose(54, 700);
   }
 
   .main {
     @include u.grid-col($columns: 50% 50%);
     width: 100vw;
+    max-width: 1100px;
   }
 
   .summary {
@@ -16,7 +17,6 @@
     @include u.colors($bg: base.$gey-bg);
     padding: u.px-rem(12);
     @include u.flex(row, space-around);
-    max-width: 550px;
     width: 100%;
     justify-self: end;
 
@@ -36,19 +36,26 @@
 
   &__field {
     border: none;
+    margin-bottom: 54px;
 
     &--icon {
       @include u.wid-heig(32, 32);
     }
 
-    &--title{
-      @include u.f-almarai(u.px-rem(24), 700);
+    &--title {
+      @include u.f-almarai(24, 700);
+      margin-bottom: u.px-rem(16);
     }
-    &--text{
-      @include u.f-almarai(u.px-rem(20));
+    &--options {
+      @include u.flex($align: flex-start, $gap: 20);
+      margin-left: u.px-rem(44); // 56
     }
-    &--radio-btn{
-      @include u.wid-heig(24, 24)
+    &--text {
+      @include u.f-almarai(20);
+      @include u.flex(row, $gap:10)
+    }
+    &--radio-btn {
+      @include u.wid-heig(24, 24);
     }
   }
 }
