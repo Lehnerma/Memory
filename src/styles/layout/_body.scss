@@ -7,10 +7,6 @@
   box-sizing: border-box;
 }
 
-// body {
-//   overflow-x: hidden;
-// }
-
 header, main, footer {
   max-width: base.$max-dp-width;
 
@@ -38,4 +34,8 @@ header, main, footer {
   &--landing{
     @include u.flex($gap: u.px-rem(80));
   }
+}
+
+.settings__field--title{
+  @include u.flex(row, $gap: 16)
 }

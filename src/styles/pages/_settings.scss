@@ -29,8 +29,26 @@
     @include u.grid-col(1fr);
     gap: 45px;
   }
-}
 
-.settings__options{
-  justify-self: start;
+  .settings__options {
+    justify-self: start;
+  }
+
+  &__field {
+    border: none;
+
+    &--icon {
+      @include u.wid-heig(32, 32);
+    }
+
+    &--title{
+      @include u.f-almarai(u.px-rem(24), 700);
+    }
+    &--text{
+      @include u.f-almarai(u.px-rem(20));
+    }
+    &--radio-btn{
+      @include u.wid-heig(24, 24)
+    }
+  }
 }
