@@ -2,3 +2,8 @@
     <polygon class="icon-line__diamond" points="49.6603,8.66028 41,0 32.3397,8.66028 41,17.3205" stroke="currentColor" stroke-width="1" />
     <line class="icon-line__stroke" x1="0" y1="8.66028" x2="41" y2="8.66028" stroke="currentColor" stroke-width="3" />
     </svg>
+    
+    <svg xmlns="http://www.w3.org/2000/svg" class="svg__line" width="260" height="18" viewBox="0 0 260 18" fill="none" aria-hidden="true">
+        <polygon class="svg__line--diamond" points="259.6603,8.66028 251,0 242.3397,8.66028 251,17.3205" stroke="currentColor" stroke-width="1"/>
+        <line class="svg__line--stroke" x1="0" y1="8.66028" x2="251" y2="8.66028" stroke="currentColor" stroke-width="3"/>
+    </svg>
