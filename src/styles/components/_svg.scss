@@ -21,6 +21,12 @@
       fill: base.$controller-light-yellow;
     }
   }
+  &__line{
+    &--diamond{
+      color: base.$primary-yellow;
+      fill: base.$primary-yellow;
+    }
+  }
 }
 
 .summary--divider{

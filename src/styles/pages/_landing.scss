@@ -2,6 +2,7 @@
 @use "../base" as base;
 
 .landing {
+  
   .title {
     @include u.f-rose(140, 700, base.$txt-white);
     @include u.flex($direction: column-reverse);
