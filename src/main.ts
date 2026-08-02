@@ -1,5 +1,5 @@
 import "./styles/style.scss";
-import { initSummary } from "./scripts/summary";
+import { initSummary } from "./scripts/settings";
 
 function init() {
   initSummary();
