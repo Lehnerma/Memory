@@ -4,3 +4,9 @@
 - main.ts: initBtn() sucht #test (nicht #btn_play) — OK, Link braucht keinen Handler
 - returnThemeValue() Import wird nur für #test genutzt — prüfe ob #test noch existiert
 - Keine kritischen Issues, nur mögliche Altlast in JS
+
+[2026-08-02 14:45] SESSION-REVIEW summary.ts
+- Typ-Mismatch: ✓ gelöst. getCheckedInput/getCheckedLabelText/updateSummaryField Signaturen konsistent (string→string, FieldConfig→FieldConfig)
+- updateThemeImg: Zeilen 51-52 auskommentiert, referenzieren `config` (out of scope). Tote Code.
+- Alle Funktionen ≤14 Zeilen ✓ Single Responsibility ✓
+- Zeile 27: fehlender Semikolon (Linting only, kein Typfehler)
