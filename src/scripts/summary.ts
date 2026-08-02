@@ -10,9 +10,14 @@ const FIELD_CONFIGS: FieldConfig[] = [
   { fieldsetId: "field_boardsize", summaryId: "summary_boardsize", placeholder: "Board size" },
 ];
 
-function getCheckedLabelText(fieldsetId: string): string | null {
+function getCheckedInput(fieldsetId: string): HTMLInputElement | null {
   const fieldset = document.getElementById(fieldsetId);
   const checkedInput = fieldset?.querySelector<HTMLInputElement>('input[type="radio"]:checked');
+  return checkedInput ?? null;
+}
+
+function getCheckedLabelText(fieldId: string): string | null {
+  const checkedInput = getCheckedInput(fieldId);
   const label = checkedInput?.dataset.label;
   return label ?? null;
 }
@@ -33,12 +38,27 @@ function updateStartButtonState(allSelected: boolean): void {
 
 function updateSummary(): void {
   const allSelected = FIELD_CONFIGS.map(updateSummaryField).every(Boolean);
+  updateThemeImg();
   updateStartButtonState(allSelected);
 }
 
 function bindRadioChangeListeners(): void {
   const radioInputs = document.querySelectorAll<HTMLInputElement>(".radio__input");
   radioInputs.forEach((input) => input.addEventListener("change", updateSummary));
+}
+
+function getTheme(): string | null {
+  const input = getCheckedInput("field_themes");
+  const value = input?.value;
+  return value ?? null;
+}
+
+function updateThemeImg(): void {
+  const theme = getTheme();
+  if (!theme) return;
+  const imgContainer = document.getElementById("theme_preview") as HTMLImageElement | null;
+  if (!imgContainer) return;
+  imgContainer.src = `../assets/img/themes/${theme}/default.png`;
 }
 
 export function initSummary(): void {
