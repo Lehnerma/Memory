@@ -37,3 +37,16 @@ Chronologisches Arbeitstagebuch. Menschlich lesbar, keine Memory-DB.
 - `pages/_settings.scss`: die alten `&--text`/`&--radio-btn`-Regeln entfernt — `&__field` enthält jetzt nur noch page-spezifisches Layout (Icon-Größe, Title, Options-Gap/Margin).
 - `pages/settings.html`: alle 9 Radio-Labels/Inputs von `settings__field--text`/`settings__field--radio-btn` auf `radio`/`radio__input` umbenannt.
 - Verifiziert mit `npx vite build` (nur Compile-Check, kein Dev-Server) — SCSS kompiliert fehlerfrei. Dabei aus Versehen `dist/index.html` neu gebaut (dist ist zwar in `.gitignore`, aber aus einem alten Commit noch getrackt) — wieder auf den committeten Stand zurückgesetzt (`git checkout -- dist/index.html`), damit kein unrelated Diff reinrutscht.
+
+## 2026-08-02
+
+**Issue #14: Dynamic Summary — Radio-Auswahl live in der Summary anzeigen + Start-Button-Gate**
+
+- Branch `dynamic_summary` (bereits vorher angelegt). Issue: [#14](https://github.com/Lehnerma/Memory/issues/14) "Dynamic Summary", Parent #8. Verhalten heute: Max hat für diese Session explizit **Senior-Dev-Modus statt Mentor-Modus** angefragt (Code direkt schreiben, für Rückfragen bereitstehen) — abweichend vom sonst geltenden Mentor-Default aus `.claude/CLAUDE.md`.
+- Fehlende HTML-IDs ergänzt (`pages/settings.html`): `id="field_player"` / `id="field_boardsize"` auf den bisher unlabelten Fieldsets, `id="summary_theme"` / `id="summary_player"` / `id="summary_boardsize"` auf den drei Summary-`<p>`-Elementen (vorher `id=""`), `id="btn_start"` auf dem Start-Button. Alles snake_case, konsistent zu bestehenden IDs (`btn_play`, `theme_preview`, `field_themes`).
+- Neue Datei `src/scripts/summary.ts`: liest pro Fieldset den gecheckten Radio-Button aus (`getCheckedLabelText`), nutzt dafür den sichtbaren Label-Text statt eines `value`-Attributs (Player/Board-Size-Inputs hatten gar keine `value`s) — spart zusätzliche HTML-Änderungen und die Summary zeigt automatisch lesbaren Text ("Blue", "16 Cards" etc.). Kleine Funktionen nach Single-Responsibility: `getCheckedLabelText`, `updateSummaryField`, `updateStartButtonState`, `updateSummary`, `bindRadioChangeListeners`, exportiertes `initSummary()`.
+- `initSummary()` guardet auf `document.querySelector(".settings")`, da `index.html` und `pages/settings.html` beide dasselbe `src/main.ts` als Script-Entry einbinden (siehe `vite.config.ts` Multi-Page-Build) — ohne Guard würde die Logik auch auf der Landingpage laufen und dort ins Leere greifen.
+- `src/main.ts`: `initSummary()` in `init()` eingehängt, Platzhalter-`console.log('Hello World')` entfernt.
+- `src/scripts/buttons.ts`: alten auskommentierten `returnTheme()`-Referenzcode aus dem Issue entfernt, da jetzt durch `summary.ts` ersetzt/abgedeckt.
+- Kollision entdeckt: Max hatte parallel schon `src/scripts/input.ts` mit einer Kommentar-Skizze (`inputs abfragen`, `dynamisch einfügen in summary`, `btn active`) angelegt — inhaltlich identisch zu dem, was gerade in `summary.ts` gebaut wurde. Nach Rückfrage: `summary.ts` behalten, `input.ts` gelöscht.
+- Verifiziert mit `npx tsc --noEmit` (sauber) und `npx vite build` (kompiliert fehlerfrei); `dist/` danach wieder zurückgesetzt (siehe oben, gleiche Altlast wie bei Issue #16).

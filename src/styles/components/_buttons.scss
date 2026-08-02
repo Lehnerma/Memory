@@ -14,7 +14,6 @@
     @include u.colors(base.$primary-dark, base.$primary-yellow);
     @include u.transition();
     transform-origin: center;
-
     .btn__svg--controller,
     .btn__svg--arrow {
       @include u.transition();

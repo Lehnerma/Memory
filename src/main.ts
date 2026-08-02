@@ -1,9 +1,8 @@
 import "./styles/style.scss";
+import { initSummary } from "./scripts/summary";
 
 function init() {
-  console.log('Hello World');
-  
+  initSummary();
 }
-
 
 init();
