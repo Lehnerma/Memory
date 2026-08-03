@@ -1,0 +1,28 @@
+@use "../base" as base;
+@use "../utilities" as u;
+
+[data-theme="coding"] {
+  --main-bg: #{base.$primary-dark};
+  --player-bg: #{base.$coding-player-bg};
+  --player-blue: #{base.$player-blue};
+  --player-orange: #{base.$player-orange};
+
+  --title-font: "Rose", sans-serif;
+  --title-weight: 700;
+  --title-weight-regular: 400;
+  --title-size: #{u.px-rem(24)};
+  --text-color: #{base.$txt-white};
+
+  --exit-btn-txt: #{base.$coding-exit-btn-txt};
+  --exit-btn-border: #{base.$coding-exit-btn-border};
+  --exit-btn-border-hover: #{base.$coding-exit-btn-border_hover};
+  --exit-btn-bg: #{base.$coding-exit-btn-bg};
+  --exit-btn-bg-hover: #{base.$coding-exit-btn-bg_hover};
+  --exit-btn-shadow: #{base.$coding-exit-btn-shadow};
+  --exit-svg-color: #{base.$txt-white};
+
+  --back-btn-bg: #{base.$coding-btn-back-bg};
+  --back-btn-bg-hover: #{base.$coding-btn-back-bg_hover};
+  --back-btn-border-hover: #{base.$coding-btn-back-border_hover};
+  --back-btn-txt: #{base.$theme-white};
+}

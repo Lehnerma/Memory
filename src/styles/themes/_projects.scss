@@ -1,0 +1,31 @@
+@use "../base" as base;
+@use "../utilities" as u;
+
+[data-theme="projects"] {
+  --main-bg: #{base.$projects-main-bg};
+  --header-bg: #{base.$projects-header-bg};
+  --player-bg: #{base.$theme-white};
+  --player-blue: #{base.$player-blue};
+  --player-orange: #{base.$player-orange};
+
+  --title-font: "Figtree", sans-serif;
+  --title-weight: 700;
+  --title-weight-regular: 400;
+  --title-size: #{u.px-rem(24)};
+  --text-color: #{base.$theme-white};
+
+  --exit-btn-txt: #{base.$theme-white};
+  --exit-btn-bg: #{base.$projects-btn-bg};
+  --exit-btn-bg-hover: #{base.$projects-btn-bg_hover};
+  --exit-btn-shadow: #{base.$projects-btn-shadow};
+  --exit-svg-color: #{base.$theme-white};
+
+  --back-btn-bg: #{base.$projects-btn-back-bg};
+  --back-btn-bg-hover: #{base.$projects-btn-back-hover};
+  --back-btn-shadow: #{base.$projects-btn-back-shadow};
+  --back-btn-txt: #{base.$projects-btn-back-font};
+
+  --dialog-exit-btn-bg: #{base.$projects-btn-exit-bg};
+  --dialog-exit-btn-bg-hover: #{base.$projects-exit-bg-hover};
+  --dialog-exit-btn-shadow: #{base.$projects-exit-shadow};
+}

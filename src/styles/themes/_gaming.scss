@@ -1,0 +1,28 @@
+@use "../base" as base;
+@use "../utilities" as u;
+
+[data-theme="gaming"] {
+  --main-bg: #{base.$gaming-main-bg};
+  --header-bg: #{base.$gaming-header-bg};
+  --player-bg: #{base.$theme-white};
+  --player-blue: #{base.$player-blue};
+  --player-orange: #{base.$player-orange};
+
+  --title-font: "Orbitron", sans-serif;
+  --title-weight: 700;
+  --title-weight-regular: 400;
+  --title-size: #{u.px-rem(32)};
+  --text-color: #{base.$theme-white};
+
+  --exit-btn-txt: #{base.$theme-white};
+  --exit-btn-border: #{base.$gaming-btn-border};
+  --exit-btn-bg: #{base.$gaming-btn-bg};
+  --exit-btn-bg-hover: #{base.$gaming-btn-bg_hover};
+  --exit-btn-shadow: null; // TODO: Wert fehlt noch
+  --exit-svg-color: #{base.$theme-white};
+
+  --back-btn-bg: #{base.$gaming-btn-back-bg};
+  --back-btn-border: #{base.$gaming-btn-back-border};
+  --back-btn-shadow: #{base.$gaming-btn-back-shadow};
+  --back-btn-txt: #{base.$theme-white};
+}
