@@ -58,7 +58,7 @@ function updateThemeImg(): void {
   if (!theme) return;
   const imgContainer = document.getElementById("theme_preview") as HTMLImageElement | null;
   if (!imgContainer) return;
-  imgContainer.src = `../assets/img/themes/${theme}/default.png`;
+  imgContainer.src = `../assets/img/themes/${theme}/preview.png`;
 }
 
 export function initSummary(): void {
