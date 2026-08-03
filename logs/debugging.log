@@ -10,3 +10,9 @@
 - updateThemeImg: Zeilen 51-52 auskommentiert, referenzieren `config` (out of scope). Tote Code.
 - Alle Funktionen ≤14 Zeilen ✓ Single Responsibility ✓
 - Zeile 27: fehlender Semikolon (Linting only, kein Typfehler)
+
+[2026-08-03 KONTEXTSAMMLUNG] board.html Header-Struktur
+- board.html Header (Z. 12-34): 3x section (2 Player mit img/name/score-div, 1x Current Player mit leerem div, 1x Exit-btn)
+- _board.scss: LEER (keine Styles vorhanden)
+- main.ts: nur initSummary() — kein DOM-Handling für Header
+- buttons.ts: LEER (keine Exit-Button-Logik implementiert)

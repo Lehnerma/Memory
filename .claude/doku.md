@@ -60,3 +60,11 @@ Chronologisches Arbeitstagebuch. Menschlich lesbar, keine Memory-DB.
 - Neue Funktionen `getTheme()` und `updateThemeImg()`: lesen den Slug des gecheckten Theme-Radios aus und setzen `src` von `#theme_preview` dynamisch auf `../assets/img/themes/<slug>/default.png`. Mehrere Anläufe nötig (von Max selbst geschrieben, iterativ per Review korrigiert): falscher Pfad-Präfix (`public/` fälschlich mit reingenommen, `../`-Präfix anfangs vergessen), und ein Guard `if (!newImgPath) return` der nie greifen konnte, weil ein Template-String mit `${null}` zu `"null"` gecastet wird und dadurch nie leer/falsy ist — Lerneffekt: Null-Checks müssen auf der Rohquelle (`theme`) passieren, bevor der String gebaut wird, nicht hinterher auf das fertige Ergebnis. Finale Version der Funktion habe ich auf Max' expliziten Wunsch ("stelle du die eine function richtig") direkt geschrieben.
 - Für alle Code-Reviews in dieser Session durchgehend den `session-code-reviewer`-Subagenten (Haiku) genutzt, wie in `.claude/CLAUDE.md` vorgeschrieben.
 - Offen: Max hatte angekündigt, `summary.ts` perspektivisch auf `settings.ts` umzubenennen (Datei übernimmt jetzt mehr als nur Summary-Logik) — noch nicht umgesetzt.
+
+## 2026-08-03
+
+**Header-Semantik in `pages/board.html`**
+
+- `session-code-reviewer` hat `pages/board.html`, `src/styles/pages/_board.scss`, `src/main.ts` und `src/scripts/buttons.ts` gegengelesen, um zu prüfen ob Header-Elemente (Score-`<div>`s, Current-Player-`<div>`, Exit-Button) bereits per JS/CSS angebunden sind.
+- Ergebnis: Nichts davon ist umgesetzt. `_board.scss` ist leer, `buttons.ts` ist leer, `main.ts` bindet nur `initSummary()` (Settings-Seite) ein — der Header ist reines, ungestyltes, unverdrahtetes Markup mit hartcodierten Platzhalterwerten ("0", leeres Div). Keine bestehenden Selektoren, auf die eine Semantik-Überarbeitung Rücksicht nehmen müsste.
+- Anschließend Mentor-Gespräch (Mentor-Modus laut Projekt-`CLAUDE.md`) über passende semantische Elemente für den Header-Bereich (Spieler-Anzeige, Current-Player, Exit) statt fertiger Lösung.
