@@ -3,7 +3,7 @@
 
 [data-theme="coding"] {
   --main-bg: #{base.$primary-dark};
-  --header-bg: null; // TODO: Wert fehlt noch
+  --header-bg: #{base.$primary-dark};
   --player-bg: #{base.$coding-player-bg};
   --player-blue: #{base.$player-blue};
   --player-orange: #{base.$player-orange};
@@ -15,6 +15,7 @@
   --text-color: #{base.$txt-white};
 
   --exit-btn-txt: #{base.$coding-exit-btn-txt};
+  --exit-btn-size: #{u.px-rem(24)};
   --exit-btn-border: #{base.$coding-exit-btn-border};
   --exit-btn-border-hover: #{base.$coding-exit-btn-border_hover};
   --exit-btn-bg: #{base.$coding-exit-btn-bg};
@@ -22,10 +23,20 @@
   --exit-btn-shadow: #{base.$coding-exit-btn-shadow};
   --exit-svg-color: #{base.$txt-white};
 
-  --back-btn-bg: #{base.$coding-btn-back-bg};
-  --back-btn-bg-hover: #{base.$coding-btn-back-bg_hover};
-  --back-btn-border: null; // TODO: bewusst ohne Rahmen? bitte gegen Figma prüfen
-  --back-btn-border-hover: #{base.$coding-btn-back-border_hover};
-  --back-btn-shadow: null; // TODO: bewusst ohne Shadow? bitte gegen Figma prüfen
-  --back-btn-txt: #{base.$theme-white};
+
+  --dialog-bg: #{base.$theme-white};
+  --dialog-border-width: #{u.px-rem(3)};
+  --dialog-border-width-hover: #{u.px-rem(3)};
+  --dialog-font-size: #{u.px-rem(20)};
+  --dialog-back-btn-bg: #{base.$coding-btn-back-bg};
+  --dialog-back-btn-bg-hover: #{base.$coding-btn-back-bg_hover};
+  --dialog-back-btn-border-hover: #{base.$coding-btn-back-border_hover};
+  --dialog-back-btn-shadow: null;
+  --dialog-back-btn-txt: #{base.$theme-white};
+
+  --dialog-exit-btn-bg: rgba(134, 233, 214, 0.14);
+  --dialog-exit-btn-bg-hover: rgba(134, 233, 213, 0.3);
+  --dialog-exit-btn-shadow: #{base.$coding-exit-btn-shadow};
+  --dialog-exit-btn-txt: #{base.$coding-exit-btn-border};
+  --dialog-radius: 0;
 }

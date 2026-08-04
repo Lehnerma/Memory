@@ -16,16 +16,23 @@
 
   --exit-btn-txt: #{base.$theme-white};
   --exit-btn-border: #{base.$gaming-btn-border};
-  --exit-btn-border-hover: null; // TODO: Wert fehlt noch
+  --exit-btn-border-hover: null;
   --exit-btn-bg: #{base.$gaming-btn-bg};
   --exit-btn-bg-hover: #{base.$gaming-btn-bg_hover};
-  --exit-btn-shadow: null; // TODO: Wert fehlt noch
+  --exit-btn-shadow: null;
   --exit-svg-color: #{base.$theme-white};
+  --label-letter-spacing: 0.07em;
 
-  --back-btn-bg: #{base.$gaming-btn-back-bg};
-  --back-btn-bg-hover: null; // TODO: Wert fehlt noch
-  --back-btn-border: #{base.$gaming-btn-back-border};
-  --back-btn-border-hover: null; // TODO: Wert fehlt noch
-  --back-btn-shadow: #{base.$gaming-btn-back-shadow};
-  --back-btn-txt: #{base.$theme-white};
+  --dialog-bg: #{base.$dialog-secondary-bg};
+  --dialog-exit-btn-bg: null; // TODO: Wert fehlt noch
+  --dialog-exit-btn-bg-hover: null; // TODO: Wert fehlt noch
+  --dialog-exit-btn-shadow: null; // TODO: Wert fehlt noch
+  --dialog-exit-btn-txt: null; // TODO: Wert fehlt noch
+
+  --dialog-back-btn-bg: #{base.$gaming-btn-back-bg};
+  --dialog-back-btn-bg-hover: null;
+  --dialog-back-btn-border: #{base.$gaming-btn-back-border};
+  --dialog-back-btn-border-hover: #{base.$gaming-btn-back-border};
+  --dialog-back-btn-shadow: #{base.$gaming-btn-back-shadow};
+  --dialog-back-btn-txt: #{base.$theme-white};
 }

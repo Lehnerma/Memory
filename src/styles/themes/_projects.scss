@@ -12,24 +12,27 @@
   --title-weight: 700;
   --title-weight-regular: 400;
   --title-size: #{u.px-rem(32)};
-  --text-color: #{base.$theme-white};
+  --text-color: #{base.$projects-font-main};
 
-  --exit-btn-txt: #{base.$theme-white};
-  --exit-btn-border: null; // TODO: Wert fehlt noch
-  --exit-btn-border-hover: null; // TODO: Wert fehlt noch
+  --exit-btn-txt: #{base.$projects-font-main};
+  --exit-btn-txt-hover: #{base.$projects-font-main_hover};
+  --exit-btn-border: null;
+  --exit-btn-border-hover: null;
   --exit-btn-bg: #{base.$projects-btn-bg};
   --exit-btn-bg-hover: #{base.$projects-btn-bg_hover};
   --exit-btn-shadow: #{base.$projects-btn-shadow};
   --exit-svg-color: #{base.$projects-btn-main};
 
-  --back-btn-bg: #{base.$projects-btn-back-bg};
-  --back-btn-bg-hover: #{base.$projects-btn-back-hover};
-  --back-btn-border: null; // TODO: Wert fehlt noch
-  --back-btn-border-hover: null; // TODO: Wert fehlt noch
-  --back-btn-shadow: #{base.$projects-btn-back-shadow};
-  --back-btn-txt: #{base.$projects-btn-back-font};
-
+  --dialog-bg: #{base.$theme-white};
   --dialog-exit-btn-bg: #{base.$projects-btn-exit-bg};
   --dialog-exit-btn-bg-hover: #{base.$projects-exit-bg-hover};
   --dialog-exit-btn-shadow: #{base.$projects-exit-shadow};
+  --dialog-exit-btn-txt: null; // TODO: Wert fehlt noch
+
+  --dialog-back-btn-bg: #{base.$projects-btn-back-bg};
+  --dialog-back-btn-bg-hover: #{base.$projects-btn-back-hover};
+  --dialog-back-btn-border: null;
+  --dialog-back-btn-border-hover: null;
+  --dialog-back-btn-shadow: #{base.$projects-btn-back-shadow};
+  --dialog-back-btn-txt: #{base.$projects-font-main};
 }

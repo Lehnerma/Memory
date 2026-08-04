@@ -2,32 +2,40 @@
 @use "../utilities" as u;
 
 [data-theme="food"] {
-  --main-bg: null; // TODO: Wert fehlt noch
+  --main-bg: #{base.$theme-white};
   --header-bg: #{base.$food-header-bg};
   --player-bg: #{base.$food-players-bg};
   --player-blue: #{base.$player-blue};
   --player-orange: #{base.$player-orange};
 
   --title-font: "Klee One", sans-serif;
-  --title-weight: null; // TODO: Wert fehlt noch
-  --title-weight-regular: null; // TODO: Wert fehlt noch
-  --title-size: null; // TODO: Wert fehlt noch
+  --title-weight: 600;
+  --title-weight-regular: 400;
+  --title-size: #{u.px-rem(32)};
   --text-color: #{base.$food-font-color};
 
-  --exit-btn-txt: null; // TODO: Wert fehlt noch
+  --exit-btn-txt: #{base.$food-btn-txt};
+  --exit-btn-size: #{u.px-rem(16)};
+  --exit-btn-weight: 700;
   --exit-btn-bg: #{base.$food-btn-bg};
   --exit-btn-border: #{base.$food-btn-border};
   --exit-btn-border-width: #{base.$food-btn-border-width};
-  --exit-btn-border-hover: null; // TODO: Wert fehlt noch
+  --exit-btn-border-hover: null;
   --exit-btn-bg-hover: #{base.$food-btn-bg-hover};
   --exit-btn-shadow: #{base.$food-btn-shadow-hover};
-  --exit-svg-color: null; // TODO: Wert fehlt noch
+  --exit-svg-color: #{base.$food-btn-txt};
 
-  --back-btn-bg: #{base.$food-btn-back-bg};
-  --back-btn-border: #{base.$food-btn-back-border};
-  --back-btn-border-hover: null; // TODO: Wert fehlt noch
-  --back-btn-border-width: #{base.$food-btn-border-width};
-  --back-btn-bg-hover: #{base.$food-btn-back-bg-hover};
-  --back-btn-shadow: #{base.$food-btn-back-shadow};
-  --back-btn-txt: null; // TODO: Wert fehlt noch
+  --dialog-bg: #{base.$theme-white};
+  --dialog-exit-btn-bg: null; // TODO: Wert fehlt noch
+  --dialog-exit-btn-bg-hover: null; // TODO: Wert fehlt noch
+  --dialog-exit-btn-shadow: null; // TODO: Wert fehlt noch
+  --dialog-exit-btn-txt: null; // TODO: Wert fehlt noch
+
+  --dialog-back-btn-bg: #{base.$food-btn-back-bg};
+  --dialog-back-btn-bg-hover: #{base.$food-btn-back-bg-hover};
+  --dialog-back-btn-border: #{base.$food-btn-back-border};
+  --dialog-back-btn-border-hover: null;
+  --dialog-back-btn-border-width: #{base.$food-btn-border-width};
+  --dialog-back-btn-shadow: #{base.$food-btn-back-shadow};
+  --dialog-back-btn-txt: #{base.$theme-white};
 }
