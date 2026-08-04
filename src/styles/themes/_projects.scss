@@ -11,14 +11,14 @@
   --title-font: "Figtree", sans-serif;
   --title-weight: 700;
   --title-weight-regular: 400;
-  --title-size: #{u.px-rem(24)};
+  --title-size: #{u.px-rem(32)};
   --text-color: #{base.$theme-white};
 
   --exit-btn-txt: #{base.$theme-white};
   --exit-btn-bg: #{base.$projects-btn-bg};
   --exit-btn-bg-hover: #{base.$projects-btn-bg_hover};
   --exit-btn-shadow: #{base.$projects-btn-shadow};
-  --exit-svg-color: #{base.$theme-white};
+  --exit-svg-color: #{base.$projects-btn-main};
 
   --back-btn-bg: #{base.$projects-btn-back-bg};
   --back-btn-bg-hover: #{base.$projects-btn-back-hover};
