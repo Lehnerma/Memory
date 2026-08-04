@@ -1,0 +1,33 @@
+@use "../base" as base;
+@use "../utilities" as u;
+
+[data-theme="food"] {
+  --main-bg: null; // TODO: Wert fehlt noch
+  --header-bg: #{base.$food-header-bg};
+  --player-bg: #{base.$food-players-bg};
+  --player-blue: #{base.$player-blue};
+  --player-orange: #{base.$player-orange};
+
+  --title-font: "Klee One", sans-serif;
+  --title-weight: null; // TODO: Wert fehlt noch
+  --title-weight-regular: null; // TODO: Wert fehlt noch
+  --title-size: null; // TODO: Wert fehlt noch
+  --text-color: #{base.$food-font-color};
+
+  --exit-btn-txt: null; // TODO: Wert fehlt noch
+  --exit-btn-bg: #{base.$food-btn-bg};
+  --exit-btn-border: #{base.$food-btn-border};
+  --exit-btn-border-width: #{base.$food-btn-border-width};
+  --exit-btn-border-hover: null; // TODO: Wert fehlt noch
+  --exit-btn-bg-hover: #{base.$food-btn-bg-hover};
+  --exit-btn-shadow: #{base.$food-btn-shadow-hover};
+  --exit-svg-color: null; // TODO: Wert fehlt noch
+
+  --back-btn-bg: #{base.$food-btn-back-bg};
+  --back-btn-border: #{base.$food-btn-back-border};
+  --back-btn-border-hover: null; // TODO: Wert fehlt noch
+  --back-btn-border-width: #{base.$food-btn-border-width};
+  --back-btn-bg-hover: #{base.$food-btn-back-bg-hover};
+  --back-btn-shadow: #{base.$food-btn-back-shadow};
+  --back-btn-txt: null; // TODO: Wert fehlt noch
+}

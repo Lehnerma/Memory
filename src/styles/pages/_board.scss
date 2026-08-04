@@ -14,7 +14,7 @@
     width: 100vw;
     max-width: u.px-rem(1219);
 
-    background-color: var(--header-bg);
+    background-color: var(--header-bg, var(--main-bg));
     padding: u.px-rem(24);
 
     &__players {
@@ -73,7 +73,7 @@
       @include u.flex(row, $gap: 10);
 
       background-color: var(--exit-btn-bg);
-      border: var(--exit-btn-border) solid 1px;
+      border: var(--exit-btn-border, transparent) solid var(--exit-btn-border-width, 1px);
 
       &-icon {
         fill: var(--exit-svg-color);
@@ -81,8 +81,8 @@
 
       &:hover {
         background-color: var(--exit-btn-bg-hover);
-        border: var(--exit-btn-border-hover) solid 3px;
-        box-shadow: var(--exit-btn-shadow);
+        border: var(--exit-btn-border-hover, var(--exit-btn-border, transparent)) solid var(--exit-btn-border-width, 3px);
+        box-shadow: var(--exit-btn-shadow, none);
       }
     }
   }

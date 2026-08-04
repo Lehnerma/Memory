@@ -3,6 +3,7 @@
 
 [data-theme="coding"] {
   --main-bg: #{base.$primary-dark};
+  --header-bg: null; // TODO: Wert fehlt noch
   --player-bg: #{base.$coding-player-bg};
   --player-blue: #{base.$player-blue};
   --player-orange: #{base.$player-orange};
@@ -23,6 +24,8 @@
 
   --back-btn-bg: #{base.$coding-btn-back-bg};
   --back-btn-bg-hover: #{base.$coding-btn-back-bg_hover};
+  --back-btn-border: null; // TODO: bewusst ohne Rahmen? bitte gegen Figma prüfen
   --back-btn-border-hover: #{base.$coding-btn-back-border_hover};
+  --back-btn-shadow: null; // TODO: bewusst ohne Shadow? bitte gegen Figma prüfen
   --back-btn-txt: #{base.$theme-white};
 }

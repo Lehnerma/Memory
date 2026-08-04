@@ -15,6 +15,8 @@
   --text-color: #{base.$theme-white};
 
   --exit-btn-txt: #{base.$theme-white};
+  --exit-btn-border: null; // TODO: Wert fehlt noch
+  --exit-btn-border-hover: null; // TODO: Wert fehlt noch
   --exit-btn-bg: #{base.$projects-btn-bg};
   --exit-btn-bg-hover: #{base.$projects-btn-bg_hover};
   --exit-btn-shadow: #{base.$projects-btn-shadow};
@@ -22,6 +24,8 @@
 
   --back-btn-bg: #{base.$projects-btn-back-bg};
   --back-btn-bg-hover: #{base.$projects-btn-back-hover};
+  --back-btn-border: null; // TODO: Wert fehlt noch
+  --back-btn-border-hover: null; // TODO: Wert fehlt noch
   --back-btn-shadow: #{base.$projects-btn-back-shadow};
   --back-btn-txt: #{base.$projects-btn-back-font};
 

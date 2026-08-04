@@ -16,13 +16,16 @@
 
   --exit-btn-txt: #{base.$theme-white};
   --exit-btn-border: #{base.$gaming-btn-border};
+  --exit-btn-border-hover: null; // TODO: Wert fehlt noch
   --exit-btn-bg: #{base.$gaming-btn-bg};
   --exit-btn-bg-hover: #{base.$gaming-btn-bg_hover};
   --exit-btn-shadow: null; // TODO: Wert fehlt noch
   --exit-svg-color: #{base.$theme-white};
 
   --back-btn-bg: #{base.$gaming-btn-back-bg};
+  --back-btn-bg-hover: null; // TODO: Wert fehlt noch
   --back-btn-border: #{base.$gaming-btn-back-border};
+  --back-btn-border-hover: null; // TODO: Wert fehlt noch
   --back-btn-shadow: #{base.$gaming-btn-back-shadow};
   --back-btn-txt: #{base.$theme-white};
 }
