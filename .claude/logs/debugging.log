@@ -1,0 +1,6 @@
+[2026-08-04 00:00] SESSION-REVIEW
+- _fonts.scss gelesen: 2 Font-Familien (Almarai, Rose) mit je mehreren @font-face Regeln
+- Pattern: font-family > src (url-Pfad mit /assets/fonts/{family-ordner}/Datei-Name) > font-weight > font-style > font-display
+- Almarai: weights 300/400/700/800 (Light/Regular/Bold/ExtraBold)
+- Rose: weights 300/400/500/600/700 (Light/Regular/Medium/SemiBold/Bold)
+- Pfade: kebab-case Ordnernamen (almarai, red-rose)

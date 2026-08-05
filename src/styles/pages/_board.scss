@@ -1,0 +1,107 @@
+@use "../utilities" as u;
+
+.board {
+  background-color: var(--main-bg);
+
+  &-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    //justify-items: center;
+    align-items: center;
+    width: 100vw;
+    max-width: u.px-rem(1219);
+
+    background-color: var(--header-bg, transparent);
+    padding: u.px-rem(24);
+
+    &__players {
+      list-style: none;
+      @include u.flex($direction: row, $gap: 40);
+      justify-self: start;
+      background-color: var(--player-bg);
+      padding: u.px-rem(20);
+      border-radius: 10px;
+    }
+
+    &__player {
+      @include u.flex(row, $gap: 16);
+
+      &-img {
+        width: u.px-rem(20);
+      }
+
+      &-name,
+      &-score {
+        font-family: var(--title-font);
+        font-size: var(--title-size);
+        font-weight: var(--title-weight);
+      }
+    }
+
+    &__current-player {
+      @include u.flex(row, $gap: 18);
+
+      &-label {
+        font-family: var(--title-font);
+        font-size: u.px-rem(26);
+        font-weight: var(--title-weight-regular);
+        color: var(--text-color);
+        letter-spacing: var(--label-letter-spacing, normal);
+      }
+
+      &-img {
+        display: block;
+        background-image: url(/assets/img/themes/chess-pawn.svg);
+        background-color: red; // !issue
+        background-position: center;
+        background-repeat: no-repeat;
+
+        width: u.px-rem(40);
+        aspect-ratio: 1/1;
+      }
+    }
+
+    &__exit {
+      justify-self: end;
+      width: u.px-rem(207);
+      height: u.px-rem(62);
+      font-family: var(--title-font-secondary);
+      font-weight: var(--exit-btn-weight, 700);
+      font-size: var(--exit-btn-size, u.px-rem(20));
+      color: var(--exit-btn-txt);
+      @include u.flex(row, $gap: 10);
+      background-color: var(--exit-btn-bg);
+      border-color: var(--exit-btn-border, transparent);
+      border-style: solid;
+      border-width: var(--exit-btn-border-width, 2px);
+      border-radius: var(--dialog-radius, 10px);
+
+      &:hover {
+        background-color: var(--exit-btn-bg-hover);
+        border-color: var(--exit-btn-border-hover, transparent);
+        border-style: solid;
+        border-width: var(--exit-btn-border-width-hover, 2px);
+        box-shadow: var(--exit-btn-shadow, none);
+        color: var(--exit-btn-txt-hover, currentColor);
+      }
+
+      &-icon {
+        fill: var(--exit-svg-color);
+      }
+
+      &:hover &-icon {
+        fill: var(--exit-svg-color-hover, currentColor);
+      }
+    }
+  }
+}
+
+.player-score {
+  &--blue {
+    color: var(--player-blue);
+  }
+
+  &--orange {
+    color: var(--player-orange);
+  }
+}
