@@ -80,7 +80,7 @@
 
       &:hover {
         background-color: var(--exit-btn-bg-hover);
-        border-color: var(--exit-btn-border-hover);
+        border-color: var(--exit-btn-border-hover, transparent);
         border-style: solid;
         border-width: var(--exit-btn-border-width-hover, 2px);
         box-shadow: var(--exit-btn-shadow, none);
@@ -130,14 +130,13 @@
     font-weight: var(--dialog-title-weight, 700);
     font-size: var(--dialog-title-size, u.px-rem(28));
     color: var(--dialog-title-color, base.$primary-dark);
-
   }
 
   &__actions {
-    // @include u.flex(row, $gap: 20);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: u.px-rem(24);
+    justify-items: center;
   }
 
   &__btn {
@@ -154,14 +153,14 @@
       border-color: var(--dialog-back-btn-bg);
       border-style: solid;
       border-width: var(--dialog-border-width, 1px);
-      
+      box-shadow: var(--dialog-back-btn-shadow, none);
 
       &:hover {
-        background-color: var(--dialog-back-btn-bg-hover, );
+        background-color: var(--dialog-back-btn-bg-hover,);
         color: var(--dialog-back-btn-txt-color-hover, currentColor);
-        border-color: var(--dialog-back-btn-border-hover);
-        border-width: var( --dialog-back-btn-border-width-hover, 1px);
-        box-shadow: var(--dialog-back-btn-shadow, none);
+        border-color: var(--dialog-back-btn-border-hover, transparent);
+        border-width: var(--dialog-back-btn-border-width-hover, 1px);
+        box-shadow: var(--dialog-back-btn-shadow-hover, none);
       }
     }
 
@@ -171,6 +170,7 @@
       border-style: solid;
       border-width: var(--dialog-exit-btn-border-width, 2px);
       color: var(--dialog-exit-btn-txt, inherit);
+      box-shadow: var(--dialog-exit-btn-shadow, none);
 
       &:hover {
         background-color: var(--dialog-exit-btn-bg-hover);

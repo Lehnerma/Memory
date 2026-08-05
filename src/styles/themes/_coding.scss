@@ -33,7 +33,6 @@
   --dialog-back-btn-bg: #{base.$coding-btn-back-bg};
   --dialog-back-btn-bg-hover: #{base.$coding-btn-back-bg_hover};
   --dialog-back-btn-border-hover: #{base.$coding-btn-back-border_hover};
-  --dialog-back-btn-shadow: null;
   --dialog-back-btn-txt: #{base.$theme-white};
   --dialog-back-btn-txt-color: #{base.$theme-white};
 
@@ -41,7 +40,7 @@
   --dialog-exit-btn-bg-hover: #{base.$coding-dialog-exit-btn-bg_hover};
   --dialog-exit-btn-border: #{base.$coding-teal};
   --dialog-exit-btn-border-hover: #{base.$coding-btn-back-border_hover};
---dialog-exit-btn-border-width-hover: 3px;
+  --dialog-exit-btn-border-width-hover: 3px;
   --dialog-exit-btn-shadow: #{base.$coding-exit-btn-shadow};
   --dialog-exit-btn-txt: #{base.$coding-exit-btn-border};
   --dialog-radius: 0;
