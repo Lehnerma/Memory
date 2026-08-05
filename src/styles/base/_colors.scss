@@ -88,11 +88,14 @@ $projects-dialog-title: rgba(41, 79, 96, 1);
 // food theme
 // ###########
 $food-orange: rgba(243, 131, 45, 1);
-
+$food-offwhite: rgba(255, 249, 242, 1);
 $food-header-bg: rgba(240, 229, 217, 1);
+$dialog-bg: rgba(246, 246, 246, 1);
+$dialog-title: rgba(164, 82, 18, 1);
+
 $food-players-bg: $theme-white;
 $food-font-color: rgba(164, 82, 18, 1);
-$food-btn-bg: rgba(255, 249, 242, 1);
+$food-btn-bg: $food-offwhite;
 $food-btn-txt: $food-orange;
 $food-btn-border: $food-orange;
 $food-btn-border-width: 3px;

@@ -67,7 +67,7 @@
       justify-self: end;
       width: u.px-rem(207);
       height: u.px-rem(62);
-      font-family: var(--title-font);
+      font-family: var(--title-font-secondary);
       font-weight: var(--exit-btn-weight, 700);
       font-size: var(--exit-btn-size, u.px-rem(20));
       color: var(--exit-btn-txt);
@@ -143,7 +143,7 @@
     align-self: center;
     padding: u.px-rem(16) u.px-rem(24);
     border-radius: var(--dialog-radius, 10px);
-    font-family: var(--title-font);
+    font-family: var(--title-font-secondary);
     font-size: var(--dialog-font-size, u.px-rem(20));
     font-weight: 700;
 
@@ -177,7 +177,8 @@
         border-color: var(--dialog-exit-btn-border-hover);
         border-style: solid;
         border-width: var(--dialog-exit-btn-border-width-hover, 2px);
-        box-shadow: var(--dialog-exit-btn-shadow, none);
+        box-shadow: var(--dialog-exit-btn-shadow-hover, none);
+        color: var(--dialog-exit-btn-txt-hover, currentColor);
       }
     }
   }
