@@ -34,8 +34,8 @@
   --dialog-back-btn-shadow: null;
   --dialog-back-btn-txt: #{base.$theme-white};
 
-  --dialog-exit-btn-bg: rgba(134, 233, 214, 0.14);
-  --dialog-exit-btn-bg-hover: rgba(134, 233, 213, 0.3);
+  --dialog-exit-btn-bg: #{base.$coding-dialog-exit-btn-bg};
+  --dialog-exit-btn-bg-hover: #{base.$coding-dialog-exit-btn-bg_hover};
   --dialog-exit-btn-shadow: #{base.$coding-exit-btn-shadow};
   --dialog-exit-btn-txt: #{base.$coding-exit-btn-border};
   --dialog-radius: 0;
