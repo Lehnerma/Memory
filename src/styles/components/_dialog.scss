@@ -10,9 +10,12 @@
   text-align: center;
   background-color: var(--dialog-bg);
 
-  display: grid;
   grid-template-rows: 1fr 1fr;
   gap: u.px-rem(54);
+
+  &[open] {
+    display: grid;
+  }
 
   &::backdrop {
     background-color: rgba(0, 0, 0, 0.4);

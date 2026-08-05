@@ -2,12 +2,19 @@ type FieldConfig = {
   fieldsetId: string;
   summaryId: string;
   placeholder: string;
+  settingsKey: "theme" | "player" | "boardsize";
+};
+
+type Settings = {
+  theme: string;
+  player: string;
+  boardsize: string;
 };
 
 const FIELD_CONFIGS: FieldConfig[] = [
-  { fieldsetId: "field_themes", summaryId: "summary_theme", placeholder: "Game theme" },
-  { fieldsetId: "field_player", summaryId: "summary_player", placeholder: "Player" },
-  { fieldsetId: "field_boardsize", summaryId: "summary_boardsize", placeholder: "Board size" },
+  { fieldsetId: "field_themes", summaryId: "summary_theme", placeholder: "Game theme", settingsKey: "theme" },
+  { fieldsetId: "field_player", summaryId: "summary_player", placeholder: "Player", settingsKey: "player" },
+  { fieldsetId: "field_boardsize", summaryId: "summary_boardsize", placeholder: "Board size", settingsKey: "boardsize" },
 ];
 
 function getCheckedInput(fieldsetId: string): HTMLInputElement | null {
@@ -36,15 +43,42 @@ function updateStartButtonState(allSelected: boolean): void {
   if (startButton) startButton.disabled = !allSelected;
 }
 
+function getSettingsKey(fieldId: string): string | null {
+  const checkedInput = getCheckedInput(fieldId);
+  const key = checkedInput?.value;
+  return key ?? null;
+}
+
+function saveSettings(allSelected: boolean): void {
+  if (!allSelected) return;
+
+  const settings = FIELD_CONFIGS.reduce((acc, config) => {
+    acc[config.settingsKey] = getSettingsKey(config.fieldsetId) ?? "";
+    return acc;
+  }, {} as Settings);
+
+  sessionStorage.setItem("gameSettings", JSON.stringify(settings));
+}
+
 function updateSummary(): void {
   const allSelected = FIELD_CONFIGS.map(updateSummaryField).every(Boolean);
   updateThemeImg();
   updateStartButtonState(allSelected);
+  saveSettings(allSelected);
 }
 
 function bindRadioChangeListeners(): void {
   const radioInputs = document.querySelectorAll<HTMLInputElement>(".radio__input");
   radioInputs.forEach((input) => input.addEventListener("change", updateSummary));
+}
+
+function goToBoard(): void {
+  window.location.href = "board.html";
+}
+
+function bindStartButtonListener(): void {
+  const startButton = document.getElementById("btn_start");
+  startButton?.addEventListener("click", goToBoard);
 }
 
 function getTheme(): string | null {
@@ -64,5 +98,6 @@ function updateThemeImg(): void {
 export function initSummary(): void {
   if (!document.querySelector(".settings")) return;
   bindRadioChangeListeners();
+  bindStartButtonListener();
   updateSummary();
 }
