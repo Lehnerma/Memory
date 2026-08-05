@@ -72,6 +72,15 @@ function bindRadioChangeListeners(): void {
   radioInputs.forEach((input) => input.addEventListener("change", updateSummary));
 }
 
+function goToBoard(): void {
+  window.location.href = "board.html";
+}
+
+function bindStartButtonListener(): void {
+  const startButton = document.getElementById("btn_start");
+  startButton?.addEventListener("click", goToBoard);
+}
+
 function getTheme(): string | null {
   const input = getCheckedInput("field_themes");
   const value = input?.value;
@@ -89,5 +98,6 @@ function updateThemeImg(): void {
 export function initSummary(): void {
   if (!document.querySelector(".settings")) return;
   bindRadioChangeListeners();
+  bindStartButtonListener();
   updateSummary();
 }
