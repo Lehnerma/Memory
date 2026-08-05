@@ -13,7 +13,7 @@
     width: 100vw;
     max-width: u.px-rem(1219);
 
-    background-color: var(--header-bg, var(--main-bg));
+    background-color: var(--header-bg, transparent);
     padding: u.px-rem(24);
 
     &__players {
@@ -74,7 +74,9 @@
       @include u.flex(row, $gap: 10);
 
       background-color: var(--exit-btn-bg);
-      border: var(--exit-btn-border, transparent) solid var(--exit-btn-border-width, 1px);
+      border-color: var(--exit-btn-border, transparent);
+      border-style: solid;
+      border-width: var(--exit-btn-border-width, 1px);
 
       &-icon {
         fill: var(--exit-svg-color);
@@ -82,13 +84,15 @@
 
       &:hover {
         background-color: var(--exit-btn-bg-hover);
-        border: var(--exit-btn-border-hover, var(--exit-btn-border, transparent)) solid var(--exit-btn-border-width, 1px);
+        border-color: var(--exit-btn-border-hover, transparent);
+        border-style: solid;
+        border-width: var(--exit-btn-border-width, 1px);
         box-shadow: var(--exit-btn-shadow, none);
-        color: var(--exit-btn-txt-hover, var(--exit-btn-txt));
+        color: var(--exit-btn-txt-hover, inherit);
       }
 
       &:hover &-icon {
-        fill: var(--exit-btn-txt-hover, var(--exit-svg-color));
+        fill: var(--exit-btn-txt-hover, currentColor);
       }
     }
   }
@@ -132,7 +136,7 @@
   &__btn {
     padding: u.px-rem(16) u.px-rem(24);
     border-radius: var(--dialog-radius, 8px);
-    font-size: var(--dialog-font-size);
+    font-size: var(--dialog-font-size, u.px-rem(20));
     font-weight: 700;
 
     &--back {
@@ -143,8 +147,8 @@
       border-width: var(--dialog-border-width, 1px);
 
       &:hover {
-        background-color: var(--dialog-back-btn-bg-hover, var(--dialog-back-btn-bg));
-        border-color: var(--dialog-back-btn-border-hover, var(--dialog-back-btn-border));
+        background-color: var(--dialog-back-btn-bg-hover, transparent);
+        border-color: var(--dialog-back-btn-border-hover, transparent);
         border-width: var(--dialog-border-width-hover, 1px);
         box-shadow: var(--dialog-back-btn-shadow, none);
       }
@@ -155,13 +159,13 @@
       border-color: var(--dialog-exit-btn-bg);
       border-style: solid;
       border-width: var(--dialog-exit-btn-border-width, 2px);
-      color: var(--dialog-exit-btn-txt, var(--exit-btn-border));
+      color: var(--dialog-exit-btn-txt, inherit);
 
       &:hover {
         background-color: var(--dialog-exit-btn-bg-hover);
-        border-color: var(--dialog-back-btn-border-hover, var(--dialog-back-btn-border));
+        border-color: var(--dialog-back-btn-border-hover, transparent);
         border-style: solid;
-        box-shadow: var(--dialog-exit-btn-shadow);
+        box-shadow: var(--dialog-exit-btn-shadow, none);
       }
     }
   }

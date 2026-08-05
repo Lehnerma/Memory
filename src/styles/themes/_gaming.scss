@@ -15,8 +15,9 @@
   --text-color: #{base.$theme-white};
 
   --exit-btn-txt: #{base.$theme-white};
+  --exit-btn-txt-hover: #{base.$theme-white};
   --exit-btn-border: #{base.$gaming-btn-border};
-  --exit-btn-border-hover: null;
+  --exit-btn-border-hover: #{base.$gaming-btn-border};
   --exit-btn-bg: #{base.$gaming-btn-bg};
   --exit-btn-bg-hover: #{base.$gaming-btn-bg_hover};
   --exit-btn-shadow: null;
@@ -30,7 +31,7 @@
   --dialog-exit-btn-txt: null; // TODO: Wert fehlt noch
 
   --dialog-back-btn-bg: #{base.$gaming-btn-back-bg};
-  --dialog-back-btn-bg-hover: null;
+  --dialog-back-btn-bg-hover: #{base.$gaming-btn-back-bg};
   --dialog-back-btn-border: #{base.$gaming-btn-back-border};
   --dialog-back-btn-border-hover: #{base.$gaming-btn-back-border};
   --dialog-back-btn-shadow: #{base.$gaming-btn-back-shadow};

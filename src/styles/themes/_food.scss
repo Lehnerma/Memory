@@ -15,12 +15,13 @@
   --text-color: #{base.$food-font-color};
 
   --exit-btn-txt: #{base.$food-btn-txt};
+  --exit-btn-txt-hover: #{base.$food-btn-txt};
   --exit-btn-size: #{u.px-rem(16)};
   --exit-btn-weight: 700;
   --exit-btn-bg: #{base.$food-btn-bg};
   --exit-btn-border: #{base.$food-btn-border};
   --exit-btn-border-width: #{base.$food-btn-border-width};
-  --exit-btn-border-hover: null;
+  --exit-btn-border-hover: #{base.$food-btn-border};
   --exit-btn-bg-hover: #{base.$food-btn-bg-hover};
   --exit-btn-shadow: #{base.$food-btn-shadow-hover};
   --exit-svg-color: #{base.$food-btn-txt};
@@ -34,7 +35,7 @@
   --dialog-back-btn-bg: #{base.$food-btn-back-bg};
   --dialog-back-btn-bg-hover: #{base.$food-btn-back-bg-hover};
   --dialog-back-btn-border: #{base.$food-btn-back-border};
-  --dialog-back-btn-border-hover: null;
+  --dialog-back-btn-border-hover: #{base.$food-btn-back-border};
   --dialog-back-btn-border-width: #{base.$food-btn-border-width};
   --dialog-back-btn-shadow: #{base.$food-btn-back-shadow};
   --dialog-back-btn-txt: #{base.$theme-white};
