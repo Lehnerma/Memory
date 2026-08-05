@@ -29,7 +29,6 @@
   --dialog-back-btn-bg-hover: #{base.$projects-btn-back-hover};
 
   --dialog-back-btn-shadow: #{base.$projects-btn-back-shadow};
-  --dialog-back-btn-txt: #{base.$projects-font-main};
   --dialog-back-btn-txt-color: #{base.$projects-blue-dark};
   --dialog-back-btn-txt-color-hover: #{base.$theme-white};
 
@@ -39,4 +38,5 @@
   --dialog-exit-btn-border-width: 0;
   --dialog-exit-btn-border-width-hover: 0;
   --dialog-exit-btn-txt: #{base.$theme-white};
+  --dialog-exit-btn-txt-hover: #{base.$theme-white};
 }

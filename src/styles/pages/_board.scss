@@ -1,6 +1,4 @@
-@use "../base" as base;
 @use "../utilities" as u;
-@use "../themes" as theme;
 
 .board {
   background-color: var(--main-bg);
@@ -105,81 +103,5 @@
 
   &--orange {
     color: var(--player-orange);
-  }
-}
-
-.exit-dialog {
-  max-width: u.px-rem(539);
-  padding: u.px-rem(40) u.px-rem(48);
-  margin: auto;
-  border: none;
-  border-radius: var(--dialog-radius, 20px);
-  text-align: center;
-  background-color: var(--dialog-bg);
-
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: u.px-rem(54);
-
-  &::backdrop {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  &__text {
-    font-family: var(--title-font);
-    font-weight: var(--dialog-title-weight, 700);
-    font-size: var(--dialog-title-size, u.px-rem(28));
-    color: var(--dialog-title-color, base.$primary-dark);
-  }
-
-  &__actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: u.px-rem(24);
-    justify-items: center;
-  }
-
-  &__btn {
-    align-self: center;
-    padding: u.px-rem(16) u.px-rem(24);
-    border-radius: var(--dialog-radius, 10px);
-    font-family: var(--title-font-secondary);
-    font-size: var(--dialog-font-size, u.px-rem(20));
-    font-weight: 700;
-
-    &--back {
-      background-color: var(--dialog-back-btn-bg);
-      color: var(--dialog-back-btn-txt-color);
-      border-color: var(--dialog-back-btn-bg);
-      border-style: solid;
-      border-width: var(--dialog-border-width, 1px);
-      box-shadow: var(--dialog-back-btn-shadow, none);
-
-      &:hover {
-        background-color: var(--dialog-back-btn-bg-hover,);
-        color: var(--dialog-back-btn-txt-color-hover, currentColor);
-        border-color: var(--dialog-back-btn-border-hover, transparent);
-        border-width: var(--dialog-back-btn-border-width-hover, 1px);
-        box-shadow: var(--dialog-back-btn-shadow-hover, none);
-      }
-    }
-
-    &--exit {
-      background-color: var(--dialog-exit-btn-bg);
-      border-color: var(--dialog-exit-btn-border);
-      border-style: solid;
-      border-width: var(--dialog-exit-btn-border-width, 2px);
-      color: var(--dialog-exit-btn-txt, inherit);
-      box-shadow: var(--dialog-exit-btn-shadow, none);
-
-      &:hover {
-        background-color: var(--dialog-exit-btn-bg-hover);
-        border-color: var(--dialog-exit-btn-border-hover);
-        border-style: solid;
-        border-width: var(--dialog-exit-btn-border-width-hover, 2px);
-        box-shadow: var(--dialog-exit-btn-shadow-hover, none);
-        color: var(--dialog-exit-btn-txt-hover, currentColor);
-      }
-    }
   }
 }

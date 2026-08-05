@@ -32,7 +32,6 @@
 
   --dialog-back-btn-bg: #{base.$gaming-btn-back-bg};
   --dialog-back-btn-bg-hover: #{base.$gaming-btn-back-bg-hover};
-  --dialog-back-btn-border: #{base.$gaming-btn-back-border};
   --dialog-back-btn-border-hover: #{base.$gaming-btn-back-border};
   --dialog-back-btn-border-width-hover: 3px;
   --dialog-back-btn-shadow: #{base.$gaming-btn-back-shadow};
@@ -43,6 +42,7 @@
   --dialog-exit-btn-bg-hover: #{base.$gaming-btn-exit-bg-hover};
   --dialog-exit-btn-shadow: #{base.$gaming-btn-back-shadow};
   --dialog-exit-btn-txt: #{base.$gaming-pink};
+  --dialog-exit-btn-txt-hover: #{base.$gaming-pink};
   --dialog-exit-btn-border: #{base.$gaming-magenta};
   --dialog-exit-btn-border-width-hover: 3px;
 }
