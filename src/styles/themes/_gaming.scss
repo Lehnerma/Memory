@@ -18,22 +18,31 @@
   --exit-btn-txt-hover: #{base.$theme-white};
   --exit-btn-border: #{base.$gaming-btn-border};
   --exit-btn-border-hover: #{base.$gaming-btn-border};
+  --exit-btn-border-width-hover: 3px;
   --exit-btn-bg: #{base.$gaming-btn-bg};
   --exit-btn-bg-hover: #{base.$gaming-btn-bg_hover};
-  --exit-btn-shadow: null;
+  --exit-btn-shadow: #{base.$gaming-btn-back-shadow};
   --exit-svg-color: #{base.$theme-white};
+  --exit-svg-color-hover: #{base.$gaming-magenta};
   --label-letter-spacing: 0.07em;
 
   --dialog-bg: #{base.$dialog-secondary-bg};
-  --dialog-exit-btn-bg: null; // TODO: Wert fehlt noch
-  --dialog-exit-btn-bg-hover: null; // TODO: Wert fehlt noch
-  --dialog-exit-btn-shadow: null; // TODO: Wert fehlt noch
-  --dialog-exit-btn-txt: null; // TODO: Wert fehlt noch
+  --dialog-title-color: #{base.$gaming-main-bg};
+  --dialog-font-size: #{u.px-rem(16)};
 
   --dialog-back-btn-bg: #{base.$gaming-btn-back-bg};
-  --dialog-back-btn-bg-hover: #{base.$gaming-btn-back-bg};
+  --dialog-back-btn-bg-hover: #{base.$gaming-btn-back-bg-hover};
   --dialog-back-btn-border: #{base.$gaming-btn-back-border};
   --dialog-back-btn-border-hover: #{base.$gaming-btn-back-border};
+  --dialog-back-btn-border-width-hover: 3px;
   --dialog-back-btn-shadow: #{base.$gaming-btn-back-shadow};
-  --dialog-back-btn-txt: #{base.$theme-white};
+  --dialog-back-btn-txt-color: #{base.$theme-white};
+  --dialog-back-btn-txt-color-hover: #{base.$gaming-pink};
+
+  --dialog-exit-btn-bg: #{base.$gaming-btn-exit-bg};
+  --dialog-exit-btn-bg-hover: #{base.$gaming-btn-exit-bg-hover};
+  --dialog-exit-btn-shadow: #{base.$gaming-btn-back-shadow};
+  --dialog-exit-btn-txt: #{base.$gaming-pink};
+  --dialog-exit-btn-border: #{base.$gaming-magenta};
+  --dialog-exit-btn-border-width-hover: 3px;
 }

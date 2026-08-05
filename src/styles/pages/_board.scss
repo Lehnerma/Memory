@@ -72,27 +72,27 @@
       font-size: var(--exit-btn-size, u.px-rem(20));
       color: var(--exit-btn-txt);
       @include u.flex(row, $gap: 10);
-
       background-color: var(--exit-btn-bg);
       border-color: var(--exit-btn-border, transparent);
       border-style: solid;
-      border-width: var(--exit-btn-border-width, 1px);
+      border-width: var(--exit-btn-border-width, 2px);
+      border-radius: var(--dialog-radius, 10px);
+
+      &:hover {
+        background-color: var(--exit-btn-bg-hover);
+        border-color: var(--exit-btn-border-hover);
+        border-style: solid;
+        border-width: var(--exit-btn-border-width-hover, 2px);
+        box-shadow: var(--exit-btn-shadow, none);
+        color: var(--exit-btn-txt-hover, currentColor);
+      }
 
       &-icon {
         fill: var(--exit-svg-color);
       }
 
-      &:hover {
-        background-color: var(--exit-btn-bg-hover);
-        border-color: var(--exit-btn-border-hover, transparent);
-        border-style: solid;
-        border-width: var(--exit-btn-border-width, 1px);
-        box-shadow: var(--exit-btn-shadow, none);
-        color: var(--exit-btn-txt-hover, inherit);
-      }
-
       &:hover &-icon {
-        fill: var(--exit-btn-txt-hover, currentColor);
+        fill: var(--exit-svg-color-hover, currentColor);
       }
     }
   }
@@ -117,54 +117,66 @@
   text-align: center;
   background-color: var(--dialog-bg);
 
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: u.px-rem(54);
+
   &::backdrop {
     background-color: rgba(0, 0, 0, 0.4);
   }
 
   &__text {
     font-family: var(--title-font);
-    font-weight: 700;
-    font-size: u.px-rem(28); // TODO: exakte Größe aus Figma noch prüfen
-    color: base.$primary-dark; // TODO: fix dunkel lassen, oder pro Theme?
-    margin: 0 0 u.px-rem(32);
+    font-weight: var(--dialog-title-weight, 700);
+    font-size: var(--dialog-title-size, u.px-rem(28));
+    color: var(--dialog-title-color, base.$primary-dark);
+
   }
 
   &__actions {
-    @include u.flex(row, $gap: 20);
+    // @include u.flex(row, $gap: 20);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: u.px-rem(24);
   }
 
   &__btn {
+    align-self: center;
     padding: u.px-rem(16) u.px-rem(24);
-    border-radius: var(--dialog-radius, 8px);
+    border-radius: var(--dialog-radius, 10px);
+    font-family: var(--title-font);
     font-size: var(--dialog-font-size, u.px-rem(20));
     font-weight: 700;
 
     &--back {
       background-color: var(--dialog-back-btn-bg);
-      color: var(--dialog-back-btn-txt);
+      color: var(--dialog-back-btn-txt-color);
       border-color: var(--dialog-back-btn-bg);
       border-style: solid;
       border-width: var(--dialog-border-width, 1px);
+      
 
       &:hover {
-        background-color: var(--dialog-back-btn-bg-hover, transparent);
-        border-color: var(--dialog-back-btn-border-hover, transparent);
-        border-width: var(--dialog-border-width-hover, 1px);
+        background-color: var(--dialog-back-btn-bg-hover, );
+        color: var(--dialog-back-btn-txt-color-hover, currentColor);
+        border-color: var(--dialog-back-btn-border-hover);
+        border-width: var( --dialog-back-btn-border-width-hover, 1px);
         box-shadow: var(--dialog-back-btn-shadow, none);
       }
     }
 
     &--exit {
       background-color: var(--dialog-exit-btn-bg);
-      border-color: var(--dialog-exit-btn-bg);
+      border-color: var(--dialog-exit-btn-border);
       border-style: solid;
       border-width: var(--dialog-exit-btn-border-width, 2px);
       color: var(--dialog-exit-btn-txt, inherit);
 
       &:hover {
         background-color: var(--dialog-exit-btn-bg-hover);
-        border-color: var(--dialog-back-btn-border-hover, transparent);
+        border-color: var(--dialog-exit-btn-border-hover);
         border-style: solid;
+        border-width: var(--dialog-exit-btn-border-width-hover, 2px);
         box-shadow: var(--dialog-exit-btn-shadow, none);
       }
     }

@@ -33,7 +33,7 @@ $coding-exit-btn-txt: $theme-white;
 $coding-exit-btn-border: $coding-teal;
 $coding-exit-btn-border_hover: $coding-teal;
 $coding-exit-btn-bg: rgba($coding-mint-green, 0.2);
-$coding-exit-btn-bg_hover: rgba($coding-mint-green, 0.26);
+$coding-exit-btn-bg_hover: rgba($coding-mint-green, 0.1);
 $coding-exit-btn-shadow: 4px 4px 6px 0px rgba($coding-teal, 0.2);
 $coding-btn-back-bg: $coding-teal-medium;
 $coding-btn-back-bg_hover: rgba($coding-teal-medium, 0.7);
@@ -47,15 +47,18 @@ $coding-dialog-exit-btn-bg_hover: rgba($coding-mint-green, 0.3);
 $gaming-pink: rgba(237, 27, 118, 1);
 $gaming-magenta: rgba(231, 28, 79, 1);
 $gaming-header-pink: rgba(253, 150, 201, 1);
-
 $gaming-main-bg: rgba(41, 79, 96, 1);
+
 $gaming-header-bg: rgba($gaming-header-pink, 0.2);
 $gaming-btn-bg: rgba($gaming-pink, 0.08);
 $gaming-btn-border: $gaming-magenta;
 $gaming-btn-bg_hover: rgba($gaming-pink, 0.14);
 $gaming-btn-back-bg: $gaming-pink;
+$gaming-btn-back-bg-hover: rgba(242, 199, 218, 0.08);
 $gaming-btn-back-border: $gaming-magenta;
 $gaming-btn-back-shadow: $shadow-soft;
+$gaming-btn-exit-bg: rgba($gaming-pink, 0.08);
+$gaming-btn-exit-bg-hover: rgba($gaming-pink, 0.1);
 
 // ###########
 // projects theme
