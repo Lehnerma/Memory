@@ -169,3 +169,18 @@ Chronologisches Arbeitstagebuch. Menschlich lesbar, keine Memory-DB.
   - Naming-Konventionen klar: CSS `kebab-case` (BEM mit `__` und `--`), HTML-IDs `snake_case` (z.B. `player_score_blue`), Theme-System via `[data-theme="..."]` + CSS Custom Properties.
   - **Keine Card-Komponenten-Styles vorhanden**: `_board.scss` enthält nur Header-Logik, `_img.scss` nur Preview-Bild-Styles. `.board`-Klasse ist reines leeres Platzhalter-Grid ohne Template-Definition.
   - **Noch nicht implementiert**: Logik zum Auslesen von `boardsize` und entsprechendem Grid generieren, Theme-Bilder-Referenzierung (nur `preview.png` existiert), Card-Element-Struktur.
+
+**Card-Feature-Planung: Struktur + 3 Board-Größen (Flip folgt in eigenem Branch)**
+
+- Branch `feat/creat-cards`, leerer Stub `src/scripts/cards.ts` bereits angelegt (0 Zeilen) — vorgesehener Ort für die neue Karten-Logik.
+- Beim Prüfen der Asset-Ordner (`public/assets/img/themes/<theme>/cards/`) zwei Auffälligkeiten gefunden und Max gemeldet (analog `feedback_flag_theme_asymmetry`):
+  - `coding` hat nur 17 Kartenmotive (`coding-card1`–`17`), alle anderen Themes (gaming/food/projects) haben 18. Für das 36er-Board (18 Paare) fehlt bei `coding` also ein Bild. Max liefert `coding-card18.png` nach, **bevor** implementiert wird — bis dahin bleibt das ein offener Blocker für coding/36.
+  - Ordner heißt `projects`, aber Dateien darin nutzen den Prefix `project-` (Singular) statt `projects-` wie bei den anderen drei Themes — braucht ein explizites Theme→Prefix-Mapping in der Lade-Logik statt der Annahme "Theme-Slug = Datei-Prefix".
+- Jedes Theme hat zusätzlich `<prefix>-card-bg.png` (Kartenrückseite, für alle Karten eines Themes identisch) und `<prefix>-match.png` (Treffer-Bild) — beide Assets existieren schon, auch wenn die Verwendung von `match.png` erst mit der Flip/Match-Logik im nächsten Branch relevant wird.
+- Entscheidungen (per `AskUserQuestion`, alle von Max getroffen):
+  - **Grid**: feste Spaltenzahl pro Board-Größe (kein responsives auto-fill), da reine Desktop-Seite. Layout: 16 → 4 Spalten, 24 → 6 Spalten, 36 → 6 Spalten (Zeilen ergeben sich automatisch über `grid-auto-rows`, keine explizite Zeilenzahl nötig — deckt sich mit Max' ursprünglicher grid-auto-Idee).
+  - **Bilder**: sind schon vorhanden (kein Platzhalter-Zwischenschritt nötig), s. Ordnerstruktur oben.
+  - **Back-Face**: wird jetzt schon strukturell mitgebaut (nicht erst im Flip-Branch), aber Klick-Handler/Transform-Animation kommt erst später.
+  - Eigener Vorschlag zur Back-Face-Umsetzung gemacht (von Max noch nicht bestätigt/verworfen, da Session hier endet): Rückseiten-Bild NICHT als eigenes `<img>` pro Karte einfügen (36x identisches Bild), sondern einmalig als CSS `background-image` (z.B. via Custom Property `--card-back-img` auf `.board`, vererbt an `.card__face--back`) — weniger DOM-Knoten, kein 36-facher `src`-Zugriff via JS, sauberer semantisch (Deko-Bild gehört ins CSS, nur das einzigartige Front-Motiv bekommt ein echtes `<img>`).
+- Vereinbarter Plan-Umriss (Umsetzung noch nicht begonnen): (1) Theme→Prefix-Mapping + dynamische Bild-Pool-Auslese in `cards.ts`, (2) Paare erzeugen (boardsize → 8/12/18 Paare) + shuffeln, (3) Card-Markup (`.card` → `.card__button` → `.card__face--front`/`--back`), (4) DOM-Rendering ins `<article class="board">` inkl. `data-boardsize`-Attribut, (5) neue `components/_card.scss` (BEM) + Spalten-Mapping in `pages/_board.scss` über `.board[data-boardsize="..."]`, (6) Verifikation aller 3 Größen × 4 Themes im Browser (coding/36 bleibt bis Bild-Nachlieferung unvollständig).
+- Mentor-Modus: Umsetzung startet bei Schritt 1, sobald Max grünes Licht gibt bzw. das 18. coding-Bild geliefert hat.
