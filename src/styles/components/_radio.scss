@@ -6,7 +6,8 @@
   line-height: 100%;
   @include u.flex(row, $gap: 10);
 
-  &:has(.radio__input:checked) {
+  &:has(.radio__input:checked),
+  &:hover {
     font-weight: 700;
   }
 
@@ -34,6 +35,16 @@
 
     &:not(:checked) + .svg__line {
       display: none;
+    }
+  }
+
+  &:hover {
+    .radio__input::before {
+      transform: scale(1);
+    }
+
+    .svg__line {
+      display: block;
     }
   }
 }

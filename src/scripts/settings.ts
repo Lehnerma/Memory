@@ -87,17 +87,32 @@ function getTheme(): string | null {
   return value ?? null;
 }
 
-function updateThemeImg(): void {
-  const theme = getTheme();
-  if (!theme) return;
+function applyThemeImg(theme: string): void {
   const imgContainer = document.getElementById("theme_preview") as HTMLImageElement | null;
   if (!imgContainer) return;
   imgContainer.src = `../assets/img/themes/${theme}/preview.png`;
+}
+
+function updateThemeImg(): void {
+  const theme = getTheme();
+  if (!theme) return;
+  applyThemeImg(theme);
+}
+
+function bindThemeHoverListeners(): void {
+  const themeLabels = document.querySelectorAll<HTMLLabelElement>("#field_themes .radio");
+  themeLabels.forEach((label) => {
+    const input = label.querySelector<HTMLInputElement>(".radio__input");
+    if (!input) return;
+    label.addEventListener("mouseenter", () => applyThemeImg(input.value));
+    label.addEventListener("mouseleave", updateThemeImg);
+  });
 }
 
 export function initSummary(): void {
   if (!document.querySelector(".settings")) return;
   bindRadioChangeListeners();
   bindStartButtonListener();
+  bindThemeHoverListeners();
   updateSummary();
 }
