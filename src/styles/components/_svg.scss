@@ -21,10 +21,21 @@
       fill: base.$controller-light-yellow;
     }
   }
+
+  &__line {
+    fill: base.$primary-yellow;
+    color: base.$primary-yellow;
+    height: u.px-rem(18);
+    width: u.px-rem(50);
+    &--diamond {
+      color: base.$primary-yellow;
+      fill: base.$primary-yellow;
+    }
+  }
 }
 
-.summary--divider{
-  @include u.wid-heig(8,56);
+.summary--divider {
+  @include u.wid-heig(8, 56);
   background-color: base.$primary-yellow;
   transform: rotate(20deg);
 }

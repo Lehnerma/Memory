@@ -1,0 +1,34 @@
+[2026-07-31 00:00] SESSION-REVIEW
+- index.html: Button→Link Umbau korrekt (href, Klassen, schließende Tags)
+- _buttons.scss: SCSS-Selektoren element-unabhängig, kein Konflikt mit <a>
+- main.ts: initBtn() sucht #test (nicht #btn_play) — OK, Link braucht keinen Handler
+- returnThemeValue() Import wird nur für #test genutzt — prüfe ob #test noch existiert
+- Keine kritischen Issues, nur mögliche Altlast in JS
+
+[2026-08-02 14:45] SESSION-REVIEW summary.ts
+- Typ-Mismatch: ✓ gelöst. getCheckedInput/getCheckedLabelText/updateSummaryField Signaturen konsistent (string→string, FieldConfig→FieldConfig)
+- updateThemeImg: Zeilen 51-52 auskommentiert, referenzieren `config` (out of scope). Tote Code.
+- Alle Funktionen ≤14 Zeilen ✓ Single Responsibility ✓
+- Zeile 27: fehlender Semikolon (Linting only, kein Typfehler)
+
+[2026-08-03 KONTEXTSAMMLUNG] board.html Header-Struktur
+- board.html Header (Z. 12-34): 3x section (2 Player mit img/name/score-div, 1x Current Player mit leerem div, 1x Exit-btn)
+- _board.scss: LEER (keine Styles vorhanden)
+- main.ts: nur initSummary() — kein DOM-Handling für Header
+- buttons.ts: LEER (keine Exit-Button-Logik implementiert)
+
+[2026-08-03 14:35] SESSION-KONTEXTSAMMLUNG Themes & Styles
+- style.scss: 7-1 Pattern (utilities→base→layout→components→pages), themes auskommentiert (Z.13)
+- themes/_index.scss: @forward für alle 4 Themes (code, gaming, projects, food)
+- _code.scss, _gaming.scss, _projects.scss, _food.scss: ALLE KOMPLETT LEER
+- _board.scss: KOMPLETT LEER
+- board.html: Brauchbar, Struktur ok (semantic HTML mit figure/figcaption/article)
+
+[2026-08-03 14:52] FACT-GATHERING CSS Custom Properties System
+- _colors.scss: Coding-Theme mit komplettem Set (player-bg, exit-btn-bg/hover, border, shadow, txt); gaming nur 1 Var ($player-blue-gaming); projects/food: leere Platzhalter
+- base/_index.scss: @forward colors, fonts, variable (kein Namespace)
+- themes/_index.scss: @forward code/gaming/projects/food (kein Namespace — keine `as code` etc.)
+- style.scss: Themes-Import auskommentiert (Z.13); KEINE CSS Custom Properties (:root/[data-theme]/--variable) vorhanden
+
+[2026-08-03] _colors.scss VOLLSTÄNDIGER DUMP
+- 36 Zeilen, lesen für exakte Werte. Inhalte: primary-dark, gey-bg (Tippfehler?), disable-grey, txt-disable, txt-white, primary-yellow, controller-light-yellow, coding-Theme (7 Vars), gaming-Theme (1 Var), projects/food: Platzhalter

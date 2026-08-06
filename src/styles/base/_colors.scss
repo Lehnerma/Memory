@@ -8,3 +8,96 @@ $txt-white: rgba(255, 255, 255, 1);
 $primary-yellow: rgba(240, 234, 110, 1);
 
 $controller-light-yellow: rgba(240, 233, 110, 0.05);
+
+// ###########
+// universal
+// ###########
+$theme-white: rgba(255, 255, 255, 1);
+$player-blue: rgba(9, 127, 197, 1);
+$player-orange: rgba(234, 105, 0, 1);
+$dialog-secondary-bg: rgba(240, 246, 249, 1);
+$shadow-soft: 3px 3px 5px 0px rgba(47, 46, 46, 0.2);
+
+// ###########
+// code theme
+// ###########
+$coding-mint-green: rgba(134, 233, 214, 1);
+$coding-teal: rgba(77, 213, 188, 1);
+$coding-teal-medium: rgba(102, 207, 188, 1);
+$coding-teal-dark: rgba(58, 188, 164, 1);
+
+$coding-player-bg: rgba($coding-mint-green, 0.2);
+$coding-exit-btn-txt: $theme-white;
+$coding-exit-btn-border: $coding-teal;
+$coding-exit-btn-border_hover: $coding-teal;
+$coding-exit-btn-bg: rgba($coding-mint-green, 0.2);
+$coding-exit-btn-bg_hover: rgba($coding-mint-green, 0.1);
+$coding-exit-btn-shadow: 4px 4px 6px 0px rgba($coding-teal, 0.2);
+$coding-btn-back-bg: $coding-teal-medium;
+$coding-btn-back-bg_hover: rgba($coding-teal-medium, 0.7);
+$coding-btn-back-border_hover: $coding-teal-dark;
+$coding-dialog-exit-btn-bg: rgba($coding-mint-green, 0.14);
+$coding-dialog-exit-btn-bg_hover: rgba($coding-mint-green, 0.3);
+
+// ###########
+// gaming theme
+// ###########
+$gaming-pink: rgba(237, 27, 118, 1);
+$gaming-magenta: rgba(231, 28, 79, 1);
+$gaming-header-pink: rgba(253, 150, 201, 1);
+$gaming-main-bg: rgba(41, 79, 96, 1);
+
+$gaming-header-bg: rgba($gaming-header-pink, 0.2);
+$gaming-btn-bg: rgba($gaming-pink, 0.08);
+$gaming-btn-border: $gaming-magenta;
+$gaming-btn-bg_hover: rgba($gaming-pink, 0.14);
+$gaming-btn-back-bg: $gaming-pink;
+$gaming-btn-back-bg-hover: rgba(242, 199, 218, 0.08);
+$gaming-btn-back-border: $gaming-magenta;
+$gaming-btn-back-shadow: $shadow-soft;
+$gaming-btn-exit-bg: rgba($gaming-pink, 0.08);
+$gaming-btn-exit-bg-hover: rgba($gaming-pink, 0.1);
+
+// ###########
+// projects theme
+// ###########
+$projects-blue-light: rgba(191, 229, 242, 1);
+$projects-blue-dark: rgba(30, 117, 148, 1);
+$projects-coral: rgba(253, 138, 129, 1);
+$projects-coral-dark: rgba(237, 91, 80, 1);
+
+$projects-main-bg: $theme-white;
+$projects-header-bg: rgba(240, 243, 244, 1);
+$projects-btn-bg: $projects-blue-light;
+$projects-btn-bg_hover: $projects-blue-dark;
+$projects-btn-shadow: $shadow-soft;
+$projects-btn-main: $projects-blue-dark;
+$projects-btn-back-shadow: $shadow-soft;
+$projects-font-main: $projects-blue-dark;
+$projects-font-main_hover: $theme-white;
+$projects-btn-back-bg: $projects-blue-light;
+$projects-btn-back-hover: $projects-blue-dark;
+$projects-exit-shadow: $shadow-soft;
+$projects-dialog-title: rgba(41, 79, 96, 1);
+
+// ###########
+// food theme
+// ###########
+$food-orange: rgba(243, 131, 45, 1);
+$food-offwhite: rgba(255, 249, 242, 1);
+$food-header-bg: rgba(240, 229, 217, 1);
+$dialog-bg: rgba(246, 246, 246, 1);
+$dialog-title: rgba(164, 82, 18, 1);
+
+$food-players-bg: $theme-white;
+$food-font-color: rgba(164, 82, 18, 1);
+$food-btn-bg: $food-offwhite;
+$food-btn-txt: $food-orange;
+$food-btn-border: $food-orange;
+$food-btn-border-width: 3px;
+$food-btn-bg-hover: $food-orange;
+$food-btn-shadow-hover: $shadow-soft;
+$food-btn-back-bg: rgba(255, 171, 62, 1);
+$food-btn-back-border: $food-orange;
+$food-btn-back-bg-hover: $food-orange;
+$food-btn-back-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.2);

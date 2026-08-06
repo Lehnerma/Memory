@@ -5,15 +5,15 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
 
   &--play {
     @include u.wid-heig(250, 98);
     @include u.f-almarai(40, 700);
-    @include u.grid-col(repeat(3, auto), center, space-around);
+    @include u.flex(row, space-around,);
     @include u.colors(base.$primary-dark, base.$primary-yellow);
     @include u.transition();
     transform-origin: center;
-
     .btn__svg--controller,
     .btn__svg--arrow {
       @include u.transition();

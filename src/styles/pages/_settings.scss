@@ -1,9 +1,23 @@
 @use "../utilities" as u;
 @use "../base" as base;
 
+.grid {
+  grid-template-rows: u.px-rem(240) 1fr u.px-rem(240);
+}
 .settings {
-  .title {
-    @include u.f-rose(54, 700);
+  .header {
+    height: 100%;
+    @include u.flex(row, flex-start, flex-end);
+  }
+  .wrapper--header {
+    .title {
+      @include u.f-rose(54, 700);
+      text-align: end;
+    }
+    .svg__line {
+      transform: rotate(180deg);
+      width: 100%;
+    }
   }
 
   .main {
@@ -49,13 +63,6 @@
     &--options {
       @include u.flex($align: flex-start, $gap: 20);
       margin-left: u.px-rem(44); // 56
-    }
-    &--text {
-      @include u.f-almarai(20);
-      @include u.flex(row, $gap:10)
-    }
-    &--radio-btn {
-      @include u.wid-heig(24, 24);
     }
   }
 }

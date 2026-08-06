@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../assets/icons/memory.svg" type="image/x-icon" />
+
+    <title>Settings</title>
+  </head>
+  <body class="board grid" data-theme="coding">
+    <header class="board-header">
+      <ul class="board-header__players">
+        <li class="board-header__player">
+          <img src="../assets/img/themes/chess-pawn-blue.svg" alt="Blue Label" class="board-header__player-img" />
+          <span class="board-header__player-score player-score--blue" id="player_score_blue">0</span>
+        </li>
+        <li class="board-header__player">
+          <img src="../assets/img/themes/chess-pawn-orange.svg" alt="orange label" class="board-header__player-img" />
+          <span class="board-header__player-score player-score--orange" id="player_score_orange">0</span>
+        </li>
+      </ul>
+
+      <div class="board-header__current-player">
+        <h1 class="board-header__current-player-label">Current Player:</h1>
+        <span class="board-header__current-player-img"></span>
+      </div>
+
+      <button class="btn board-header__exit">
+        <svg class="board-header__exit-icon" width="25" height="22" viewBox="0 0 511 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="m361.5 392v40c0 44.113281-35.886719 80-80 80h-201c-44.113281 0-80-35.886719-80-80v-352c0-44.113281 35.886719-80 80-80h201c44.113281 0 80 35.886719 80 80v40c0 11.046875-8.953125 20-20 20s-20-8.953125-20-20v-40c0-22.054688-17.945312-40-40-40h-201c-22.054688 0-40 17.945312-40 40v352c0 22.054688 17.945312 40 40 40h201c22.054688 0 40-17.945312 40-40v-40c0-11.046875 8.953125-20 20-20s20 8.953125 20 20zm136.355469-170.355469-44.785157-44.785156c-7.8125-7.8125-20.476562-7.8125-28.285156 0-7.8125 7.808594-7.8125 20.472656 0 28.28125l31.855469 31.859375h-240.140625c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h240.140625l-31.855469 31.859375c-7.8125 7.808594-7.8125 20.472656 0 28.28125 3.90625 3.90625 9.023438 5.859375 14.140625 5.859375 5.121094 0 10.238281-1.953125 14.144531-5.859375l44.785157-44.785156c19.496093-19.496094 19.496093-51.214844 0-70.710938zm0 0"></path></svg>
+        Exit game
+      </button>
+    </header>
+    <main>
+      <article class="board"></article>
+    </main>
+    <footer></footer>
+
+    <dialog class="exit-dialog">
+      <h2 class="exit-dialog__text">Are you sure you want to quit the game?</h2>
+      <div class="exit-dialog__actions">
+        <button class="btn exit-dialog__btn exit-dialog__btn--back">Back to game</button>
+
+        <button class="btn exit-dialog__btn exit-dialog__btn--exit">Exit game</button>
+      </div>
+    </dialog>
+
+    <script type="module" src="../src/main.ts"></script>
+  </body>
+</html>

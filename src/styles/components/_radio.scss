@@ -1,0 +1,39 @@
+@use "../utilities" as u;
+@use "../base" as base;
+
+.radio {
+  @include u.f-almarai(20);
+  line-height: 100%;
+  @include u.flex(row, $gap: 10);
+
+  &:has(.radio__input:checked) {
+    font-weight: 700;
+  }
+
+  &__input {
+    @include u.wid-heig(24, 24);
+    appearance: none;
+    display: grid;
+    place-content: center;
+    border: 2px solid base.$primary-dark;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      @include u.wid-heig(12, 12);
+      border-radius: 50%;
+      background-color: base.$primary-dark;
+      transform: scale(0);
+      @include u.transition(transform);
+    }
+
+    &:checked::before {
+      transform: scale(1);
+    }
+
+    &:not(:checked) + .svg__line {
+      display: none;
+    }
+  }
+}

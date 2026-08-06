@@ -1,24 +1,12 @@
 import "./styles/style.scss";
-import { returnThemeValue } from "./scripts/buttons";
+import { initSummary } from "./scripts/settings";
+import { initExitDialog } from "./scripts/board";
+import { initBoardTheme } from "./scripts/theme";
 
 function init() {
-  initBtn();
+  initSummary();
+  initExitDialog();
+  initBoardTheme();
 }
-
-function initBtn() {
-  const BTN = document.getElementById("test");
-  if (!BTN) return;
-  BTN.addEventListener("click", () => {
-    returnThemeValue();
-  });
-}
-
-// function returnTheme() {
-//   const themes = document.querySelector('input[name="theme"]');
-//   const player = document.querySelector('input[name="player"]');
-//   const size = document.querySelector('input[name="boardsize"]');
-
-//   console.log(themes, player, size);
-// }
 
 init();
