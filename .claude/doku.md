@@ -158,3 +158,14 @@ Chronologisches Arbeitstagebuch. Menschlich lesbar, keine Memory-DB.
 - **Ausnahme vom Mentor-Modus, nur für heute:** Max wollte die Session beenden ("ich will nicht mehr heute") und explizit die fertige Funktion. Da das gegen die feste Regel in `.claude/CLAUDE.md` verstößt, per `AskUserQuestion` rückgefragt (Ausnahme nur heute / Schluss für heute / Regel dauerhaft ändern) — Max hat sich für die einmalige Ausnahme entschieden, Regel in `.claude/CLAUDE.md` bleibt unverändert für morgen. Dabei auch einen Leftover-Debug-Aufruf (`getSettingsKey(...)` ohne Verwendung des Rückgabewerts in `updateSummaryField`) entfernt, der während der Entwicklung stehen geblieben war.
 - Verifiziert mit `npx tsc --noEmit` (fehlerfrei).
 - Noch offen: Default-Werte beim direkten Aufruf von `board.html` (geplant für später, wenn die Board-Load-Logik gebaut wird).
+
+**Codebase-Review vor Card-Feature-Planung**
+
+- `session-code-reviewer`-Agent (Haiku) hat 7 zentrale Dateien durchgelesen (board.html, board.ts, settings.ts, theme.ts, _board.scss, _gaming.scss, _img.scss) um den Ist-Stand vor dem neuen Card-Feature zu dokumentieren. Keine Code-Änderungen, nur Analyse.
+- **Findings**:
+  - `<article class="board"></article>` (board.html:35) ist der Platzhalter für das zukünftige Karten-Grid — derzeit leer.
+  - SessionStorage-Schema ist sauber (`gameSettings` mit `theme`/`player`/`boardsize`, alle Strings) und wird bereits in settings.ts:60 geschrieben.
+  - 3 Board-Größen definiert (settings.html): 16 Cards, 24 Cards, 36 Cards (String-Werte). Keine separate Mapping-Tabelle (z.B. "16" → "4x4") sichtbar — Spalten-Layout fehlt noch.
+  - Naming-Konventionen klar: CSS `kebab-case` (BEM mit `__` und `--`), HTML-IDs `snake_case` (z.B. `player_score_blue`), Theme-System via `[data-theme="..."]` + CSS Custom Properties.
+  - **Keine Card-Komponenten-Styles vorhanden**: `_board.scss` enthält nur Header-Logik, `_img.scss` nur Preview-Bild-Styles. `.board`-Klasse ist reines leeres Platzhalter-Grid ohne Template-Definition.
+  - **Noch nicht implementiert**: Logik zum Auslesen von `boardsize` und entsprechendem Grid generieren, Theme-Bilder-Referenzierung (nur `preview.png` existiert), Card-Element-Struktur.
