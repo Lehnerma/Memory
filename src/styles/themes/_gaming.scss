@@ -46,6 +46,10 @@
   --dialog-exit-btn-border: #{base.$gaming-magenta};
   --dialog-exit-btn-border-width-hover: 3px;
 
-  --card-shadow: #{base.$shadow-med};
-
+  --card-bg: #{base.$gaming-card-face-bg};
+  --card-back-bg: #{base.$gaming-card-back-bg};
+  --card-back-shadow: #{base.$shadow-med};
+  --card-border-matched: solid 3px #{base.$gaming-pink};
+  --card-shadow: 5px 5px 8px 0px rgba(237, 27, 118, 0.3);
+  --card-radius: 12px;
 }

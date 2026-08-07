@@ -1,7 +1,7 @@
 @use "../utilities" as u;
 
 .card {
-  @include u.wid-heig(120, 120);
+  @include u.wid-heig(120, 120);  //todo add variables to get different heights and widths
   perspective: u.px-rem(600);
 
   &__button {
@@ -34,7 +34,8 @@
     }
 
     &--back {
-      background-image: var(--card-back-bg, none);
+      background: var(--card-back-bg, none);
+      box-shadow: var(--card-back-shadow, none);
     }
   }
 
