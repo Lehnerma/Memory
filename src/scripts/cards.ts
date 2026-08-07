@@ -46,10 +46,6 @@ function getThemeIcons(theme: string): CardIcon[] {
   return THEME_ICONS[theme] ?? [];
 }
 
-function getCardBackImgPath(theme: string): string {
-  return `../assets/img/themes/${theme}/cards/${theme}-card-bg.png`;
-}
-
 function getTheme(): string {
   const settings = getGameSettings();
   return settings?.theme ?? "coding";
@@ -122,6 +118,10 @@ function createFrontFace(card: CardData): HTMLElement {
 function createBackFace(card: CardData): HTMLElement {
   const back = document.createElement("div");
   back.className = "card__face card__face--back";
+  const img =document.createElement('img');
+  img.src = '../assets/img/themes/pc-backface.svg'
+  img.alt = 'backface'
+  back.appendChild(img)
   return back;
 }
 
@@ -137,7 +137,6 @@ function createCardElement(card: CardData): HTMLElement {
 
 function renderBoard(board: HTMLElement, cards: CardData[]): void {
   board.dataset.boardsize = String(getBoardSize());
-  board.style.setProperty("--card-back-img", `url(${getCardBackImgPath(getTheme())})`);
   board.replaceChildren(...cards.map(createCardElement));
 }
 

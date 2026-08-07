@@ -1,15 +1,47 @@
 @use "../utilities" as u;
 
 .card {
-// width: var(--card-width, u.px-rem(120));
-// height: var(--card-height, u.px-rem(120));
+  @include u.wid-heig(120, 120);
+  perspective: u.px-rem(600);
 
   &__button {
+    position: relative;
+    width: 100%;
+    height: 100%;
     border: none;
     background-color: transparent;
-    padding: 0;
     transform-style: preserve-3d;
-    width: 100%;
+    cursor: pointer;
   }
 
+  &__face {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--card-radius, 0); // TODO: Wert von Figma
+
+    @include u.flex(row);
+
+    &--front {
+      // Motiv-Seite liegt zu Spielbeginn nach unten, wie eine echte Spielkarte.
+      // Vorab gedreht + backface-visibility oben = by default unsichtbar, ganz ohne JS.
+      transform: rotateY(180deg);
+      background-color: var(--card-bg);
+    }
+
+    &--back {
+      // Muster-Seite ist der Ruhezustand, bleibt also ungedreht.
+      background-image: var(--card-back-bg, none);
+    }
+  }
+
+  &__face-img {
+    object-fit: contain;
+  }
+
+  &__matched{
+    border: var(--card-border-matched, none);
+    box-shadow: var(--card-shadow, none);
+  }
 }
