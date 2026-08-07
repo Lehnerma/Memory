@@ -12,7 +12,7 @@ function imgPathTemplate(theme: string, index: number): string {
   return `../assets/img/themes/${theme}/cards/${theme}-card${index}.png`;
 }
 
-function cardBackImgPath(theme: string): string {
+function getCardBackImgPath(theme: string): string {
   return `../assets/img/themes/${theme}/cards/${theme}-card-bg.png`;
 }
 
@@ -54,41 +54,56 @@ function shuffleCards(cards: CardData[]): CardData[] {
   return cards;
 }
 
-function createCardElement(card: CardData): HTMLElement {
-  const cardEl = document.createElement("div");
+function createBtnCard(): HTMLButtonElement {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "btn card__button";
+  return button;
+}
+
+function createWrapperCard(card: CardData): HTMLElement {
+  const cardEl = document.createElement("li");
   cardEl.className = "card";
   cardEl.dataset.cardId = String(card.id);
   cardEl.dataset.pairId = String(card.pairId);
+  return cardEl;
+}
 
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "card__button";
-
+function createFrontFace(card: CardData): HTMLElement {
   const front = document.createElement("div");
   front.className = "card__face card__face--front";
   const img = document.createElement("img");
   img.src = card.imgPath;
-  img.alt = "";
+  img.alt = "card-face-front";
   img.className = "card__face-img";
   front.appendChild(img);
+  return front;
+}
 
+function createBackFace(card: CardData): HTMLElement {
   const back = document.createElement("div");
   back.className = "card__face card__face--back";
+  return back;
+}
 
-  button.append(front, back);
+function createCardElement(card: CardData): HTMLElement {
+  const cardEl = createWrapperCard(card);
+  const button = createBtnCard();
+  const frontFace = createFrontFace(card);
+  const backFace = createBackFace(card);
+  button.append(frontFace, backFace);
   cardEl.appendChild(button);
-
   return cardEl;
 }
 
 function renderBoard(board: HTMLElement, cards: CardData[]): void {
   board.dataset.boardsize = String(getBoardSize());
-  board.style.setProperty("--card-back-img", `url(${cardBackImgPath(getTheme())})`);
+  board.style.setProperty("--card-back-img", `url(${getCardBackImgPath(getTheme())})`);
   board.replaceChildren(...cards.map(createCardElement));
 }
 
 export function initCards() {
-  const board = document.querySelector<HTMLElement>(".board__grid");
+  const board = document.querySelector<HTMLElement>("#memory_board");
   if (!board) return;
 
   const cards = shuffleCards(createCardsArray());

@@ -1,47 +1,15 @@
 @use "../utilities" as u;
 
 .card {
-  aspect-ratio: 1 / 1;
-  perspective: u.px-rem(1000);
+// width: var(--card-width, u.px-rem(120));
+// height: var(--card-height, u.px-rem(120));
 
   &__button {
     border: none;
     background-color: transparent;
-    cursor: pointer;
     padding: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
     transform-style: preserve-3d;
+    width: 100%;
   }
 
-  &__face {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    backface-visibility: hidden;
-    border-radius: var(--card-radius, 0); // TODO: Wert von Figma
-    border-color: var(--card-border-color, transparent); // TODO: Wert von Figma
-    border-style: solid;
-    border-width: var(--card-border-width, 0); // TODO: Wert von Figma
-    box-shadow: var(--card-shadow, none); // TODO: Wert von Figma
-
-    &--front img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    &--back {
-      // Vorab um 180deg gedreht + backface-visibility: hidden oben drauf =
-      // Rückseite ist by default unsichtbar, ganz ohne Flip-Klasse/JS.
-      // Der Flip-Branch muss später nur noch .card__button.is-flipped { transform: rotateY(180deg); } ergänzen.
-      transform: rotateY(180deg);
-      background-color: var(--card-back-bg, transparent); // TODO: Wert von Figma (Fallback-Farbe hinter dem Bild)
-      background-image: var(--card-back-img);
-      background-size: cover;
-      background-position: center;
-    }
-  }
 }
