@@ -46,6 +46,8 @@
   --dialog-exit-btn-border: #{base.$gaming-magenta};
   --dialog-exit-btn-border-width-hover: 3px;
 
+  --card-width: #{u.px-rem(105)};
+  --card-height: #{u.px-rem(120)};
   --card-bg: #{base.$gaming-card-face-bg};
   --card-back-bg: #{base.$gaming-card-back-bg};
   --card-back-shadow: #{base.$shadow-med};

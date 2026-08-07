@@ -2,7 +2,7 @@ import "./styles/style.scss";
 import { initSummary } from "./scripts/settings";
 import { initExitDialog } from "./scripts/board";
 import { initBoardTheme } from "./scripts/theme";
-import { CardData, initCards } from "./scripts/cards";
+import { initCards } from "./scripts/cards";
 import { initGameLogic } from "./scripts/game-logic";
 
 function init() {
