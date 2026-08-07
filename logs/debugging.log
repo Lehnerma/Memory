@@ -40,3 +40,9 @@
 - WARNUNG: getBoardSize + getTheme haben Duplikation (beide rufen getGameSettings() auf)
 - STRUKTUR: BEM-Naming korrekt; Single Responsibility teilweise (createCardElement macht zu viel)
 - PATTERN: Template-Refactor wird Zeilen sparen und Code lesbar machen
+
+[2026-08-07 14:35] SESSION-REVIEW flip.ts
+- KRITISCH: Zeile 12 — initFlip() → handleBoardClick() mehrfacher Aufruf erzeugt Listener-Duplikation (addEventListener jedes Mal neu registriert)
+- WARNUNG: Zeile 7 — .classList.toggle() ohne CardData-Sync: DOM-Zustand (CSS-Klasse) kann divergieren vom CardData-Array (Spiel-Logik)
+- GUT: Zeile 4 instanceof-Guard (nicht as-Cast); Zeile 6 Early Return für .closest(); Selektor/Klasse korrekt (kebab-case)
+- GUT: Single Responsibility ✓; Max 14 Zeilen ✓; Naming (IDs snake_case, Klassen kebab-case) ✓; keine TypeScript-Fehler

@@ -1,7 +1,9 @@
 @use "../utilities" as u;
 
 .card {
-  @include u.wid-heig(120, 120);  //todo add variables to get different heights and widths
+  @include u.wid-heig(120, 120);
+  width: var(--card-width, u.px-rem(120));
+  height: var(--card-width, u.px-rem(120));
   perspective: u.px-rem(600);
 
   &__button {
@@ -41,10 +43,17 @@
 
   &__face-img {
     object-fit: contain;
+    max-width: u.px-rem(80);
+    max-height: u.px-rem(80);
+
   }
 
   &__matched {
     border: var(--card-border-matched, none);
     box-shadow: var(--card-shadow, none);
+  }
+
+  &--pair {
+    border: var(--card-border-matched, none);
   }
 }

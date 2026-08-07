@@ -48,6 +48,8 @@
   --dialog-exit-btn-txt: #{base.$food-btn-txt};
   --dialog-exit-btn-txt-hover: #{base.$theme-white};
 
+  --card-width: #{u.px-rem(122)};
+  --card-height: #{u.px-rem(122)};
   --card-bg: #{base.$food-card-face-bg};
   --card-back-bg: #{base.$food-orange};
   --card-back-shadow: #{base.$shadow-med};

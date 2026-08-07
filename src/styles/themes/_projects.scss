@@ -40,6 +40,8 @@
   --dialog-exit-btn-txt: #{base.$theme-white};
   --dialog-exit-btn-txt-hover: #{base.$theme-white};
 
+
+  --card-height: #{u.px-rem(100)};
   --card-bg: #{base.$projects-card-face-bg};
   --card-back-bg: #{base.$projects-blue-dark};
   --card-border-matched: solid 2px #{base.$projects-blue-dark};

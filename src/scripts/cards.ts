@@ -5,7 +5,7 @@ type CardIcon = {
   url: string;
 };
 
-type CardData = {
+export type CardData = {
   id: number;
   pairId: number;
   isMatched: boolean;
@@ -118,10 +118,10 @@ function createFrontFace(card: CardData): HTMLElement {
 function createBackFace(card: CardData): HTMLElement {
   const back = document.createElement("div");
   back.className = "card__face card__face--back";
-  const img =document.createElement('img');
-  img.src = '../assets/img/themes/pc-backface.svg'
-  img.alt = 'backface'
-  back.appendChild(img)
+  const img = document.createElement("img");
+  img.src = "../assets/img/themes/pc-backface.svg";
+  img.alt = "backface";
+  back.appendChild(img);
   return back;
 }
 
@@ -140,10 +140,11 @@ function renderBoard(board: HTMLElement, cards: CardData[]): void {
   board.replaceChildren(...cards.map(createCardElement));
 }
 
-export function initCards() {
+export function initCards(): CardData[] {
   const board = document.querySelector<HTMLElement>("#memory_board");
-  if (!board) return;
+  if (!board) return [];
 
   const cards = shuffleCards(createCardsArray());
   renderBoard(board, cards);
+  return cards;
 }
