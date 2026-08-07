@@ -96,6 +96,21 @@
   }
 }
 
+.board__grid {
+  @include u.grid-col($columns: repeat(4, 1fr));
+  grid-auto-rows: auto;
+  row-gap: var(--card-gap-row, u.px-rem(16)); // TODO: Wert von Figma, ggf. pro Board-Größe
+  column-gap: var(--card-gap-column, u.px-rem(16)); // TODO: Wert von Figma, ggf. pro Board-Größe
+
+  &[data-boardsize="24"] {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  &[data-boardsize="36"] {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
 .player-score {
   &--blue {
     color: var(--player-blue);
