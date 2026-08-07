@@ -17,6 +17,8 @@ $player-blue: rgba(9, 127, 197, 1);
 $player-orange: rgba(234, 105, 0, 1);
 $dialog-secondary-bg: rgba(240, 246, 249, 1);
 $shadow-soft: 3px 3px 5px 0px rgba(47, 46, 46, 0.2);
+$shadow-med: 6px 6px 12px 0px #00000040;
+
 
 // ###########
 // code theme
@@ -25,6 +27,9 @@ $coding-mint-green: rgba(134, 233, 214, 1);
 $coding-teal: rgba(77, 213, 188, 1);
 $coding-teal-medium: rgba(102, 207, 188, 1);
 $coding-teal-dark: rgba(58, 188, 164, 1);
+$coding-card-face-bg: rgba(232, 243, 240, 1);
+$coding-card-back-bg: linear-gradient(212.26deg, #4DD5BC 29.42%, #286F62 123.94%);
+
 
 $coding-player-bg: rgba($coding-mint-green, 0.2);
 $coding-exit-btn-txt: $theme-white;
@@ -46,6 +51,9 @@ $gaming-pink: rgba(237, 27, 118, 1);
 $gaming-magenta: rgba(231, 28, 79, 1);
 $gaming-header-pink: rgba(253, 150, 201, 1);
 $gaming-main-bg: rgba(41, 79, 96, 1);
+$gaming-card-face-bg: rgba(246, 241, 243, 1);
+$gaming-card-back-bg: linear-gradient(147.13deg, #ED1B76 1.28%, #0A2835 142.53%);
+
 
 $gaming-header-bg: rgba($gaming-header-pink, 0.2);
 $gaming-btn-bg: rgba($gaming-pink, 0.08);
@@ -65,6 +73,8 @@ $projects-blue-light: rgba(191, 229, 242, 1);
 $projects-blue-dark: rgba(30, 117, 148, 1);
 $projects-coral: rgba(253, 138, 129, 1);
 $projects-coral-dark: rgba(237, 91, 80, 1);
+$projects-card-face-bg: rgba(234, 242, 244, 1);
+
 
 $projects-main-bg: $theme-white;
 $projects-header-bg: rgba(240, 243, 244, 1);
@@ -86,8 +96,9 @@ $projects-dialog-title: rgba(41, 79, 96, 1);
 $food-orange: rgba(243, 131, 45, 1);
 $food-offwhite: rgba(255, 249, 242, 1);
 $food-header-bg: rgba(240, 229, 217, 1);
-$dialog-bg: rgba(246, 246, 246, 1);
-$dialog-title: rgba(164, 82, 18, 1);
+$food-dialog-bg: rgba(246, 246, 246, 1);
+$food-dialog-title: rgba(164, 82, 18, 1);
+$food-card-face-bg: rgba(244, 236, 228, 1);
 
 $food-players-bg: $theme-white;
 $food-font-color: rgba(164, 82, 18, 1);

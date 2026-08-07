@@ -28,8 +28,8 @@
   --exit-svg-color: #{base.$food-btn-txt};
   --exit-svg-color-hover: #{base.$theme-white};
 
-  --dialog-bg: #{base.$dialog-bg};
-  --dialog-title-color: #{base.$dialog-title};
+  --dialog-bg: #{base.$food-dialog-bg};
+  --dialog-title-color: #{base.$food-dialog-title};
   --dialog-font-size: #{u.px-rem(16)};
 
   --dialog-back-btn-bg: #{base.$food-btn-back-bg};
@@ -47,4 +47,10 @@
   --dialog-exit-btn-shadow-hover: #{base.$food-btn-shadow-hover};
   --dialog-exit-btn-txt: #{base.$food-btn-txt};
   --dialog-exit-btn-txt-hover: #{base.$theme-white};
+
+  --card-bg: #{base.$food-card-face-bg};
+  --card-back-bg: #{base.$food-orange};
+  --card-back-shadow: #{base.$shadow-med};
+  --card-border-matched: solid 3px #{base.$gaming-pink};
+  --card-shadow: 5px 5px 8px 0px rgba(237, 27, 118, 0.3);
 }

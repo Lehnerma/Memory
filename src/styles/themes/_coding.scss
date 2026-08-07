@@ -45,4 +45,10 @@
   --dialog-exit-btn-txt: #{base.$coding-exit-btn-border};
   --dialog-exit-btn-txt-hover: #{base.$coding-exit-btn-border};
   --dialog-radius: 0;
+
+  --card-bg: #{base.$coding-card-face-bg};
+  --card-back-bg: #{base.$coding-card-back-bg};
+  --card-border-matched: solid 3px #{base.$coding-teal};
+  --card-shadow: 6px 6px 8px 0px rgba(77, 213, 188, 0.3);
+
 }

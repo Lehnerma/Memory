@@ -1,19 +1,49 @@
 import { getGameSettings } from "./theme";
 
+type CardIcon = {
+  name: string;
+  url: string;
+};
+
 type CardData = {
   id: number;
   pairId: number;
   isMatched: boolean;
   imgPath: string;
+  label: string;
   isFlipped: boolean;
 };
 
-function imgPathTemplate(theme: string, index: number): string {
-  return `../assets/img/themes/${theme}/cards/${theme}-card${index}.png`;
+const ICON_URLS = import.meta.glob("../assets/themes/*/cards-icons/*.*", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+function getThemeFromPath(path: string): string {
+  return path.split("/themes/")[1]?.split("/")[0] ?? "";
 }
 
-function cardBackImgPath(theme: string): string {
-  return `../assets/img/themes/${theme}/cards/${theme}-card-bg.png`;
+function getIconName(path: string): string {
+  const fileName = path.split("/").pop() ?? "";
+  return fileName.replace(/\.png$/i, "");
+}
+
+function groupIconsByTheme(): Record<string, CardIcon[]> {
+  const grouped: Record<string, CardIcon[]> = {};
+
+  for (const path of Object.keys(ICON_URLS).sort()) {
+    const theme = getThemeFromPath(path);
+    const icon = { name: getIconName(path), url: ICON_URLS[path] };
+    (grouped[theme] ??= []).push(icon);
+  }
+  return grouped;
+}
+
+const THEME_ICONS = groupIconsByTheme();
+
+function getThemeIcons(theme: string): CardIcon[] {
+  return THEME_ICONS[theme] ?? [];
 }
 
 function getTheme(): string {
@@ -27,21 +57,26 @@ function getBoardSize(): number {
   return size;
 }
 
-function createCardObject(id: number, pairId: number, imgPath: string): CardData {
-  return { id, pairId, isMatched: false, isFlipped: false, imgPath };
+function createCardObject(id: number, pairId: number, icon: CardIcon): CardData {
+  return {
+    id,
+    pairId,
+    isMatched: false,
+    isFlipped: false,
+    imgPath: icon.url,
+    label: icon.name,
+  };
 }
 
 function createCardsArray(): CardData[] {
-  const size = getBoardSize();
-  const theme = getTheme();
+  const icons = getThemeIcons(getTheme());
+  const pairCount = Math.min(getBoardSize() / 2, icons.length);
+  const cards: CardData[] = [];
   let idIndex = 0;
 
-  const cards: CardData[] = [];
-
-  for (let i = 1; i <= size / 2; i++) {
-    const newPath = imgPathTemplate(theme, i);
-    cards.push(createCardObject(idIndex++, i, newPath));
-    cards.push(createCardObject(idIndex++, i, newPath));
+  for (let i = 0; i < pairCount; i++) {
+    cards.push(createCardObject(idIndex++, i, icons[i]));
+    cards.push(createCardObject(idIndex++, i, icons[i]));
   }
   return cards;
 }
@@ -54,41 +89,59 @@ function shuffleCards(cards: CardData[]): CardData[] {
   return cards;
 }
 
-function createCardElement(card: CardData): HTMLElement {
-  const cardEl = document.createElement("div");
+function createBtnCard(): HTMLButtonElement {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "btn card__button";
+  return button;
+}
+
+function createWrapperCard(card: CardData): HTMLElement {
+  const cardEl = document.createElement("li");
   cardEl.className = "card";
   cardEl.dataset.cardId = String(card.id);
   cardEl.dataset.pairId = String(card.pairId);
+  return cardEl;
+}
 
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "card__button";
-
+function createFrontFace(card: CardData): HTMLElement {
   const front = document.createElement("div");
   front.className = "card__face card__face--front";
   const img = document.createElement("img");
   img.src = card.imgPath;
-  img.alt = "";
+  img.alt = card.label;
   img.className = "card__face-img";
   front.appendChild(img);
+  return front;
+}
 
+function createBackFace(card: CardData): HTMLElement {
   const back = document.createElement("div");
   back.className = "card__face card__face--back";
+  const img =document.createElement('img');
+  img.src = '../assets/img/themes/pc-backface.svg'
+  img.alt = 'backface'
+  back.appendChild(img)
+  return back;
+}
 
-  button.append(front, back);
+function createCardElement(card: CardData): HTMLElement {
+  const cardEl = createWrapperCard(card);
+  const button = createBtnCard();
+  const frontFace = createFrontFace(card);
+  const backFace = createBackFace(card);
+  button.append(frontFace, backFace);
   cardEl.appendChild(button);
-
   return cardEl;
 }
 
 function renderBoard(board: HTMLElement, cards: CardData[]): void {
   board.dataset.boardsize = String(getBoardSize());
-  board.style.setProperty("--card-back-img", `url(${cardBackImgPath(getTheme())})`);
   board.replaceChildren(...cards.map(createCardElement));
 }
 
 export function initCards() {
-  const board = document.querySelector<HTMLElement>(".board__grid");
+  const board = document.querySelector<HTMLElement>("#memory_board");
   if (!board) return;
 
   const cards = shuffleCards(createCardsArray());
