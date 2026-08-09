@@ -1,7 +1,7 @@
 import type { CardData } from "./cards";
 import { getStartPlayer } from "./cards";
 
-const MISMATCH_DELAY_MS = 1500;
+const MISMATCH_DELAY_MS = 500;
 
 type Scores = {
   blue: number;
@@ -10,7 +10,7 @@ type Scores = {
 
 export type Player = "blue" | "orange";
 
-const SCORES: Scores = {
+const scores: Scores = {
   blue: 0,
   orange: 0,
 };
@@ -55,12 +55,16 @@ function markAsPair(card: CardData): void {
   findCardFront(card.id)?.classList.add("card--pair");
 }
 
-function countScore(){
-  if (currentPlayer === 'blue') {
-    SCORES.blue ++
-  } else {
-    SCORES.orange ++
-  }
+function updateScore(): void {
+  const element = document.getElementById(`player_score_${currentPlayer}`) as HTMLElement;
+  if (!element) return;
+  element.innerText = "";
+  element.innerText = scores[currentPlayer].toString();
+}
+
+function countScore(): void {
+  scores[currentPlayer]++;
+  updateScore();
 }
 
 function resolveMatch(): void {
@@ -68,7 +72,6 @@ function resolveMatch(): void {
   countScore();
   flippedCards = [];
 }
-
 
 function resolveMismatch(): void {
   const mismatched = flippedCards;
