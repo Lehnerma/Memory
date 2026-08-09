@@ -1,11 +1,25 @@
 import type { CardData } from "./cards";
+import { getStartPlayer } from "./cards";
 
-const MISMATCH_DELAY_MS = 2000;
+const MISMATCH_DELAY_MS = 1500;
+
+// type Scores = {
+//   blue: number;
+//   orange: number;
+// };
+
+export type Player = "blue" | "orange";
+
+// const scores: Scores = {
+//   blue: 0,
+//   orange: 0,
+// };
 
 let cards: CardData[] = [];
 let flippedCards: CardData[] = [];
 let boardElement: HTMLElement | null = null;
 let isLocked = false;
+let currentPlayer: Player;
 
 function findCardElement(id: number): HTMLElement | null {
   return boardElement?.querySelector<HTMLElement>(`[data-card-id="${id}"]`) ?? null;
@@ -31,8 +45,13 @@ function hideCard(card: CardData): void {
   findCardButton(card.id)?.classList.remove("card__flipped");
 }
 
+function switchPlayer(): void {
+  currentPlayer = currentPlayer === "blue" ? "orange" : "blue";
+}
+
 function markAsPair(card: CardData): void {
   card.isMatched = true;
+
   findCardFront(card.id)?.classList.add("card--pair");
 }
 
@@ -43,12 +62,14 @@ function resolveMatch(): void {
 
 function resolveMismatch(): void {
   const mismatched = flippedCards;
+
   flippedCards = [];
   isLocked = true;
 
   window.setTimeout(() => {
     mismatched.forEach(hideCard);
     isLocked = false;
+    switchPlayer();
   }, MISMATCH_DELAY_MS);
 }
 
@@ -82,7 +103,7 @@ function handleBoardClick(e: Event): void {
 export function initGameLogic(cardData: CardData[]): void {
   boardElement = document.getElementById("memory_board");
   if (!boardElement) return;
-
+  currentPlayer = getStartPlayer();
   cards = cardData;
   flippedCards = [];
   isLocked = false;
