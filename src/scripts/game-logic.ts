@@ -3,17 +3,17 @@ import { getStartPlayer } from "./cards";
 
 const MISMATCH_DELAY_MS = 1500;
 
-// type Scores = {
-//   blue: number;
-//   orange: number;
-// };
+type Scores = {
+  blue: number;
+  orange: number;
+};
 
 export type Player = "blue" | "orange";
 
-// const scores: Scores = {
-//   blue: 0,
-//   orange: 0,
-// };
+const SCORES: Scores = {
+  blue: 0,
+  orange: 0,
+};
 
 let cards: CardData[] = [];
 let flippedCards: CardData[] = [];
@@ -55,14 +55,23 @@ function markAsPair(card: CardData): void {
   findCardFront(card.id)?.classList.add("card--pair");
 }
 
+function countScore(){
+  if (currentPlayer === 'blue') {
+    SCORES.blue ++
+  } else {
+    SCORES.orange ++
+  }
+}
+
 function resolveMatch(): void {
   flippedCards.forEach(markAsPair);
+  countScore();
   flippedCards = [];
 }
 
+
 function resolveMismatch(): void {
   const mismatched = flippedCards;
-
   flippedCards = [];
   isLocked = true;
 
