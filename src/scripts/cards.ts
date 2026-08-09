@@ -1,4 +1,5 @@
 import { getGameSettings } from "./theme";
+import type { Player } from "./game-logic";
 
 type CardIcon = {
   name: string;
@@ -55,6 +56,12 @@ function getBoardSize(): number {
   const settings = getGameSettings();
   const size = parseInt(settings?.boardsize ?? "16");
   return size;
+}
+
+export function getStartPlayer(): Player {
+  const settings = getGameSettings();
+  const player = settings?.player;
+  return player === "orange" ? "orange" : "blue";
 }
 
 function createCardObject(id: number, pairId: number, icon: CardIcon): CardData {
