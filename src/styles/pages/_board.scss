@@ -56,7 +56,6 @@
       &-img {
         display: block;
         background-image: url(/assets/img/themes/chess-pawn.svg);
-        background-color: red; // !issue
         background-position: center;
         background-repeat: no-repeat;
 
@@ -124,5 +123,14 @@
 
   &--orange {
     color: var(--player-orange);
+  }
+}
+
+.current-player {
+  &-blue {
+    background-color: var(--player-blue);
+  }
+  &-orange {
+    background-color: var(--player-orange);
   }
 }
