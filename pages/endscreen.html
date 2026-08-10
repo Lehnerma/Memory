@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../assets/icons/memory.svg" type="image/x-icon" />
+
+    <title>End</title>
+  </head>
+  <body class="endscreen grid" data-theme="coding" data-stage="score" data-result="orange">
+    <main>
+      <section class="endscreen__stage endscreen__stage--score">
+        <h1 class="endscreen__title">Game Over</h1>
+        <h2 class="score__title">Final score</h2>
+        <dl class="score">
+          <div class="score__wrapper">
+            <dt class="score__name score__name--blue"><span class="score__label">Blue</span></dt>
+            <dd class="score__value score__value--blue" id="score_blue">0</dd>
+          </div>
+          <div class="score__wrapper">
+            <dt class="score__name score__name--orange"><span class="score__label">Orange</span></dt>
+            <dd class="score__value score__value--orange" id="score_orange">0</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="endscreen__stage endscreen__stage--result">
+        <div class="endscreen__confetti"></div>
+        <h2 class="endscreen__subtitle" id="winner_subtitle">The winner is</h2>
+        <p class="endscreen__winner endscreen__winner-orange" id="winner_name">Orange player</p>
+        <div class="endscreen__figure"></div>
+        <a class="btn endscreen__link" href="./settings.html">Back to start</a>
+      </section>
+    </main>
+    <script type="module" src="../src/main.ts"></script>
+  </body>
+</html>

@@ -2,8 +2,6 @@
 
 @use "base";
 
-// @use "vendor";
-
 @use "layout";
 
 @use "components";
@@ -11,3 +9,8 @@
 @use "pages";
 
 @use "themes";
+
+
+.dnone{
+    display: none;
+}

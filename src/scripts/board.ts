@@ -11,9 +11,7 @@ function closeExitDialog(): void {
 }
 
 function goToStartPage(): void {
-  //window.location.href = "../index.html";
-  window.location.href = "../pages/settings.html";  // TODO umstellen auf index oder abklären auf settings - figma checken?
-}
+  window.location.href = "./settings.html";
 
 function bindExitButtonListener(): void {
   const exitButton = document.querySelector(".board-header__exit");

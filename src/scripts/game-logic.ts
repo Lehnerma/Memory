@@ -1,7 +1,8 @@
 import type { CardData } from "./cards";
 import { getStartPlayer } from "./cards";
 
-const MISMATCH_DELAY_MS = 500;  //todo set to 1000-1500
+const MISMATCH_DELAY_MS = 1000; 
+const GAME_END_DELAY = 2000;
 
 type Scores = {
   blue: number;
@@ -9,6 +10,7 @@ type Scores = {
 };
 
 export type Player = "blue" | "orange";
+export type GameResult = Player | "draw";
 
 const PLAYERS: Player[] = ["blue", "orange"];
 
@@ -18,6 +20,7 @@ const scores: Scores = {
 };
 
 let cards: CardData[] = [];
+
 let flippedCards: CardData[] = [];
 let boardElement: HTMLElement | null = null;
 let isLocked = false;
@@ -66,7 +69,6 @@ function switchPlayer(): void {
 
 function markAsPair(card: CardData): void {
   card.isMatched = true;
-
   findCardFront(card.id)?.classList.add("card--pair");
 }
 
@@ -90,9 +92,38 @@ function countScore(): void {
   updateScore(currentPlayer);
 }
 
+function isGameEnd(): boolean {
+  return cards.every((card) => card.isMatched);
+}
+
+function getWinner(): GameResult {
+  if (scores.blue > scores.orange) {
+    return "blue";
+  } else if (scores.blue < scores.orange) {
+    return "orange";
+  } else {
+    return "draw";
+  }
+}
+
+function saveResult(): void {
+  const result = { winner: getWinner(), scores: scores };
+  sessionStorage.setItem("gameResult", JSON.stringify(result));
+}
+
+function checkGameEnd(): void {
+  if (isGameEnd()) {
+    window.setTimeout(() => {
+      saveResult();
+      window.location.href = "./endscreen.html";
+    }, GAME_END_DELAY);
+  }
+}
+
 function resolveMatch(): void {
   flippedCards.forEach(markAsPair);
   countScore();
+  checkGameEnd();
   flippedCards = [];
 }
 

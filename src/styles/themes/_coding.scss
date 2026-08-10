@@ -3,10 +3,12 @@
 
 [data-theme="coding"] {
   --main-bg: #{base.$primary-dark};
+
   --header-bg: #{base.$primary-dark};
   --player-bg: #{base.$coding-player-bg};
   --player-blue: #{base.$player-blue};
   --player-orange: #{base.$player-orange};
+  --draw-fill: rgba(77, 213, 188, 1);
 
   --title-font: "Rose", sans-serif;
   --title-weight: 700;
@@ -46,10 +48,36 @@
   --dialog-exit-btn-txt-hover: #{base.$coding-exit-btn-border};
   --dialog-radius: 0;
 
-
   --card-bg: #{base.$coding-card-face-bg};
   --card-back-bg: #{base.$coding-card-back-bg};
   --card-border-matched: solid 3px #{base.$coding-teal};
   --card-shadow: 6px 6px 8px 0px rgba(77, 213, 188, 0.3);
+
+  --endscreen-bg: #{base.$primary-dark};
+  --endscreen-title: #{u.px-rem(128)};
+  --endscreen-score-title: #{u.px-rem(26)};
+  --endscreen-score-title-weight: 400;
+  --score-bg: rgba(134, 233, 214, 0.2);
+  --score-title: #{u.px-rem(24)};
+  --score-title-weight: 700;
+  --score-padding: 17px 20px;
+  --score-icon: url("/assets/icons/svg/score-label.svg");
+  --score-icon-width: #{u.px-rem(24)};
+  --score-icon-height: #{u.px-rem(20)};
+
+  --result-subtitle: #{u.px-rem(40)};
+  --result-subtitle-weight: 400;
+  --result-winner: #{u.px-rem(60)};
+  --result-winner-weight: 700;
+  --endscreen-confetti: url("/assets/img/confetti.png");
+  --endscreen-confetti-long: url("/assets/img/confetti-long.png");
+
+  --figure-width: 200px;
+  --figure-height: 250px;
+
+  --link-title: #{u.px-rem(24)};
+  --link-bg: rgba(134, 233, 214, 0.2);
+  --link-border: 1px solid rgba(77, 213, 188, 1);
+  --link-padding: 16px 24px;
 
 }

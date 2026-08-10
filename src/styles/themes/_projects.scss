@@ -1,17 +1,22 @@
 @use "../base" as base;
 @use "../utilities" as u;
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&display=swap");
 
 [data-theme="projects"] {
   --main-bg: #{base.$theme-white};
+
   --header-bg: #{base.$projects-header-bg};
   --player-bg: #{base.$theme-white};
-  --player-blue: #{base.$player-blue};
-  --player-orange: #{base.$player-orange};
+  --player-blue: rgba(9, 127, 197, 1);
+  --player-orange: rgba(234, 105, 0, 1);
+  --draw-fill: rgba(253, 91, 79, 1);
 
   --title-font: "Figtree", sans-serif;
   --title-weight: 700;
   --title-weight-regular: 400;
   --title-size: #{u.px-rem(32)};
+  --title-color: #{base.$projects-coral-dark};
+
   --text-color: #{base.$projects-font-main};
 
   --exit-btn-txt: #{base.$projects-font-main};
@@ -40,10 +45,42 @@
   --dialog-exit-btn-txt: #{base.$theme-white};
   --dialog-exit-btn-txt-hover: #{base.$theme-white};
 
-
   --card-height: #{u.px-rem(100)};
   --card-bg: #{base.$projects-card-face-bg};
   --card-back-bg: #{base.$projects-blue-dark};
   --card-border-matched: solid 2px #{base.$projects-blue-dark};
   --card-radius: 13px;
+
+  --title-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --endscreen-bg: #{base.$projects-blue-dark};
+  --endscreen-title-weight: 800;
+  --endscreen-title-color: #{base.$projects-coral-dark};
+  --endscreen-score-title: #{u.px-rem(40)};
+  --endscreen-score-title-weight: 500;
+  --score-padding: 15px 35px;
+  --score-title: #{u.px-rem(38)};
+  --score-title-weight: 700;
+  --score-radius: 10px;
+  --score-icon: url("/assets/icons/svg/chess-pawn-small.svg");
+  --score-icon-width: #{u.px-rem(24)};
+  --score-icon-height: #{u.px-rem(30)};
+
+  --result-subtitle: #{u.px-rem(40)};
+  --result-subtitle-weight: 400;
+  --result-winner: #{u.px-rem(60)};
+  --result-winner-weight: 700;
+
+  --figure-width: 288px;
+  --figure-height: 344px;
+
+  --figure-draw-width: 348px;
+  --figure-draw-height: 279px;
+  --endscreen-figure: none;
+
+  --link-title: #{u.px-rem(24)};
+  --link-title-color: #{base.$projects-blue-dark};
+  --link-bg: rgba(191, 229, 242, 1);
+  --link-padding: 16px 24px;
+  --link-border-radius: 10px;
+  --exit-btn-border-hover: #{base.$theme-white};
 }

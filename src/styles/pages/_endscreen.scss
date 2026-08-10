@@ -1,0 +1,268 @@
+@use "../utilities" as u;
+@use "../base" as base;
+
+.endscreen {
+  background-color: var(--endscreen-bg);
+  display: grid;
+  grid-template-rows: 1fr;
+  max-width: 1440px;
+  margin: 0;
+  justify-self: center;
+
+  &__stage--score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: var(--title-font);
+    font-size: var(--endscreen-title, u.px-rem(130));
+    font-weight: var(--endscreen-title-weight, 700);
+    color: var(--endscreen-title-color, white);
+    text-shadow: var(--title-shadow, none);
+    letter-spacing: var(--label-letter-spacing, 0);
+    margin-bottom: 104px;
+  }
+
+  .score__title {
+    font-family: var(--title-font);
+    font-size: var(--endscreen-score-title, u.px-rem(16));
+    font-weight: var(--endscreen-score-title-weight);
+    color: var(--endscreen-score-title-color, base.$txt-white);
+    margin-bottom: u.px-rem(24);
+    letter-spacing: var(--label-letter-spacing, 0);
+  }
+
+  .score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: u.px-rem(40);
+    font-family: var(--title-font);
+    font-size: var(--score-title);
+    font-weight: var(--score-title-weight, 400);
+    background-color: var(--score-bg, white);
+    border-radius: var(--score-radius, 0);
+    padding: var(--score-padding);
+
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      gap: u.px-rem(8);
+    }
+
+    &__name {
+      display: flex;
+      align-items: center;
+      gap: u.px-rem(8);
+
+      // Icon comes from CSS only: the motif is set per theme, the colour is
+      // inherited from the player modifier below via currentColor.
+      &::before {
+        content: "";
+        flex-shrink: 0;
+        width: var(--score-icon-width, #{u.px-rem(24)});
+        height: var(--score-icon-height, #{u.px-rem(30)});
+        background-color: currentColor;
+        -webkit-mask: var(--score-icon) center / contain no-repeat;
+        mask: var(--score-icon) center / contain no-repeat;
+      }
+
+      &--blue {
+        color: var(--player-blue);
+      }
+      &--orange {
+        color: var(--player-orange);
+      }
+    }
+
+    &__value {
+      &--blue {
+        color: var(--player-blue);
+      }
+      &--orange {
+        color: var(--player-orange);
+      }
+    }
+  }
+
+  &__stage--result {
+    display: grid;
+    grid-template-rows: auto auto auto 80px;
+    justify-items: center;
+    align-items: center;
+    font-family: var(--title-font);
+
+    .endscreen__confetti {
+      max-width: base.$max-dp-width;
+      width: 100dvw;
+      inset-inline: 0;
+      margin-inline: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-image: var(--endscreen-confetti, none);
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 360px;
+    }
+    @media (min-width: base.$max-dp-width) {
+      .endscreen__confetti {
+        background-image: var(--endscreen-confetti-long, none);
+        max-width: 3216px;
+      }
+    }
+  }
+  &__subtitle {
+    font-size: var(--result-subtitle);
+    color: var(--result-subtitle-color, base.$txt-white);
+    font-weight: var(--result-subtitle-weight, 400);
+    letter-spacing: var(--label-letter-spacing, 0);
+  }
+
+  &__winner {
+    font-size: var(--result-winner);
+    font-weight: var(--result-winner-weight, 400);
+    letter-spacing: var(--label-letter-spacing, 0);
+
+    &-orange {
+      color: var(--player-orange);
+    }
+    &-blue {
+      color: var(--player-blue);
+    }
+    &-draw {
+      color: var(--draw-fill, base.$txt-white);
+    }
+  }
+
+  &__figure {
+    display: grid;
+    place-items: center;
+    width: var(--figure-width, #{u.px-rem(176)});
+    height: var(--figure-height, #{u.px-rem(220)});
+    padding: var(--figure-padding, 0);
+    border: var(--figure-stroke, none);
+    border-radius: var(--figure-radius, 0);
+    padding: var(--figure-padding, 0);
+    box-shadow: var(--figure-shadow, none);
+    background-color: var(--figure-box-bg, transparent);
+    margin: 64px 0;
+
+    &::before {
+      content: "";
+      inline-size: 100%;
+      block-size: 100%;
+      background-color: var(--figure-fill, currentColor);
+      background-image: var(--figure-image, none);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      -webkit-mask: var(--endscreen-figure, url("/assets/icons/svg/chess-pawn.svg")) center / contain no-repeat;
+      mask: var(--endscreen-figure, url("/assets/icons/svg/chess-pawn.svg")) center / contain no-repeat;
+    }
+  }
+
+  &__link {
+    font-family: var(--title-font);
+    font-size: var(--link-title);
+    color: var(--link-title-color, base.$txt-white);
+    background-color: var(--link-bg, transparent);
+    padding: var(--link-padding, 0);
+    border: var(--link-border, none);
+    border-radius: var(--link-border-radius, 0);
+    letter-spacing: var(--label-letter-spacing, 0);
+
+    &:hover {
+      background-color: var(--exit-btn-bg-hover);
+      border-color: var(--exit-btn-border-hover, transparent);
+      border-style: solid;
+      border-width: var(--exit-btn-border-width-hover, 2px);
+      box-shadow: var(--exit-btn-shadow, none);
+      color: var(--exit-btn-txt-hover);
+    }
+  }
+}
+
+[data-stage="score"] {
+  .endscreen {
+    &__stage {
+      &--result {
+        display: none;
+      }
+    }
+  }
+}
+
+[data-stage="result"] {
+  .endscreen {
+    &__stage {
+      &--score {
+        display: none;
+      }
+    }
+  }
+}
+
+[data-theme]:not([data-theme="coding"]) {
+  .score__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+[data-result="blue"] .endscreen__figure {
+  color: var(--player-blue);
+}
+
+[data-result="orange"] .endscreen__figure {
+  color: var(--player-orange);
+}
+
+[data-result="draw"] .endscreen__figure {
+  --endscreen-figure: url("/assets/icons/svg/scale.svg");
+  --figure-image: none;
+  --figure-fill: currentColor;
+  color: var(--draw-fill, base.$txt-white);
+  width: var(--figure-draw-width, #{u.px-rem(250)});
+  height: var(--figure-draw-height, #{u.px-rem(200)});
+}
+
+[data-theme="projects"][data-result] .endscreen__figure {
+  --figure-fill: transparent;
+  --endscreen-figure: none;
+}
+
+[data-theme="projects"][data-result="blue"] .endscreen__figure {
+  --figure-image: url("/assets/icons/svg/pawn-projects-blue.svg");
+}
+
+[data-theme="projects"][data-result="orange"] .endscreen__figure {
+  --figure-image: url("/assets/icons/svg/pawn-projects-orange.svg");
+}
+
+[data-theme="projects"][data-result="draw"] .endscreen__figure {
+  --figure-image: url("/assets/icons/svg/scale-projects.svg");
+}
+
+[data-theme="food"][data-stage="result"].endscreen {
+  background-color: rgba(246, 246, 246, 1);
+
+  .endscreen__winner-orange{
+    color: var(--result-subtitle-color);
+  }
+  .endscreen__winner-blue{
+    color: var(--result-subtitle-color);
+  }
+  .endscreen__winner-draw, .endscreen__subtitle{
+    color: rgba(243, 131, 45, 1);
+  }
+}

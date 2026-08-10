@@ -3,16 +3,20 @@
 
 [data-theme="food"] {
   --main-bg: #{base.$theme-white};
+
   --header-bg: #{base.$food-header-bg};
   --player-bg: #{base.$food-players-bg};
   --player-blue: #{base.$player-blue};
   --player-orange: #{base.$player-orange};
+  --draw-fill: #{base.$food-orange};
 
   --title-font: "Klee One", sans-serif;
   --title-font-secondary: "Delius-Unicase", san-serif;
   --title-weight: 600;
   --title-weight-regular: 400;
   --title-size: #{u.px-rem(32)};
+  --title-color: #{base.$projects-coral-dark};
+  --title-shadow: #{base.$shadow-gameover};
   --text-color: #{base.$food-font-color};
 
   --exit-btn-txt: #{base.$food-btn-txt};
@@ -55,4 +59,37 @@
   --card-back-shadow: #{base.$shadow-med};
   --card-border-matched: solid 3px #{base.$gaming-pink};
   --card-shadow: 5px 5px 8px 0px rgba(237, 27, 118, 0.3);
+
+  --endscreen-bg: #{base.$food-orange};
+  --endscreen-title-weight: 600;
+  --endscreen-title-color: #{base.$txt-white};
+  --title-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --endscreen-score-title: #{u.px-rem(42)};
+  --endscreen-score-title-weight: 600;
+  --score-padding: 13px 34px;
+  --score-title: #{u.px-rem(40)};
+  --score-title-weight: 700;
+  --score-icon: url("/assets/icons/svg/chess-pawn-small.svg");
+  --score-icon-width: #{u.px-rem(24)};
+  --score-icon-height: #{u.px-rem(30)};
+
+  --result-subtitle: #{u.px-rem(40)};
+  --result-subtitle-weight: 400;
+  --result-subtitle-color: #{base.$food-font-color};
+  --result-winner: #{u.px-rem(60)};
+  --result-winner-weight: 700;
+
+  --figure-width: 200px;
+  --figure-height: 250px;
+  --figure-draw-width: 312px;
+  --figure-draw-height: 285px;
+  --figure-box-bg: rgba(247, 230, 213, 1);
+  --figure-padding: 24px 30px;
+  --figure-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  --link-title: #{u.px-rem(24)};
+  --link-bg: rgba(243, 131, 45, 1);
+
+  --link-padding: 12px 20px;
+  --link-border-radius: 10px;
 }

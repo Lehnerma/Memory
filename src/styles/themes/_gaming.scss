@@ -7,11 +7,13 @@
   --player-bg: #{base.$theme-white};
   --player-blue: #{base.$player-blue};
   --player-orange: #{base.$player-orange};
+  --draw-fill: #{base.$gaming-pink};
 
   --title-font: "Orbitron", sans-serif;
   --title-weight: 700;
   --title-weight-regular: 400;
   --title-size: #{u.px-rem(32)};
+  --title-color: #{base.$gaming-pink};
   --text-color: #{base.$theme-white};
 
   --exit-btn-txt: #{base.$theme-white};
@@ -54,4 +56,34 @@
   --card-border-matched: solid 3px #{base.$gaming-pink};
   --card-shadow: 5px 5px 8px 0px rgba(237, 27, 118, 0.3);
   --card-radius: 12px;
+
+  --endscreen-bg: #{base.$gaming-main-bg};
+  --endscreen-title-color: #{base.$gaming-pink};
+  --endscreen-score-title: #{u.px-rem(28)};
+  --endscreen-score-title-weight: 700;
+
+  --score-padding: 8px 16px;
+  --score-title: #{u.px-rem(38)};
+  --score-title-weight: 700;
+  --score-radius: 10px;
+  --score-icon: url("/assets/icons/svg/chess-pawn-small.svg");
+  --score-icon-width: #{u.px-rem(24)};
+  --score-icon-height: #{u.px-rem(30)};
+
+  --result-subtitle: #{u.px-rem(28)};
+  --result-subtitle-weight: 700;
+  --result-winner: #{u.px-rem(60)};
+  --result-winner-weight: 700;
+
+  --figure-width: 288px;
+  --figure-height: 344px;
+  --figure-image: url("/assets/img/pokal.png");
+  --figure-fill: transparent;
+  --endscreen-figure: none;
+
+  --link-title: #{u.px-rem(24)};
+  --link-bg: rgba(237, 27, 118, 0.08);
+  --link-border: 2px solid rgba(231, 28, 79, 1);
+  --link-padding: 16px 24px;
+  --link-border-radius: 10px;
 }
