@@ -68,8 +68,16 @@
   --result-subtitle: #{u.px-rem(40)};
   --result-subtitle-weight: 400;
   --result-winner: #{u.px-rem(60)};
-  //todo --result-winner-color: planing for the different options orange blue draw
   --result-winner-weight: 700;
   --endscreen-confetti: url("/assets/img/confetti.png");
   --endscreen-confetti-long: url("/assets/img/confetti-long.png");
+
+  --figure-width: 200px;
+  --figure-height: 250px;
+
+  --link-title: #{u.px-rem(24)};
+  --link-bg: rgba(134, 233, 214, 0.2);
+  --link-border: 1px solid rgba(77, 213, 188, 1);
+  --link-padding: 16px 24px;
+
 }

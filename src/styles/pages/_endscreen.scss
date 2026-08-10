@@ -9,7 +9,7 @@
   margin: 0;
   justify-self: center;
 
-  &__stage {
+  &__stage--score {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,6 +88,10 @@
   }
 
   &__stage--result {
+    display: grid;
+    grid-template-rows: auto auto auto 80px;
+    justify-items: center;
+    align-items: center;
     font-family: var(--title-font);
 
     .endscreen__confetti {
@@ -121,7 +125,7 @@
   &__winner {
     font-size: var(--result-winner);
     font-weight: var(--result-winner-weight, 400);
-    letter-spacing: var(--label-winner-spacing, 0);
+    letter-spacing: var(--label-letter-spacing, 0);
 
     &-orange {
       color: var(--player-orange);
@@ -134,16 +138,51 @@
     }
   }
 
-  // Same trick as the score icon: the shape comes from the mask, the colour
-  // from currentColor. The pawn is the default for every theme - only a draw
-  // (scales) and the gaming trophy break out of it, see the rules below.
   &__figure {
+    display: grid;
+    place-items: center;
     width: var(--figure-width, #{u.px-rem(176)});
     height: var(--figure-height, #{u.px-rem(220)});
-    background-color: currentColor;
-    -webkit-mask: var(--endscreen-figure, url("/assets/icons/svg/chess-pawn.svg")) center / contain
-      no-repeat;
-    mask: var(--endscreen-figure, url("/assets/icons/svg/chess-pawn.svg")) center / contain no-repeat;
+    padding: var(--figure-padding, 0);
+    border: var(--figure-stroke, none);
+    border-radius: var(--figure-radius, 0);
+    padding: var(--figure-padding, 0);
+    box-shadow: var(--figure-shadow, none);
+    background-color: var(--figure-box-bg, transparent);
+    margin: 64px 0;
+
+    &::before {
+      content: "";
+      inline-size: 100%;
+      block-size: 100%;
+      background-color: var(--figure-fill, currentColor);
+      background-image: var(--figure-image, none);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      -webkit-mask: var(--endscreen-figure, url("/assets/icons/svg/chess-pawn.svg")) center / contain no-repeat;
+      mask: var(--endscreen-figure, url("/assets/icons/svg/chess-pawn.svg")) center / contain no-repeat;
+    }
+  }
+
+  &__link {
+    font-family: var(--title-font);
+    font-size: var(--link-title);
+    color: var(--link-title-color, base.$txt-white);
+    background-color: var(--link-bg, transparent);
+    padding: var(--link-padding, 0);
+    border: var(--link-border, none);
+    border-radius: var(--link-border-radius, 0);
+    letter-spacing: var(--label-letter-spacing, 0);
+
+    &:hover {
+      background-color: var(--exit-btn-bg-hover);
+      border-color: var(--exit-btn-border-hover, transparent);
+      border-style: solid;
+      border-width: var(--exit-btn-border-width-hover, 2px);
+      box-shadow: var(--exit-btn-shadow, none);
+      color: var(--exit-btn-txt-hover);
+    }
   }
 }
 
@@ -180,7 +219,6 @@
   }
 }
 
-// The result picks the colour of the figure, the theme keeps the motif.
 [data-result="blue"] .endscreen__figure {
   color: var(--player-blue);
 }
@@ -189,20 +227,42 @@
   color: var(--player-orange);
 }
 
-// A draw swaps the motif in every theme - the scales are wider than the pawn,
-// so they bring their own proportions along.
 [data-result="draw"] .endscreen__figure {
   --endscreen-figure: url("/assets/icons/svg/scale.svg");
+  --figure-image: none;
+  --figure-fill: currentColor;
   color: var(--draw-fill, base.$txt-white);
   width: var(--figure-draw-width, #{u.px-rem(250)});
   height: var(--figure-draw-height, #{u.px-rem(200)});
 }
 
-// The gaming theme shows the coloured trophy instead of a one-colour shape.
-// The mask has to go, otherwise the background colour would keep painting a
-// solid block on top of the image.
-[data-theme="gaming"]:not([data-result="draw"]) .endscreen__figure {
-  background: url("/assets/img/pokal.png") center / contain no-repeat;
-  -webkit-mask: none;
-  mask: none;
+[data-theme="projects"][data-result] .endscreen__figure {
+  --figure-fill: transparent;
+  --endscreen-figure: none;
+}
+
+[data-theme="projects"][data-result="blue"] .endscreen__figure {
+  --figure-image: url("/assets/icons/svg/pawn-projects-blue.svg");
+}
+
+[data-theme="projects"][data-result="orange"] .endscreen__figure {
+  --figure-image: url("/assets/icons/svg/pawn-projects-orange.svg");
+}
+
+[data-theme="projects"][data-result="draw"] .endscreen__figure {
+  --figure-image: url("/assets/icons/svg/scale-projects.svg");
+}
+
+[data-theme="food"][data-stage="result"].endscreen {
+  background-color: rgba(246, 246, 246, 1);
+
+  .endscreen__winner-orange{
+    color: var(--result-subtitle-color);
+  }
+  .endscreen__winner-blue{
+    color: var(--result-subtitle-color);
+  }
+  .endscreen__winner-draw, .endscreen__subtitle{
+    color: rgba(243, 131, 45, 1);
+  }
 }

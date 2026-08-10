@@ -7,9 +7,9 @@
 
   --header-bg: #{base.$projects-header-bg};
   --player-bg: #{base.$theme-white};
-  --player-blue: #{base.$player-blue};
-  --player-orange: #{base.$player-orange};
-  --draw-fill: #{base.$projects-coral-dark};
+  --player-blue: rgba(9, 127, 197, 1);
+  --player-orange: rgba(234, 105, 0, 1);
+  --draw-fill: rgba(253, 91, 79, 1);
 
   --title-font: "Figtree", sans-serif;
   --title-weight: 700;
@@ -64,4 +64,23 @@
   --score-icon: url("/assets/icons/svg/chess-pawn-small.svg");
   --score-icon-width: #{u.px-rem(24)};
   --score-icon-height: #{u.px-rem(30)};
+
+  --result-subtitle: #{u.px-rem(40)};
+  --result-subtitle-weight: 400;
+  --result-winner: #{u.px-rem(60)};
+  --result-winner-weight: 700;
+
+  --figure-width: 288px;
+  --figure-height: 344px;
+
+  --figure-draw-width: 348px;
+  --figure-draw-height: 279px;
+  --endscreen-figure: none;
+
+  --link-title: #{u.px-rem(24)};
+  --link-title-color: #{base.$projects-blue-dark};
+  --link-bg: rgba(191, 229, 242, 1);
+  --link-padding: 16px 24px;
+  --link-border-radius: 10px;
+  --exit-btn-border-hover: #{base.$theme-white};
 }
