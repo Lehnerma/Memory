@@ -1,11 +1,32 @@
 import type { CardData } from "./cards";
+import { getStartPlayer } from "./cards";
 
-const MISMATCH_DELAY_MS = 2000;
+const MISMATCH_DELAY_MS = 500;  //todo set to 1000-1500
+
+type Scores = {
+  blue: number;
+  orange: number;
+};
+
+export type Player = "blue" | "orange";
+
+const PLAYERS: Player[] = ["blue", "orange"];
+
+const scores: Scores = {
+  blue: 0,
+  orange: 0,
+};
 
 let cards: CardData[] = [];
 let flippedCards: CardData[] = [];
 let boardElement: HTMLElement | null = null;
 let isLocked = false;
+let currentPlayer: Player;
+
+function setCurrentPlayer(): void {
+  currentPlayer = getStartPlayer();
+  updateCurrentPlayerIcon();
+}
 
 function findCardElement(id: number): HTMLElement | null {
   return boardElement?.querySelector<HTMLElement>(`[data-card-id="${id}"]`) ?? null;
@@ -31,13 +52,47 @@ function hideCard(card: CardData): void {
   findCardButton(card.id)?.classList.remove("card__flipped");
 }
 
+function updateCurrentPlayerIcon(): void {
+  const el = document.getElementById("current_player_icon");
+  if (!el) return;
+  el.classList.remove("current-player-blue", "current-player-orange");
+  el.classList.add(`current-player-${currentPlayer}`);
+}
+
+function switchPlayer(): void {
+  currentPlayer = currentPlayer === "blue" ? "orange" : "blue";
+  updateCurrentPlayerIcon();
+}
+
 function markAsPair(card: CardData): void {
   card.isMatched = true;
+
   findCardFront(card.id)?.classList.add("card--pair");
+}
+
+function updateScore(player: Player): void {
+  const element = document.getElementById(`player_score_${player}`);
+  if (!element) return;
+  element.textContent = scores[player].toString();
+}
+
+function updateAllScores(): void {
+  PLAYERS.forEach(updateScore);
+}
+
+function resetScores(): void {
+  PLAYERS.forEach((player) => (scores[player] = 0));
+  updateAllScores();
+}
+
+function countScore(): void {
+  scores[currentPlayer]++;
+  updateScore(currentPlayer);
 }
 
 function resolveMatch(): void {
   flippedCards.forEach(markAsPair);
+  countScore();
   flippedCards = [];
 }
 
@@ -49,6 +104,7 @@ function resolveMismatch(): void {
   window.setTimeout(() => {
     mismatched.forEach(hideCard);
     isLocked = false;
+    switchPlayer();
   }, MISMATCH_DELAY_MS);
 }
 
@@ -82,7 +138,8 @@ function handleBoardClick(e: Event): void {
 export function initGameLogic(cardData: CardData[]): void {
   boardElement = document.getElementById("memory_board");
   if (!boardElement) return;
-
+  setCurrentPlayer();
+  resetScores();
   cards = cardData;
   flippedCards = [];
   isLocked = false;
