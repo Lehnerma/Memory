@@ -4,7 +4,7 @@ type GameSettings = {
   boardsize: string;
 };
 
-function getGameSettings(): GameSettings | null {
+export function getGameSettings(): GameSettings | null {
   const raw = sessionStorage.getItem("gameSettings");
   if (!raw) return null;
   return JSON.parse(raw) as GameSettings;

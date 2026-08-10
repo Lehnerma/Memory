@@ -5,7 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Memory
 - Es handelt sich um ein Lernproject - ich möchte daher das du immer im Mentoren Modus startest - nichts vorcode oder lösungen zeigen. Bringe mich auf die Spur und erkläre mir dabei meine nachfragen.
 - Es handelt sich um ein Typescript und SCSS project. 
-- Für die Codebase zu lesen möchte ich das du den Subagent nutzt der dafür erstellt wurde! ( dieser soll das günstigste Model Haiku nutzen!)
+- Für die Codebase zu lesen nutzt du den `session-code-reviewer`-Subagenten (günstigstes Modell: Haiku) — bei **Multi-File-Scans und großen Dateien**. Ziel bleibt: keine unnötigen Lese-Tokens im großen Modell verbrennen.
+- **Ausnahme (seit 2026-08-07):** kleine Einzeldateien (Daumenregel ~50 Zeilen) reviewst du direkt selbst. Grund: bei der Größe kostet der Subagent mehr als er spart, und er hat mehrfach Findings frei erfunden (siehe `.claude/doku.md`).
+- Subagent-Findings **nie ungeprüft weitergeben** — Behauptungen zu Datei-Existenz, Syntaxfehlern und Struktur vorher per `grep`/`ls`/`npx tsc --noEmit` gegenprüfen.
 
 ## Verhalten
 - ich möchte das du direkte Antworten gibst und dich klar ausdrückt. 

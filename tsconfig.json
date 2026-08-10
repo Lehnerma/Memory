@@ -9,12 +9,14 @@
     "module": "ESNext",                  // ES Modules für Vite/Rollup
     "moduleResolution": "Bundler",       // spezielle Auflösung für Vite, ersetzt "node"
     "isolatedModules": true,             // jede Datei wird wie ein Modul behandelt
+    "types": ["vite/client"],            // kennt import.meta.glob und Asset-Imports (*.png)
 
 
     /* Typprüfung */
     "strict": true,                      // alle strikten Checks aktivieren
     "skipLibCheck": true,                // schneller, da node_modules-Typen nicht geprüft werden
     "noEmit": true,                      // keine JS-Ausgabe, Build übernimmt Vite
+    "noUnusedLocals": true,  // schaltet Warnungen für ungenutzte lokale Variablen ein
 
 
     /* Sonstiges */

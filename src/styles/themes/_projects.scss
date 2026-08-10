@@ -2,7 +2,7 @@
 @use "../utilities" as u;
 
 [data-theme="projects"] {
-  --main-bg: #{base.$projects-main-bg};
+  --main-bg: #{base.$theme-white};
   --header-bg: #{base.$projects-header-bg};
   --player-bg: #{base.$theme-white};
   --player-blue: #{base.$player-blue};
@@ -39,4 +39,11 @@
   --dialog-exit-btn-border-width-hover: 0;
   --dialog-exit-btn-txt: #{base.$theme-white};
   --dialog-exit-btn-txt-hover: #{base.$theme-white};
+
+
+  --card-height: #{u.px-rem(100)};
+  --card-bg: #{base.$projects-card-face-bg};
+  --card-back-bg: #{base.$projects-blue-dark};
+  --card-border-matched: solid 2px #{base.$projects-blue-dark};
+  --card-radius: 13px;
 }

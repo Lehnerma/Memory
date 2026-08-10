@@ -32,3 +32,17 @@
 
 [2026-08-03] _colors.scss VOLLSTÄNDIGER DUMP
 - 36 Zeilen, lesen für exakte Werte. Inhalte: primary-dark, gey-bg (Tippfehler?), disable-grey, txt-disable, txt-white, primary-yellow, controller-light-yellow, coding-Theme (7 Vars), gaming-Theme (1 Var), projects/food: Platzhalter
+
+[2026-08-07 14:22] SESSION-REVIEW cards.ts (pre-refactor)
+- KRITISCH: Line 26 parseInt ohne Radix → parseInt(s, 10) erforderlich
+- KRITISCH: Line 71 alt="" ist falsch für Kartenbild (nicht dekorativ) → alt sollte beschreibend sein
+- WARNUNG: createCardElement 25 Zeilen (ohne Blanks: ~22) → überschreitet 14-Zeilen-Limit
+- WARNUNG: getBoardSize + getTheme haben Duplikation (beide rufen getGameSettings() auf)
+- STRUKTUR: BEM-Naming korrekt; Single Responsibility teilweise (createCardElement macht zu viel)
+- PATTERN: Template-Refactor wird Zeilen sparen und Code lesbar machen
+
+[2026-08-07 14:35] SESSION-REVIEW flip.ts
+- KRITISCH: Zeile 12 — initFlip() → handleBoardClick() mehrfacher Aufruf erzeugt Listener-Duplikation (addEventListener jedes Mal neu registriert)
+- WARNUNG: Zeile 7 — .classList.toggle() ohne CardData-Sync: DOM-Zustand (CSS-Klasse) kann divergieren vom CardData-Array (Spiel-Logik)
+- GUT: Zeile 4 instanceof-Guard (nicht as-Cast); Zeile 6 Early Return für .closest(); Selektor/Klasse korrekt (kebab-case)
+- GUT: Single Responsibility ✓; Max 14 Zeilen ✓; Naming (IDs snake_case, Klassen kebab-case) ✓; keine TypeScript-Fehler
