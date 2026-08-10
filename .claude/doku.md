@@ -240,3 +240,30 @@ Chronologisches Arbeitstagebuch. Menschlich lesbar, keine Memory-DB.
 - **Etappe 3 (Persistenz)**: Erster Entwurf schrieb zwei getrennte sessionStorage-Keys (`gameResult` + `gameScore`) aus einer Funktion namens `setSessionStorageEndResults()`. Umgebaut auf **ein** Objekt unter einem Key (`{ winner, score }` als `gameResult`) — eine Prüfung beim Auslesen statt zwei, keine Chance auf halb-vorhandenen State; Funktion heißt jetzt `saveResult()`, analog zum bestehenden `saveSettings()` in `settings.ts` (Name sagt Absicht, nicht Technik).
 - **Nebenfund**: `npx tsc --noEmit` meldet `shuffleCards is declared but its value is never read` — Max hat das Mischen in `cards.ts:154` bewusst auskommentiert, um Runden schnell durchspielen zu können (`//todo reset - only for testing`). Kein Bug, muss aber vor dem Merge zurück.
 - Stand: Kette Spielende → Gewinner → sessionStorage läuft. Offen in `checkGameEnd()`: der `location.href`-Sprung, geht erst mit Etappe 4 (Seite existiert noch nicht).
+
+---
+
+## 2026-08-10 — Endscreen Etappe 5: Icons & Figuren per CSS-Maske
+
+**Score-Zeile (`score__name::before`)**
+
+- Motiv kommt aus `--score-icon` (pro Theme), Farbe aus `currentColor` — geerbt von den Modifiern `score__name--blue/--orange`. Dadurch keine zweite Farbvariable und Text + Icon können nicht auseinanderlaufen.
+- `coding` → `score-label.svg` (24×20) mit sichtbarem Text "Blue"/"Orange"; die drei anderen Themes → `chess-pawn-small.svg` (24×30) **statt** Text. Der Text wird per `clip-path: inset(50%)` versteckt statt `display: none`, damit der `<dt>` inhaltlich nicht leer wird.
+- Falle beim Anlegen der SVGs: das gelieferte Label-SVG hatte `fill="none"` am `<svg>` und kein eigenes `fill` am `<path>` — das vererbt sich nach unten und hätte eine **leere Maske** ergeben. Beide neuen Dateien haben jetzt explizit `fill="#000000"` (welche Farbe drinsteht, ist für eine Alpha-Maske egal).
+
+**Gewinner-Figur (`endscreen__figure`)**
+
+- Gleiche Mechanik, aber Motiv-Default direkt in der Basisregel (`var(--endscreen-figure, url(chess-pawn.svg))`) statt 4× pro Theme — hier weicht nur *ein* Theme ab, und das über eine eigene Regel, nicht über die Variable.
+- Die drei vorab markierten Fallen und wie sie gelöst sind:
+  1. **gaming + draw**: gaming will den Pokal, bei Unentschieden aber die Waage. Gelöst über `[data-result="draw"]`, das die Variable **am Element selbst** setzt (schlägt die vom Body geerbte Theme-Deklaration immer) — und über `:not([data-result="draw"])` an der Pokal-Regel, damit die beiden sich nicht überlappen statt sich per Reihenfolge zu schlagen.
+  2. **`mask: none` reicht nicht**: `background-color: currentColor` würde weiter einen farbigen Block über das Pokal-PNG malen. Die Pokal-Regel nutzt deshalb das `background`-Shorthand, das `background-color` implizit auf `transparent` zurücksetzt.
+  3. **Doppelte `mask-*`/`background-*`-Familien** vermieden: durchgehend Shorthands, kein Mischen von Shorthand und Einzelwerten.
+- Waage bringt eigene Proportionen mit (353×283 quer vs. 200×250 hoch), daher `--figure-draw-width/-height` im draw-Zweig.
+- `--draw-fill` gab es nur im coding-Theme — in gaming (pink), projects (coral-dark) und food (orange) nach Screenshot ergänzt, sonst wäre die Waage in drei Themes unsichtbar bzw. weiß.
+- `scale.md` / `chess-pawn.md` durch echte `.svg` ersetzt (`.md` ist per `url()` nicht ladbar).
+
+**Nebenbei geklärt: Asset-Pfade in SCSS**
+
+Max' Confetti-Versuch nutzte `url('../assets/img/confetti.png')`. Relativ aufgelöst landet das im Build bei `dist/assets/assets/img/…` → 404, **ohne** dass der Build meckert (Vite schreibt den Pfad nur um, statt ihn als Asset aufzulösen). Alles unter `public/` wird absolut ab Wurzel angesprochen: `url("/assets/img/confetti.png")`. Weitere Punkte am Confetti-Block: `position: fixed` ohne `left` bleibt an der statischen Position hängen, und ohne `no-repeat`/`background-size` kachelt das Bild auf breiten Screens.
+
+**Stand**: Build grün (`npx vite build`), alle Regeln landen im kompilierten CSS, Assets im `dist`. Offen: Etappe 6 (`endscreen.ts` — sessionStorage lesen, `data-result` setzen, Stage-Timer, Link-Text pro Theme), Confetti-Block, sowie vor dem Merge das auskommentierte Mischen in `cards.ts:154` zurückdrehen.
