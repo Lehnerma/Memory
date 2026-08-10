@@ -197,3 +197,33 @@ Chronologisches Arbeitstagebuch. Menschlich lesbar, keine Memory-DB.
 - **Naming-Konvention-Auftrag für den Subagenten**: Max wollte zunächst "alle Variablen in UPPERCASE in allen ts-Files" — nach Widerspruch (das ist unüblich, SCREAMING_SNAKE_CASE ist nur für echte Modul-Konstanten üblich, nicht für jede lokale Variable) per `AskUserQuestion` präzisiert: Standard-TS-Konvention (Funktionen camelCase, Klassen/Interfaces/Typen PascalCase, Konstanten UPPER_CASE, lokale Variablen bleiben camelCase). `session-code-reviewer`-Subagent beauftragt, das in allen `src/scripts/*.ts` zu prüfen/fixen (reiner Naming-Pass, keine Logik-Änderungen).
 - **Wichtiger Zuverlässigkeits-Fund beim Subagenten-Ergebnis** (Ergänzung zu `feedback` aus der SCSS-Cleanup-Session — gleiches Muster nochmal bestätigt): Der Subagent behauptete (a) `src/scripts/board.ts` und `src/main.ts` würden "nicht existieren" und (b) es gäbe einen Syntaxfehler `function getCardImgPaths():sti {` in `cards.ts`. Beides frei erfunden — per direktem `git diff`/`ls`/`npx tsc --noEmit`-Check verifiziert: beide Dateien existieren (waren zu dem Zeitpunkt sogar schon von Max bzw. dem Subagenten selbst modifiziert), `cards.ts` hat den korrekten Type `string[]`, kein Syntaxfehler, `tsc --noEmit` läuft fehlerfrei durch. Tatsächliche Subagent-Leistung: `PATHS` → `paths` in `cards.ts` korrekt umbenannt, restliche Dateien zu Recht als bereits konform gemeldet. **Lerneffekt**: Haiku-Subagent-Aussagen über Datei-Existenz und Fehler-Diagnosen nicht ungeprüft übernehmen, gerade bei "Datei existiert nicht"/"Syntaxfehler"-Behauptungen — kurzer `ls`/`git diff`/Compiler-Check deckt das zuverlässig auf und kostet kaum Zeit.
 - Stand danach: `getTheme()`, `getBoardSize()`, `getCardImgPaths()` fertig und kompilieren fehlerfrei, liefern die Pfade der `size/2` benötigten Kartenmotive pro Theme. Task 1 (Bild-Pool-Auslese) damit inhaltlich abgeschlossen — Duplizieren zu Paaren + Mischen (Task 2) noch offen.
+
+## 2026-08-10
+
+**Endscreen (Issue #41) — Planungssession, noch keine Zeile Code**
+
+- Kontext selbst gelesen (kein Subagent, gezielte `grep`/`cat`-Auszüge statt Volltext): `game-logic.ts`, `board.ts`, `theme.ts`, `main.ts`, `settings.ts` (Ausschnitt), `pages/board.html`, `vite.config.ts`, `pages/_index.scss`, `public/assets`-Baum. Grundlage: Screenshot der drei Figma-Screens (Game over_01, Winner_01 blau/orange, Draw_01) + Issue-Text #41.
+- **Funde/Einwände, die den Plan geprägt haben:**
+  - **Spielende existiert im Code gar nicht.** `game-logic.ts` hat keinen "alle Karten gematcht"-Check. Der Trigger ist damit Etappe 1, nicht der Screen. Im Issue-Text fehlt dieser Task komplett.
+  - **`vite.config.ts` kennt `board.html` nicht** — Input-Liste enthält nur `index.html` + `pages/settings.html`. Im Dev-Server unsichtbar, beim `build` fliegt board.html raus. Muss beim Anlegen der Endscreen-Seite mitgefixt werden.
+  - **Neue Seite ⇒ State-Verlust**: Scores/Gewinner leben nur im Modul-RAM. Transport über `sessionStorage` nötig, nach Vorbild von `saveSettings()` — aber unter eigenem Key, `gameSettings` nicht überschreiben.
+  - **`main.ts` ruft alle Inits auf jeder Seite auf**, gerettet nur durch `if (!document.querySelector(".board")) return;`-Guards in den Modulen. Endscreen bekommt denselben Guard-Stil (`.endscreen`); echter Page-Router wäre ein eigenes Issue.
+  - **`initBoardTheme()` gated auf `.board`** → Endscreen bekäme kein `data-theme`. Guard muss verallgemeinert werden, wenn der Endscreen themed sein soll.
+  - **Design vs. Issue widersprüchlich beim Draw**: Issue sagt "beide Schachfiguren", Screenshot zeigt eine Waage.
+  - **Confetti/Girlande-Frage aus dem Issue technisch beantwortet**: Widescreen-Erweiterung geht sauber nur, wenn das Asset als horizontal nahtloses SVG exportiert wird (`background-repeat: repeat-x`). Fixes PNG ⇒ harte Kanten oder Unschärfe beim Verbreitern. Muss beim Export geklärt werden, bevor CSS dafür entsteht.
+  - Randnotiz: "Blue 10 / Orange 16" im Figma sind Dummy-Werte (26 Punkte gehen bei keiner Boardgröße auf, max. 18 Paare).
+- **Entscheidungen (per `AskUserQuestion`, alle von Max):**
+  - **Ansatz**: neue Seite `pages/endscreen.html` (nicht Dialog) — Vollbild-Design, Projekt ist ohnehin Multi-Page.
+  - **Screen-Aufbau**: *eine* Seite mit zwei Stufen über `data-stage`. Stufe 1 "Game over" + Punktestand, nach ~2s automatisch (setTimeout, kein Button) Stufe 2 mit Confetti + Winner/Draw + "Back to start". Max hat statt einer Option die User Story geliefert ("Als Benutzer erwarte ich nach Beendigung der Runde eine entsprechende Meldung sowie die Möglichkeit, eine neue Runde zu beginnen. Es erscheint eine 'Game over' Anzeige mit aktuellem Punktestand. Der Spieler mit den meisten Punkten wird als Gewinner angezeigt."), daraus die zweistufige Lesart abgeleitet und rückbestätigt.
+  - **Draw-Icon**: Waage (Screenshot gewinnt gegen Issue-Text) — Issue #41 entsprechend korrigieren.
+  - **"Back to start"** → `settings.html`. Damit ist implizit auch der offene TODO in `board.ts:15` (Exit-Dialog: index vs. settings) in dieselbe Richtung entschieden.
+  - **Styling-Ansatz** (Max' eigene Idee, bestätigt): Varianten über data-Attribute (`data-result="blue|orange|draw"`, `data-stage`) statt BEM-Modifier-Klassen — konsistent mit dem bestehenden `data-theme`/`data-boardsize`-Muster.
+- **Vereinbarter Weg in 7 Etappen** (Max arbeitet sie einzeln ab, Mentor-Modus — keine Lösung vorgeben):
+  1. Spielende erkennen in `game-logic.ts` (alle `isMatched`?), Aufruf aus `resolveMatch()` nach `countScore()`, mit Delay damit das letzte Paar sichtbar bleibt. Nur `console.log` als Beweis.
+  2. Gewinner ermitteln: reine Funktion Scores → `"blue" | "orange" | "draw"`, eigener Union-Type.
+  3. Ergebnis nach `sessionStorage` (Gewinner + beide Scores, eigener Key), dann `location.href` auf die neue Seite.
+  4. `pages/endscreen.html` mit statischem Dummy-Markup + Vite-Input-Liste erweitern (**inkl. board.html**). Semantik: `<main>`, `<h1>`, Score als `<dl>`/`<ul>` statt Div-Suppe.
+  5. `src/styles/pages/_endscreen.scss` (BEM-Block `endscreen`, Varianten via `[data-result]`/`[data-stage]`, Farbe+Figur als CSS-Variablen), `@forward` in `pages/_index.scss`. Confetti bleibt Platzhalter.
+  6. Neues Modul `endscreen.ts`: sessionStorage lesen, `data-result` setzen, Scores eintragen, Stage-Timer, Back-Button; Guard auf `.endscreen`, Registrierung in `main.ts`.
+  7. Assets & Widescreen: Confetti-SVG, Content `max-width: 1040px`, Confetti über volle Breite.
+- Etappe 1–3 sind design-unabhängig und waren sofort startklar; Confetti-Asset muss Max noch aus Figma exportieren.

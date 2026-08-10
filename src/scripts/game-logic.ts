@@ -1,7 +1,8 @@
 import type { CardData } from "./cards";
 import { getStartPlayer } from "./cards";
 
-const MISMATCH_DELAY_MS = 500;  //todo set to 1000-1500
+const MISMATCH_DELAY_MS = 500; //todo set to 1000-1500
+const GAME_END_DELAY = 2000;
 
 type Scores = {
   blue: number;
@@ -18,6 +19,7 @@ const scores: Scores = {
 };
 
 let cards: CardData[] = [];
+
 let flippedCards: CardData[] = [];
 let boardElement: HTMLElement | null = null;
 let isLocked = false;
@@ -66,7 +68,6 @@ function switchPlayer(): void {
 
 function markAsPair(card: CardData): void {
   card.isMatched = true;
-
   findCardFront(card.id)?.classList.add("card--pair");
 }
 
@@ -90,9 +91,22 @@ function countScore(): void {
   updateScore(currentPlayer);
 }
 
+function isGameEnd(): boolean {
+  return cards.every((card) => card.isMatched);
+}
+
+function checkGameEnd(): void {
+  if (isGameEnd()) {
+    window.setTimeout(() => {
+      console.log("game over");
+    }, GAME_END_DELAY);
+  }
+}
+
 function resolveMatch(): void {
   flippedCards.forEach(markAsPair);
   countScore();
+  checkGameEnd();
   flippedCards = [];
 }
 
