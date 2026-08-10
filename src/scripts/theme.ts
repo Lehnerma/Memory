@@ -10,7 +10,7 @@ export function getGameSettings(): GameSettings | null {
   return JSON.parse(raw) as GameSettings;
 }
 
-function applyBoardTheme(theme: string): void {
+export function applyTheme(theme: string): void {
   document.body.dataset.theme = theme;
 }
 
@@ -18,5 +18,5 @@ export function initBoardTheme(): void {
   if (!document.querySelector(".board")) return;
   const settings = getGameSettings();
   if (!settings?.theme) return;
-  applyBoardTheme(settings.theme);
+  applyTheme(settings.theme);
 }

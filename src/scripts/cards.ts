@@ -150,9 +150,7 @@ function renderBoard(board: HTMLElement, cards: CardData[]): void {
 export function initCards(): CardData[] {
   const board = document.querySelector<HTMLElement>("#memory_board");
   if (!board) return [];
-
-  //const cards = shuffleCards(createCardsArray()); //todo reset - only for testing
-  const cards = createCardsArray(); //todo reset - only for testing
+  const cards = shuffleCards(createCardsArray());
   renderBoard(board, cards);
   return cards;
 }

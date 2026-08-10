@@ -54,7 +54,7 @@
   --card-shadow: 6px 6px 8px 0px rgba(77, 213, 188, 0.3);
 
   --endscreen-bg: #{base.$primary-dark};
-  --endscreen-title: #{u.px-rem(128)}; // todo will replaced by the img.
+  --endscreen-title: #{u.px-rem(128)};
   --endscreen-score-title: #{u.px-rem(26)};
   --endscreen-score-title-weight: 400;
   --score-bg: rgba(134, 233, 214, 0.2);

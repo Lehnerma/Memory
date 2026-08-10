@@ -1,7 +1,7 @@
 import type { CardData } from "./cards";
 import { getStartPlayer } from "./cards";
 
-const MISMATCH_DELAY_MS = 500; //todo set to 1000-1500
+const MISMATCH_DELAY_MS = 1000; 
 const GAME_END_DELAY = 2000;
 
 type Scores = {
@@ -10,7 +10,7 @@ type Scores = {
 };
 
 export type Player = "blue" | "orange";
-type GameResult = Player | "draw";
+export type GameResult = Player | "draw";
 
 const PLAYERS: Player[] = ["blue", "orange"];
 
@@ -115,6 +115,7 @@ function checkGameEnd(): void {
   if (isGameEnd()) {
     window.setTimeout(() => {
       saveResult();
+      window.location.href = "./endscreen.html";
     }, GAME_END_DELAY);
   }
 }

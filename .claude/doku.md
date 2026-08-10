@@ -267,3 +267,22 @@ Chronologisches Arbeitstagebuch. Menschlich lesbar, keine Memory-DB.
 Max' Confetti-Versuch nutzte `url('../assets/img/confetti.png')`. Relativ aufgelöst landet das im Build bei `dist/assets/assets/img/…` → 404, **ohne** dass der Build meckert (Vite schreibt den Pfad nur um, statt ihn als Asset aufzulösen). Alles unter `public/` wird absolut ab Wurzel angesprochen: `url("/assets/img/confetti.png")`. Weitere Punkte am Confetti-Block: `position: fixed` ohne `left` bleibt an der statischen Position hängen, und ohne `no-repeat`/`background-size` kachelt das Bild auf breiten Screens.
 
 **Stand**: Build grün (`npx vite build`), alle Regeln landen im kompilierten CSS, Assets im `dist`. Offen: Etappe 6 (`endscreen.ts` — sessionStorage lesen, `data-result` setzen, Stage-Timer, Link-Text pro Theme), Confetti-Block, sowie vor dem Merge das auskommentierte Mischen in `cards.ts:154` zurückdrehen.
+
+---
+
+## 2026-08-11 — Endscreen-Logik & Aufräumen
+
+**`endscreen.ts` (neu)** — liest `gameResult` aus dem sessionStorage und verteilt es auf die Seite: `data-result` an den Body (damit greift das ganze Figur- und Farb-CSS), Punktestände in `#score_blue`/`#score_orange`, Gewinner-Text plus Modifier-Klasse. Die Texte kommen aus einer Map `RESULT_TEXT`, weil beim Unentschieden auch der Subtitle wechselt ("It's a / Draw" statt "The winner is / …") — dafür hat die `<h2>` jetzt `id="winner_subtitle"`. Der Link-Text hängt am Theme (coding: "Back to start", sonst "Home").
+
+- `applyBoardTheme` in `theme.ts` → `applyTheme` umbenannt und exportiert; das Theme wird jetzt auf zwei Seiten gebraucht, "Board" im Namen stimmte nicht mehr.
+- `data-stage` im HTML steht auf `"score"`: Module-Skripte laufen deferred, der Browser rendert also einmal, bevor JS die Stage setzt — mit `"result"` blitzte für einen Frame die Gewinnerseite auf.
+- Zwei getrennte Konstanten mit demselben Wert: `GAME_END_DELAY` (letzte Karte anschauen, in `game-logic.ts`) und `STAGE_DELAY` (Punktestand lesen, in `endscreen.ts`). Absichtlich nicht geteilt, das sind zwei verschiedene Gründe zu warten.
+- Weiterleitung in `checkGameEnd()` ergänzt: `window.location.href = "./endscreen.html"` nach `saveResult()`.
+
+**Aufräum-Subagent (Haiku)** — Auftrag: `console.*` und auskommentierter Code raus, erklärende Kommentare und `//todo` bleiben. Vorher per AskUserQuestion geklärt, weil "alle Kommentare entfernen" sonst die TODO-Marker mitgerissen hätte.
+
+Entfernt (4 Stellen, alle gegengeprüft): `board.ts:14` alter `location.href`, `style.scss` `// @use "vendor"`, `_card.scss` Debug-Border, `_board.scss` `//justify-items`.
+
+Gegenprüfung von mir: keine `console.*`-Reste, alle 4 TODO-Marker intakt, `_endscreen.scss` vom Agenten gar nicht angefasst (mtime), `tsc --noEmit` **0 Fehler**, `vite build` grün.
+
+**Nebenfund**: `board.ts:14` springt auf `"../pages/settings.html"` — von `pages/board.html` aus ist das der Umweg `pages/../pages/`. Funktioniert, aber `"./settings.html"` wäre ehrlicher. Max' TODO an der Zeile klärt die Frage ohnehin noch (index oder settings?).
