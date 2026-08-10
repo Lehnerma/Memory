@@ -15,7 +15,7 @@
   --title-weight-regular: 400;
   --title-size: #{u.px-rem(32)};
   --title-color: #{base.$projects-coral-dark};
-  --title-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   --text-color: #{base.$projects-font-main};
 
   --exit-btn-txt: #{base.$projects-font-main};
@@ -50,6 +50,17 @@
   --card-border-matched: solid 2px #{base.$projects-blue-dark};
   --card-radius: 13px;
 
+  --title-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   --endscreen-bg: #{base.$projects-blue-dark};
   --endscreen-title-weight: 800;
+  --endscreen-title-color: #{base.$projects-coral-dark};
+  --endscreen-score-title: #{u.px-rem(40)};
+  --endscreen-score-title-weight: 500;
+  --score-padding: 15px 35px;
+  --score-title: #{u.px-rem(38)};
+  --score-title-weight: 700;
+  --score-radius: 10px;
+  --score-icon: url("/assets/icons/svg/chess-pawn-small.svg");
+  --score-icon-width: #{u.px-rem(24)};
+  --score-icon-height: #{u.px-rem(30)};
 }

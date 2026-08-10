@@ -47,7 +47,6 @@
   --dialog-exit-btn-txt-hover: #{base.$coding-exit-btn-border};
   --dialog-radius: 0;
 
-
   --card-bg: #{base.$coding-card-face-bg};
   --card-back-bg: #{base.$coding-card-back-bg};
   --card-border-matched: solid 3px #{base.$coding-teal};
@@ -55,4 +54,13 @@
 
   --endscreen-bg: #{base.$primary-dark};
   --endscreen-title: #{u.px-rem(128)}; // todo will replaced by the img.
+  --endscreen-score-title: #{u.px-rem(26)};
+  --endscreen-score-title-weight: 400;
+  --score-bg: rgba(134, 233, 214, 0.2);
+  --score-title: #{u.px-rem(24)};
+  --score-title-weight: 700;
+  --score-padding: 17px 20px;
+  --score-icon: url("/assets/icons/svg/score-label.svg");
+  --score-icon-width: #{u.px-rem(24)};
+  --score-icon-height: #{u.px-rem(20)};
 }

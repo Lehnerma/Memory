@@ -3,7 +3,7 @@
 
 [data-theme="food"] {
   --main-bg: #{base.$theme-white};
-  --endscreen-bg: #{base.$theme-white};
+
   --header-bg: #{base.$food-header-bg};
   --player-bg: #{base.$food-players-bg};
   --player-blue: #{base.$player-blue};
@@ -58,4 +58,17 @@
   --card-back-shadow: #{base.$shadow-med};
   --card-border-matched: solid 3px #{base.$gaming-pink};
   --card-shadow: 5px 5px 8px 0px rgba(237, 27, 118, 0.3);
+
+  --endscreen-bg: #{base.$food-orange};
+  --endscreen-title-weight: 600;
+  --endscreen-title-color: #{base.$txt-white};
+  --title-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --endscreen-score-title: #{u.px-rem(42)};
+  --endscreen-score-title-weight: 600;
+  --score-padding: 13px 34px;
+  --score-title: #{u.px-rem(40)};
+  --score-title-weight: 700;
+  --score-icon: url("/assets/icons/svg/chess-pawn-small.svg");
+  --score-icon-width: #{u.px-rem(24)};
+  --score-icon-height: #{u.px-rem(30)};
 }

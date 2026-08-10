@@ -10,20 +10,19 @@
   </head>
   <body class="endscreen grid" data-theme="coding" data-stage="score" data-result="orange">
     <main>
-
       <section class="endscreen__stage endscreen__stage--score">
         <!-- todo h1 must be change in theme coding to the png gameOver-coding.png -->
-        <h1 class="endscreen__title">Game Over</h1> 
+        <h1 class="endscreen__title">Game Over</h1>
         <h2 class="score__title">Final score</h2>
         <dl class="score">
-          <dt class="score__name">Blue</dt>
-          <dd class="score__info">
-            <span class="score__value" id="score_blue">0</span>
-          </dd>
-          <dt class="score__name">Orange</dt>
-          <dd class="score__info">
-            <span class="score__value" id="score_orange">0</span>
-          </dd>
+          <div class="score__wrapper">
+            <dt class="score__name score__name--blue"><span class="score__label">Blue</span></dt>
+            <dd class="score__value score__value--blue" id="score_blue">0</dd>
+          </div>
+          <div class="score__wrapper">
+            <dt class="score__name score__name--orange"><span class="score__label">Orange</span></dt>
+            <dd class="score__value score__value--orange" id="score_orange">0</dd>
+          </div>
         </dl>
       </section>
 

@@ -3,7 +3,6 @@
 
 [data-theme="gaming"] {
   --main-bg: #{base.$gaming-main-bg};
-  --endscreen-bg: #{base.$gaming-main-bg};
   --header-bg: #{base.$gaming-header-bg};
   --player-bg: #{base.$theme-white};
   --player-blue: #{base.$player-blue};
@@ -56,4 +55,16 @@
   --card-border-matched: solid 3px #{base.$gaming-pink};
   --card-shadow: 5px 5px 8px 0px rgba(237, 27, 118, 0.3);
   --card-radius: 12px;
+
+  --endscreen-bg: #{base.$gaming-main-bg};
+  --endscreen-title-color: #{base.$gaming-pink};
+  --endscreen-score-title: #{u.px-rem(28)};
+  --endscreen-score-title-weight: 700;
+  --score-padding: 8px 16px;
+  --score-title: #{u.px-rem(38)};
+  --score-title-weight: 700;
+  --score-radius: 10px;
+  --score-icon: url("/assets/icons/svg/chess-pawn-small.svg");
+  --score-icon-width: #{u.px-rem(24)};
+  --score-icon-height: #{u.px-rem(30)};
 }
