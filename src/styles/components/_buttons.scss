@@ -6,6 +6,7 @@
   background-color: transparent;
   cursor: pointer;
   text-decoration: none;
+  @include u.transition();
 
   &--play {
     @include u.wid-heig(250, 98);

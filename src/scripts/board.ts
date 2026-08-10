@@ -12,6 +12,7 @@ function closeExitDialog(): void {
 
 function goToStartPage(): void {
   window.location.href = "./settings.html";
+}
 
 function bindExitButtonListener(): void {
   const exitButton = document.querySelector(".board-header__exit");
