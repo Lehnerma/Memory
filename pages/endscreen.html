@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="../assets/icons/memory.svg" type="image/x-icon" />
+
+    <title>End</title>
+  </head>
+  <body class="endscreen grid" data-theme="coding" data-stage="score" data-result="orange">
+    <main>
+
+      <section class="endscreen__stage endscreen__stage--score">
+        <!-- todo h1 must be change in theme coding to the png gameOver-coding.png -->
+        <h1 class="endscreen__title">Game Over</h1> 
+        <h2 class="score__title">Final score</h2>
+        <dl class="score">
+          <dt class="score__name">Blue</dt>
+          <dd class="score__info">
+            <span class="score__value" id="score_blue">0</span>
+          </dd>
+          <dt class="score__name">Orange</dt>
+          <dd class="score__info">
+            <span class="score__value" id="score_orange">0</span>
+          </dd>
+        </dl>
+      </section>
+
+      <section class="endscreen__stage endscreen__stage--result">
+        <div class="endscreen__confetti"></div>
+        <h2 class="endscreen__subtitle">The winner is</h2>
+        <p class="endscreen__winner" id="winner_name"></p>
+        <div class="endscreen__figure"></div>
+        <!-- Todo must change by theme coding to 'back to start' and the other 3 theme Home -->
+        <a class="btn endscreen__link" href="./settings.html">Home</a>
+      </section>
+    </main>
+    <script type="module" src="../src/main.ts"></script>
+  </body>
+</html>

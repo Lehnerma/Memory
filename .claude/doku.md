@@ -227,3 +227,16 @@ Chronologisches Arbeitstagebuch. Menschlich lesbar, keine Memory-DB.
   6. Neues Modul `endscreen.ts`: sessionStorage lesen, `data-result` setzen, Scores eintragen, Stage-Timer, Back-Button; Guard auf `.endscreen`, Registrierung in `main.ts`.
   7. Assets & Widescreen: Confetti-SVG, Content `max-width: 1040px`, Confetti über volle Breite.
 - Etappe 1–3 sind design-unabhängig und waren sofort startklar; Confetti-Asset muss Max noch aus Figma exportieren.
+
+**Endscreen Etappen 1–3: Spielende, Gewinner, Persistenz (`game-logic.ts`)**
+
+- Max hat den Code selbst geschrieben, ich per Review/Rückfragen geführt (Mentor-Modus). Alle Reviews direkt von mir statt via Subagent — Einzeldatei, bereits im Kontext, `git diff` + `npx tsc --noEmit` als Gegenprüfung.
+- **Etappe 1 (Spielende erkennen)** — Iterationen:
+  - Erster Entwurf: `checkGameEnd()` steckte die Prüfung *in* den `setTimeout` und wurde in `resolveMatch()` **vor** `countScore()` aufgerufen. Lief zufällig richtig (Timeout-Callback feuert erst nach dem synchronen Block), war aber in der Absicht nicht ablesbar und bei Delay 0 ein echter Bug. Zusätzlich zwei Aufgaben in einer Funktion (warten + prüfen).
+  - Gefixt: `isGameEnd()` prüft synchron via `cards.every((card) => card.isMatched)`, `checkGameEnd()` prüft sofort und verzögert nur den Übergang. Aufruf jetzt nach `countScore()`.
+  - Kleinkram unterwegs: `=== true` auf boolean, Zwischenvariable `gameWon` (semantisch falsch — Draw ist kein Sieg), Parametername `obj` statt `card`.
+  - Eigene Konstante `GAME_END_DELAY` statt `MISMATCH_DELAY_MS` zu recyceln (zwei Zwecke, sonst verschiebt der geplante Mismatch-Umbau auf 1000–1500 ms ungewollt den Endscreen).
+- **Etappe 2 (Gewinner ermitteln)**: Erst direkt als if/else-Block *in* `checkGameEnd()` mit `console.log` geschrieben. Wichtig war nicht das if/else (drei Fälle, zwei Vergleiche = Minimum, bleibt so), sondern die fehlende Extraktion + der fehlende **Rückgabewert** — ohne den hätte Etappe 3 dieselben Vergleiche ein zweites Mal gebraucht. Jetzt `getWinner(): GameResult`. Type sauber aus Bestehendem komponiert: `type GameResult = Player | "draw"` statt Literale abzuschreiben.
+- **Etappe 3 (Persistenz)**: Erster Entwurf schrieb zwei getrennte sessionStorage-Keys (`gameResult` + `gameScore`) aus einer Funktion namens `setSessionStorageEndResults()`. Umgebaut auf **ein** Objekt unter einem Key (`{ winner, score }` als `gameResult`) — eine Prüfung beim Auslesen statt zwei, keine Chance auf halb-vorhandenen State; Funktion heißt jetzt `saveResult()`, analog zum bestehenden `saveSettings()` in `settings.ts` (Name sagt Absicht, nicht Technik).
+- **Nebenfund**: `npx tsc --noEmit` meldet `shuffleCards is declared but its value is never read` — Max hat das Mischen in `cards.ts:154` bewusst auskommentiert, um Runden schnell durchspielen zu können (`//todo reset - only for testing`). Kein Bug, muss aber vor dem Merge zurück.
+- Stand: Kette Spielende → Gewinner → sessionStorage läuft. Offen in `checkGameEnd()`: der `location.href`-Sprung, geht erst mit Etappe 4 (Seite existiert noch nicht).

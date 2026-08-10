@@ -1,8 +1,10 @@
 @use "../base" as base;
 @use "../utilities" as u;
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;800&display=swap");
 
 [data-theme="projects"] {
   --main-bg: #{base.$theme-white};
+
   --header-bg: #{base.$projects-header-bg};
   --player-bg: #{base.$theme-white};
   --player-blue: #{base.$player-blue};
@@ -12,6 +14,8 @@
   --title-weight: 700;
   --title-weight-regular: 400;
   --title-size: #{u.px-rem(32)};
+  --title-color: #{base.$projects-coral-dark};
+  --title-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   --text-color: #{base.$projects-font-main};
 
   --exit-btn-txt: #{base.$projects-font-main};
@@ -40,10 +44,12 @@
   --dialog-exit-btn-txt: #{base.$theme-white};
   --dialog-exit-btn-txt-hover: #{base.$theme-white};
 
-
   --card-height: #{u.px-rem(100)};
   --card-bg: #{base.$projects-card-face-bg};
   --card-back-bg: #{base.$projects-blue-dark};
   --card-border-matched: solid 2px #{base.$projects-blue-dark};
   --card-radius: 13px;
+
+  --endscreen-bg: #{base.$projects-blue-dark};
+  --endscreen-title-weight: 800;
 }

@@ -10,6 +10,7 @@ type Scores = {
 };
 
 export type Player = "blue" | "orange";
+type GameResult = Player | "draw";
 
 const PLAYERS: Player[] = ["blue", "orange"];
 
@@ -95,10 +96,25 @@ function isGameEnd(): boolean {
   return cards.every((card) => card.isMatched);
 }
 
+function getWinner(): GameResult {
+  if (scores.blue > scores.orange) {
+    return "blue";
+  } else if (scores.blue < scores.orange) {
+    return "orange";
+  } else {
+    return "draw";
+  }
+}
+
+function saveResult(): void {
+  const result = { winner: getWinner(), scores: scores };
+  sessionStorage.setItem("gameResult", JSON.stringify(result));
+}
+
 function checkGameEnd(): void {
   if (isGameEnd()) {
     window.setTimeout(() => {
-      console.log("game over");
+      saveResult();
     }, GAME_END_DELAY);
   }
 }

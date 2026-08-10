@@ -3,6 +3,7 @@
 
 [data-theme="coding"] {
   --main-bg: #{base.$primary-dark};
+
   --header-bg: #{base.$primary-dark};
   --player-bg: #{base.$coding-player-bg};
   --player-blue: #{base.$player-blue};
@@ -52,4 +53,6 @@
   --card-border-matched: solid 3px #{base.$coding-teal};
   --card-shadow: 6px 6px 8px 0px rgba(77, 213, 188, 0.3);
 
+  --endscreen-bg: #{base.$primary-dark};
+  --endscreen-title: #{u.px-rem(128)}; // todo will replaced by the img.
 }

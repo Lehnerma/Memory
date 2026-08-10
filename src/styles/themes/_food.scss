@@ -3,6 +3,7 @@
 
 [data-theme="food"] {
   --main-bg: #{base.$theme-white};
+  --endscreen-bg: #{base.$theme-white};
   --header-bg: #{base.$food-header-bg};
   --player-bg: #{base.$food-players-bg};
   --player-blue: #{base.$player-blue};
@@ -13,6 +14,8 @@
   --title-weight: 600;
   --title-weight-regular: 400;
   --title-size: #{u.px-rem(32)};
+  --title-color: #{base.$projects-coral-dark};
+  --title-shadow: #{base.$shadow-gameover};
   --text-color: #{base.$food-font-color};
 
   --exit-btn-txt: #{base.$food-btn-txt};

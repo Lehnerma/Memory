@@ -3,6 +3,7 @@
 
 [data-theme="gaming"] {
   --main-bg: #{base.$gaming-main-bg};
+  --endscreen-bg: #{base.$gaming-main-bg};
   --header-bg: #{base.$gaming-header-bg};
   --player-bg: #{base.$theme-white};
   --player-blue: #{base.$player-blue};
@@ -12,6 +13,7 @@
   --title-weight: 700;
   --title-weight-regular: 400;
   --title-size: #{u.px-rem(32)};
+  --title-color: #{base.$gaming-pink};
   --text-color: #{base.$theme-white};
 
   --exit-btn-txt: #{base.$theme-white};
