@@ -3,10 +3,11 @@
 
 .endscreen {
   background-color: var(--endscreen-bg);
+  display: grid;
   grid-template-rows: 1fr;
-  max-width: base.$max-dp-width;
-
-  width: 100%; //todo delete these property?
+  max-width: 1440px;
+  margin: 0;
+  justify-self: center;
 
   &__stage {
     display: flex;
@@ -86,10 +87,51 @@
     }
   }
 
-  //todo for confetti only in coding visible
+  &__stage--result {
+    font-family: var(--title-font);
 
-  &__subtitle{
-    
+    .endscreen__confetti {
+      max-width: base.$max-dp-width;
+      width: 100dvw;
+      inset-inline: 0;
+      margin-inline: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-image: var(--endscreen-confetti, none);
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 360px;
+    }
+    @media (min-width: base.$max-dp-width) {
+      .endscreen__confetti {
+        background-image: var(--endscreen-confetti-long, none);
+        max-width: 3216px;
+      }
+    }
+  }
+  &__subtitle {
+    font-size: var(--result-subtitle);
+    color: var(--result-subtitle-color, base.$txt-white);
+    font-weight: var(--result-subtitle-weight, 400);
+    letter-spacing: var(--label-letter-spacing, 0);
+  }
+
+  &__winner {
+    font-size: var(--result-winner);
+    font-weight: var(--result-winner-weight, 400);
+    letter-spacing: var(--label-winner-spacing, 0);
+
+    &-orange {
+      color: var(--player-orange);
+    }
+    &-blue {
+      color: var(--player-blue);
+    }
+    &-draw {
+      color: var(--draw-fill, base.$txt-white);
+    }
   }
 }
 
@@ -113,16 +155,15 @@
   }
 }
 
-// Only the coding theme spells out the player names next to the score.
-// The other themes show the pawn icon alone, so the text is hidden visually
-// but stays in the accessibility tree.
-[data-theme]:not([data-theme="coding"]) .score__label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+[data-theme]:not([data-theme="coding"]) {
+  .score__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }

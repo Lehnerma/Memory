@@ -8,6 +8,7 @@
   --player-bg: #{base.$coding-player-bg};
   --player-blue: #{base.$player-blue};
   --player-orange: #{base.$player-orange};
+  --draw-fill: rgba(77, 213, 188, 1);
 
   --title-font: "Rose", sans-serif;
   --title-weight: 700;
@@ -63,4 +64,12 @@
   --score-icon: url("/assets/icons/svg/score-label.svg");
   --score-icon-width: #{u.px-rem(24)};
   --score-icon-height: #{u.px-rem(20)};
+
+  --result-subtitle: #{u.px-rem(40)};
+  --result-subtitle-weight: 400;
+  --result-winner: #{u.px-rem(60)};
+  //todo --result-winner-color: planing for the different options orange blue draw
+  --result-winner-weight: 700;
+  --endscreen-confetti: url("/assets/img/confetti.png");
+  --endscreen-confetti-long: url("/assets/img/confetti-long.png");
 }
