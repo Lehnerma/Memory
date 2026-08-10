@@ -13,9 +13,9 @@
     align-items: center;
     width: 100vw;
     max-width: u.px-rem(1219);
-
     background-color: var(--header-bg, transparent);
     padding: u.px-rem(24);
+    margin: 10px;
 
     &__players {
       list-style: none;
