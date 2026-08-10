@@ -1,15 +1,13 @@
 @use "../utilities" as u;
 @use "../base" as base;
 
-.grid {
-  grid-template-rows: u.px-rem(240) 1fr u.px-rem(240);
-}
 .settings {
   .header {
     height: 100%;
     @include u.flex(row, flex-start, flex-end);
   }
   .wrapper--header {
+    margin-top: 114px;
     .title {
       @include u.f-rose(54, 700);
       text-align: end;
