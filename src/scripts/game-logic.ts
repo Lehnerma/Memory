@@ -2,7 +2,7 @@ import type { CardData } from "./cards";
 import { getStartPlayer } from "./cards";
 
 const MISMATCH_DELAY_MS = 1000;
-const GAME_END_DELAY = 2000;
+const GAME_END_DELAY = 500;
 
 type Scores = {
   blue: number;
