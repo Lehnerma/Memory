@@ -17,10 +17,10 @@ It is also the first project where I collaborated with **Claude**.
 ```text
 Memory/
 ├─ index.html
-├─ pages/
-│  ├─ board.html
-│  ├─ settings.html
-│  └─ endscreen.html
+│ 
+├─ board.html
+├─ settings.html
+├─ endscreen.html
 ├─ public/
 │  └─ assets/
 ├─ src/
