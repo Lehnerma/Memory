@@ -1,7 +1,9 @@
-/node_modules
 DS_Store
-/dist
-.claude/
-logs/
+
 .env
+
+.claude/
+.vscode/
 logs/
+/dist
+/node_modules

@@ -6,8 +6,9 @@
   display: grid;
   grid-template-rows: 1fr;
   max-width: 1440px;
-  margin: 0;
-  justify-self: center;
+  // Der body ist kein Grid-Item (html hat keinen Grid-Kontext), daher
+  // zentriert margin-inline statt justify-self — wirkt in allen Browsern.
+  margin-inline: auto;
 
   &__stage--score {
     display: flex;
