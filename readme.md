@@ -14,8 +14,6 @@ It is also the first project where I collaborated with **Claude**.
 
 ## Project Structure
 
-> Note: The `pages` files will be moved to the project root in the next push.
-
 ```text
 Memory/
 ├─ index.html
