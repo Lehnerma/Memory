@@ -176,6 +176,45 @@ function bindThemeHoverListeners(): void {
 }
 
 /**
+ * Loads the game settings from session storage.
+ *
+ * @returns The stored settings object, or `null` if no settings are found.
+ */
+function loadSettings(): Settings | null {
+  try {
+    const value = sessionStorage.getItem("gameSettings");
+    return value ? JSON.parse(value) : null;
+  } catch{
+    return null;
+  }
+}
+
+/**
+ * Applies a stored setting value to its corresponding radio input.
+ *
+ * @param config - Field configuration linking fieldset and setting key.
+ * @param settings - The settings object containing the value to apply.
+ */
+function applyStoredValue(config: FieldConfig, settings: Settings): void {
+  const fieldset = document.getElementById(config.fieldsetId);
+  if (!fieldset) return;
+  const radioInputs = Array.from(fieldset.querySelectorAll<HTMLInputElement>(".radio__input"));
+  const input = radioInputs.find((el) => el.value === settings[config.settingsKey]);
+  if (input) input.checked = true;
+}
+
+/**
+ * Restores all saved settings to their corresponding form fields.
+ */
+function restoreSettings(): void {
+  const settings = loadSettings();
+  if (!settings) return;
+  FIELD_CONFIGS.forEach((field) => {
+    applyStoredValue(field, settings);
+  });
+}
+
+/**
  * Sets up the settings page. Bails out on every other page.
  */
 export function initSummary(): void {
@@ -183,5 +222,6 @@ export function initSummary(): void {
   bindRadioChangeListeners();
   bindStartButtonListener();
   bindThemeHoverListeners();
+  restoreSettings();
   updateSummary();
 }
