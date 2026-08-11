@@ -86,6 +86,14 @@ function applyStoredTheme(): void {
   if (!settings?.theme) return;
   applyTheme(settings.theme);
   showLinkLabel(settings.theme);
+  deleteSavedSettings();
+}
+
+/**
+ * Removes the saved game settings from session storage.
+ */
+function deleteSavedSettings() {
+  sessionStorage.removeItem("gameSettings");
 }
 
 /**
