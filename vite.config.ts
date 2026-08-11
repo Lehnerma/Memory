@@ -10,9 +10,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(root, "index.html"),
-        settings: resolve(root, "pages/settings.html"),
-        board: resolve(root, "pages/board.html"),
-        endscreen: resolve(root, "pages/endscreen.html"),
+        settings: resolve(root, "settings.html"),
+        board: resolve(root, "board.html"),
+        endscreen: resolve(root, "endscreen.html"),
       },
     },
   },
