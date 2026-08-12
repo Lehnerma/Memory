@@ -122,9 +122,9 @@
     justify-items: center;
     align-items: center;
     font-family: var(--title-font);
+    background-color: var(--main-bg);
+    opacity: 1;
 
-    opacity: 0;
-    visibility: hidden;
     transform: var(--stage-enter-from, translateY(100%));
   }
 
