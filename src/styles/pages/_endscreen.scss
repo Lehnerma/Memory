@@ -4,16 +4,46 @@
 .endscreen {
   background-color: var(--endscreen-bg);
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto 1fr;
   max-width: 1440px;
-  // Der body ist kein Grid-Item (html hat keinen Grid-Kontext), daher
-  // zentriert margin-inline statt justify-self — wirkt in allen Browsern.
   margin-inline: auto;
 
-  &__stage--score {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  &__stages {
+    display: grid;
+    overflow: hidden;
+  }
+
+  &__stage {
+    grid-area: 1 / 1;
+
+    &--score {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    inset-inline: 0;
+    width: 100dvw;
+    max-width: base.$max-dp-width;
+    height: 360px;
+    margin-inline: auto;
+    background-image: var(--endscreen-confetti, none);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: var(--stage-enter-from, translateY(100%));
+
+    @media (min-width: base.$max-dp-width) {
+      max-width: 3216px;
+      background-image: var(--endscreen-confetti-long, none);
+    }
   }
 
   &__title {
@@ -24,15 +54,6 @@
     text-shadow: var(--title-shadow, none);
     letter-spacing: var(--label-letter-spacing, 0);
     margin-bottom: 104px;
-  }
-
-  .score__title {
-    font-family: var(--title-font);
-    font-size: var(--endscreen-score-title, u.px-rem(16));
-    font-weight: var(--endscreen-score-title-weight);
-    color: var(--endscreen-score-title-color, base.$txt-white);
-    margin-bottom: u.px-rem(24);
-    letter-spacing: var(--label-letter-spacing, 0);
   }
 
   .score {
@@ -47,6 +68,15 @@
     border-radius: var(--score-radius, 0);
     padding: var(--score-padding);
 
+    &__title {
+      font-family: var(--title-font);
+      font-size: var(--endscreen-score-title, u.px-rem(16));
+      font-weight: var(--endscreen-score-title-weight);
+      color: var(--endscreen-score-title-color, base.$txt-white);
+      margin-bottom: u.px-rem(24);
+      letter-spacing: var(--label-letter-spacing, 0);
+    }
+
     &__wrapper {
       display: flex;
       align-items: center;
@@ -58,8 +88,6 @@
       align-items: center;
       gap: u.px-rem(8);
 
-      // Icon comes from CSS only: the motif is set per theme, the colour is
-      // inherited from the player modifier below via currentColor.
       &::before {
         content: "";
         flex-shrink: 0;
@@ -95,27 +123,11 @@
     align-items: center;
     font-family: var(--title-font);
 
-    .endscreen__confetti {
-      max-width: base.$max-dp-width;
-      width: 100dvw;
-      inset-inline: 0;
-      margin-inline: auto;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-image: var(--endscreen-confetti, none);
-
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 360px;
-    }
-    @media (min-width: base.$max-dp-width) {
-      .endscreen__confetti {
-        background-image: var(--endscreen-confetti-long, none);
-        max-width: 3216px;
-      }
-    }
+    opacity: 0;
+    visibility: hidden;
+    transform: var(--stage-enter-from, translateY(100%));
   }
+
   &__subtitle {
     font-size: var(--result-subtitle);
     color: var(--result-subtitle-color, base.$txt-white);
@@ -187,22 +199,27 @@
   }
 }
 
-[data-stage="score"] {
+[data-ready="true"] {
   .endscreen {
-    &__stage {
-      &--result {
-        display: none;
-      }
+    &__stage,
+    &__confetti {
+      @include u.transition($time: 1000ms);
     }
   }
 }
 
 [data-stage="result"] {
   .endscreen {
-    &__stage {
-      &--score {
-        display: none;
-      }
+    &__stage--result,
+    &__confetti {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    &__stage--score {
+      opacity: 0;
+      visibility: hidden;
     }
   }
 }
@@ -257,13 +274,17 @@
 [data-theme="food"][data-stage="result"].endscreen {
   background-color: rgba(246, 246, 246, 1);
 
-  .endscreen__winner-orange{
+  .endscreen__winner-orange {
     color: var(--result-subtitle-color);
   }
-  .endscreen__winner-blue{
+
+  .endscreen__winner-blue {
     color: var(--result-subtitle-color);
   }
-  .endscreen__winner-draw, .endscreen__subtitle{
+
+  .endscreen__winner-draw,
+  .endscreen__subtitle {
     color: rgba(243, 131, 45, 1);
   }
 }
+
