@@ -9,7 +9,10 @@
     <title>End</title>
   </head>
   <body class="endscreen grid" data-theme="coding" data-stage="score" data-result="orange">
-    <main>
+    <header>
+      <div class="endscreen__confetti"></div>
+    </header>
+    <main class="endscreen__stages">
       <section class="endscreen__stage endscreen__stage--score">
         <h1 class="endscreen__title">Game Over</h1>
         <h2 class="score__title">Final score</h2>
@@ -26,11 +29,10 @@
       </section>
 
       <section class="endscreen__stage endscreen__stage--result">
-        <div class="endscreen__confetti"></div>
         <h2 class="endscreen__subtitle" id="winner_subtitle">The winner is</h2>
         <p class="endscreen__winner endscreen__winner-orange" id="winner_name">Orange player</p>
         <div class="endscreen__figure"></div>
-        <a class="btn endscreen__link" href="./settings.html">Back to start</a>
+        <a class="btn endscreen__link" id="back_to_start" href="./settings.html">Back to start</a>
       </section>
     </main>
     <script type="module" src="./src/main.ts"></script>

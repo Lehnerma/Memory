@@ -69,6 +69,19 @@ function showLinkLabel(theme: string): void {
 }
 
 /**
+ * Enables the stage transitions once the first frame is painted. Without this
+ * the result stage would slide in while the page is still loading, because the
+ * stylesheet arrives through the module import.
+ */
+function enableTransitions(): void {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.dataset.ready = "true";
+    });
+  });
+}
+
+/**
  * Runs the two stage reveal: first the scores, then the winner.
  */
 function startStageTimer(): void {
@@ -79,21 +92,24 @@ function startStageTimer(): void {
 }
 
 /**
+ * Removes the saved game settings from session storage.
+ */
+function deleteSavedSettings() {
+  const backBtn = document.getElementById("back_to_start");
+  backBtn?.addEventListener("click", () => sessionStorage.removeItem("gameSettings"));
+}
+
+/**
  * Applies the theme of the finished game and adjusts the link label to it.
+ *
+ * Retrieves the stored game settings and applies the theme if available,
+ * then updates the link label accordingly.
  */
 function applyStoredTheme(): void {
   const settings = getGameSettings();
   if (!settings?.theme) return;
   applyTheme(settings.theme);
   showLinkLabel(settings.theme);
-  deleteSavedSettings();
-}
-
-/**
- * Removes the saved game settings from session storage.
- */
-function deleteSavedSettings() {
-  sessionStorage.removeItem("gameSettings");
 }
 
 /**
@@ -107,5 +123,7 @@ export function initEndscreen(): void {
   if (!result) return;
   showScores(result.scores);
   showWinner(result.winner);
+  enableTransitions();
   startStageTimer();
+  deleteSavedSettings();
 }

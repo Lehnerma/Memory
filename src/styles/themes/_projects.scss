@@ -83,4 +83,6 @@
   --link-padding: 16px 24px;
   --link-border-radius: 10px;
   --exit-btn-border-hover: #{base.$theme-white};
+  
+  --stage-enter-from: translateY(100%);
 }
