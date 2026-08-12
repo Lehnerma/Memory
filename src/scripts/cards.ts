@@ -253,8 +253,8 @@ function renderBoard(board: HTMLElement, cards: CardData[]): void {
 export function initCards(): CardData[] {
   const board = document.querySelector<HTMLElement>("#memory_board");
   if (!board) return [];
-  //const cards = shuffleCards(createCardsArray()); //todo only for testing. must remove before upload
-  const cards = createCardsArray();
+  const cards = shuffleCards(createCardsArray());
+
   renderBoard(board, cards);
   return cards;
 }
